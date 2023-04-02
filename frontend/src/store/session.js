@@ -36,8 +36,38 @@ export const login = (user) => async (dispatch) => {
     return res;
 }
 
+const storeCurrentUser = (user) => {
+    if (user) {
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+    } else {
+        // sessionStorage.getItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+    }
+}
+
+export const restoreSession = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session');
+    // console.log(res);
+    storeCSRFToken(res);
+    const data = await res.json();
+    // console.log(data);
+    storeCurrentUser(data.user);
+    dispatch(setUser(data.user));
+    return res;
+}
+
+export const storeCSRFToken = (res) => {
+    // cannot access like a normal js object with []
+    // use method .get()
+    const token = res.headers.get('X-CSRF-Token');
+    if (token) {
+        sessionStorage.setItem('X-CSRF-Token', token);
+    }
+}
+
+
 // initial state
-const initialState = { user: null };
+const initialState = { user: JSON.parse(sessionStorage.getItem('currentUser')) };
 
 // SESSION REDUCER
 

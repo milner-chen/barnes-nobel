@@ -22,6 +22,17 @@ const removeUser = () => {
 
 // THUNK ACTION CREATORS
 
+export const signup = (user) => async (dispatch) => {
+    const res = await csrfFetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify(user)
+    });
+    const data = await res.json();
+    storeCurrentUser(data.user);
+    if (data.user) dispatch(setUser(data.user));
+    return res;
+}
+
 export const login = (user) => async (dispatch) => {
     // request to backend
     const res = await csrfFetch('/api/session', {
@@ -36,14 +47,6 @@ export const login = (user) => async (dispatch) => {
     return res;
 }
 
-const storeCurrentUser = (user) => {
-    if (user) {
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
-    } else {
-        // sessionStorage.getItem('currentUser');
-        sessionStorage.removeItem('currentUser');
-    }
-}
 
 export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
@@ -54,6 +57,17 @@ export const restoreSession = () => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setUser(data.user));
     return res;
+}
+
+// restore session helper methods
+
+const storeCurrentUser = (user) => {
+    if (user) {
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+    } else {
+        // sessionStorage.getItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+    }
 }
 
 export const storeCSRFToken = (res) => {

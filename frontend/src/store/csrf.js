@@ -7,13 +7,13 @@ export const storeCSRFToken = async (res) => {
     if (token) sessionStorage.setItem('X-CSRF-Token', token);
 }
 
-// retrieve CSRFToken or create a new one
-export const restoreCSRF = async () => {
-    // just a get request to generate a csrftoken
-    const res = await csrfFetch('/api/session');
-    storeCSRFToken(res);
-    return res;
-}
+// retrieve CSRFToken or create a new one -> moved to session.js
+// export const restoreCSRF = async () => {
+//     // just a get request to generate a csrftoken
+//     const res = await csrfFetch('/api/session');
+//     storeCSRFToken(res);
+//     return res;
+// }
 
 // assumes that there is already a csrf token in sessionStorage
 const csrfFetch = async (url, options={}) => {

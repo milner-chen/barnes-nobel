@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { NavLink } from "react-router-dom";
+import './Navigation.css'
 
 const Navigation = () => {
     // const currentUser = useSelector(state => state.session.user);
@@ -16,9 +17,11 @@ const Navigation = () => {
     return (
         <>
             <div className="top-slider"></div>
-            <ul>
-                <NavLink exact to="/">Home</NavLink>
+            <ul className="mid-nav-bar">
                 <ProfileButton />
+            </ul>
+            <ul>
+                <NavLink exact to="/">Barnes &#38; Noble</NavLink>
             </ul>
         </>
     )

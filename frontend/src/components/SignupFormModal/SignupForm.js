@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -8,7 +8,7 @@ const SignupFormPage = () => {
 
     const dispatch = useDispatch();
     // grabbing user from session slice of state
-    const currentUser = useSelector(state => state.session.user);
+    // const currentUser = useSelector(state => state.session.user);
 
     const [lName, setLName] = useState('');
     const [fName, setFName] = useState('');
@@ -17,9 +17,17 @@ const SignupFormPage = () => {
     const [confirmEmail, setConfirmEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
-
+    const [showErrors, setShowErrors] = useState(false);
     // redirect to home if currentUser is found
     // if (currentUser) return <Redirect to="/" />;
+    
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        console.log(errors);
+        if (errors.length !== 0) setShowErrors(true)
+        else setShowErrors(false);
+    }, [errors])
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -49,54 +57,52 @@ const SignupFormPage = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="signup-form">
-            <div>
-                {errors.map(error => <p key={error}>{error}</p> )}
-            </div>
-            <label>First Name
-                <input
-                type="text"
-                value={fName}
-                onChange={e => setFName(e.target.value)}
-                />
-            </label>
-            <label>Last Name
-                <input
-                type="text"
-                value={lName}
-                onChange={e => setLName(e.target.value)}
-                />
-            </label>
-            <label>Email
-                <input
-                type="text"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                />
-            </label>
-            <label>Confirm Email
-                <input
-                type="text"
-                value={confirmEmail}
-                onChange={e => setConfirmEmail(e.target.value)}
-                />
-            </label>
-            <label>Password
-                <input
-                type="text"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                />
-            </label>
-            <label>Confirm Password
-                <input
-                type="text"
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-                />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <div className="signup-comp">
+            <p>Create an Account</p>
+            <form onSubmit={handleSubmit} className="signup-form">
+                {showErrors && <div>
+                    {errors.map(error => <p key={error}>{error}</p> )}
+                </div>}
+                    <input
+                    type="text"
+                    value={fName}
+                    onChange={e => setFName(e.target.value)}
+                    placeholder="First Name"
+                    />
+                    <input
+                    type="text"
+                    value={lName}
+                    onChange={e => setLName(e.target.value)}
+                    placeholder="Last Name"
+                    />
+                    <input
+                    type="text"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder="Email"
+                    />
+                    <input
+                    type="text"
+                    value={confirmEmail}
+                    onChange={e => setConfirmEmail(e.target.value)}
+                    placeholder="Confirm Email"
+                    />
+                    <input
+                    type="text"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="Password"
+                    />
+                    <input
+                    type="text"
+                    value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    placeholder="Confirm Password"
+                    />
+                <button className="signup-button" type="submit">Create Account</button>
+                <p onClick={() => setShowModal(false)} id="cancel-signup">Cancel</p>
+            </form>
+        </div>
     )
 }
 

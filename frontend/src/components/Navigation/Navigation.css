@@ -1,0 +1,51 @@
+.top-slider {
+    background-color: cadetblue;
+    height: 30px;
+    width: 100vw;
+    height: 40px;
+}
+
+.mid-nav-bar {
+    display: flex;
+    justify-content: right;
+    margin: 15px 60px;
+}
+
+.acc-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.account-bar {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: min-content;
+}
+
+
+.profile-dropdown {
+    /* width: 200px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    position: absolute;
+    top: 18px;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+button {
+    display: block;
+    width: 100px;
+}
+
+#my-acc {
+    margin: 0;
+    padding: 0 8px;
+}

@@ -1,1 +1,9 @@
 /* TODO Add site wide styles */
+
+/* * {
+    border: 1px solid red;
+} */
+
+body {
+    margin: 0;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session';
@@ -36,23 +36,25 @@ const LoginForm = () => {
     }
 
     return (
-        <>
-            <h1></h1>
-            <form onSubmit={handleSubmit} className="login-form">
-                <ul>
+        <div className="login-comp">
+            <p>Sign in or Create an Account</p>
+            <form className="login-form" onSubmit={handleSubmit}>
+                {!!errors.length && <div className="errors">
                     {errors.map(error => <li key={error}>{error}</li> )}
-                </ul>
-                <label>Email:
-                    <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-                </label>
+                </div>}
+                {/* <label>Email: */}
+                    <input type="text" value={email} placeholder="Email Address"
+                    onChange={e => setEmail(e.target.value)} />
+                {/* </label> */}
 
-                <label>Password:
-                    <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
-                </label>
-                <button type="submit" >Log In &#38; Continue</button>
+                {/* <label>Password: */}
+                    <input type="text" value={password} placeholder="Password"
+                    onChange={e => setPassword(e.target.value)} />
+                {/* </label> */}
+                <button className="login-button" type="submit" >Log In &#38; Continue</button>
                 <SignupFormModal />
             </form>
-        </>
+        </div>
     )
 }
 

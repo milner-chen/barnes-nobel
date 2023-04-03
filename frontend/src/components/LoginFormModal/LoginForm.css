@@ -1,3 +1,63 @@
-input {
+.login-comp {
+    padding: 30px;
+    /* width: 300px; */
+}
+
+.login-comp p {
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size: 25px
+}
+
+.login-form {
+    width: 400px;
+}
+
+.login-form .errors {
+    color: red;
+    list-style: none;
+    border: 2px solid red;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.login-form input {
     display: block;
+    height: 40px;
+    width: inherit;
+    padding-inline: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.login-form input:hover {
+    border: 1px solid rgba(0, 128, 128, 0.3);
+}
+
+.login-form button {
+    width: inherit;
+    height: 40px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.login-form .login-button {
+    background-color:teal;
+    color: white;
+    border: none;
+}
+
+.login-form .signup-button {
+    background-color: white;
+    color: teal;
+    border: 1px solid teal;
+}
+
+.login-form .signup-button:hover {
+    background-color: black;
+    color: white;
+    border: none;
 }

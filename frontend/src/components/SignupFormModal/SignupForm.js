@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-// import { useSelector } from "react-redux";
 import './SignupForm.css';
-
 
 const SignupFormPage = () => {
 
@@ -21,7 +19,7 @@ const SignupFormPage = () => {
     const [errors, setErrors] = useState([]);
 
     // redirect to home if currentUser is found
-    if (currentUser) return <Redirect to="/" />;
+    // if (currentUser) return <Redirect to="/" />;
     
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import './LoginForm.css';
+import SignupFormModal from "../SignupFormModal";
 
-const LoginFormPage = () => {
+const LoginForm = () => {
 
     // get the current user stored in the session slice of state
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const LoginFormPage = () => {
     const [errors, setErrors] = useState([]);
     
     // if user is already logged in, redirect to homepage
-    if (currentUser) return <Redirect to="/" />;
+    // if (currentUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -49,10 +50,10 @@ const LoginFormPage = () => {
                     <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
                 </label>
                 <button type="submit" >Log In &#38; Continue</button>
-                <button >Create an Account</button>
+                <SignupFormModal />
             </form>
         </>
     )
 }
 
-export default LoginFormPage;
+export default LoginForm;

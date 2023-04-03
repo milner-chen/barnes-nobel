@@ -25,6 +25,7 @@ const csrfFetch = async (url, options={}) => {
         options.headers['Content-Type'] ||= 'application/json';
         options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token');
     }
+    console.log("options", options);
     // call regular fetch
     const res = await fetch(url, options);
 

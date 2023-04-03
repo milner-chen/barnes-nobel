@@ -28,6 +28,7 @@ export const signup = (user) => async (dispatch) => {
         body: JSON.stringify(user)
     });
     const data = await res.json();
+    console.log("user data at create", data);
     storeCurrentUser(data.user);
     if (data.user) dispatch(setUser(data.user));
     return res;
@@ -45,6 +46,14 @@ export const login = (user) => async (dispatch) => {
     dispatch(setUser(data));
     // for error handling?
     return res;
+}
+
+export const logout = () => async (dispatch) => {
+    await csrfFetch(`/api/session/`, {
+        method: 'DELETE'
+    })
+    dispatch(removeUser());
+    storeCurrentUser((null)); // remove user from sessionStorage as well
 }
 
 

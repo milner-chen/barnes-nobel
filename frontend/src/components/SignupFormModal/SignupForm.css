@@ -5,7 +5,22 @@
 
 .signup-comp p {
     margin-top: 0px;
+    margin-bottom: 10px;
     font-size: 25px
+}
+
+.signup-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-header p {
+    cursor: pointer;
+}
+
+.signup-login-link p {
+    font-size: 14px;
+    max-width: 400px;
 }
 
 .signup-form {
@@ -51,6 +66,7 @@
     background-color:teal;
     color: white;
     border: none;
+    text-decoration: none;
 }
 
 #cancel-signup {

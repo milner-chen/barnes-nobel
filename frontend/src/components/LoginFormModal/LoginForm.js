@@ -5,7 +5,7 @@ import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 import SignupFormModal from "../SignupFormModal";
 
-const LoginForm = () => {
+const LoginForm = ({ closeLoginModal, closeModal }) => {
 
     // get the current user stored in the session slice of state
     const dispatch = useDispatch();
@@ -37,7 +37,10 @@ const LoginForm = () => {
 
     return (
         <div className="login-comp">
-            <p>Sign in or Create an Account</p>
+            <div className="login-header">
+                <h3>Sign in or Create an Account</h3>
+                <p onClick={closeLoginModal}>x</p>
+            </div>
             <form className="login-form" onSubmit={handleSubmit}>
                 {!!errors.length && <div className="errors">
                     {errors.map(error => <li key={error}>{error}</li> )}
@@ -52,7 +55,7 @@ const LoginForm = () => {
                     onChange={e => setPassword(e.target.value)} />
                 {/* </label> */}
                 <button className="login-button" type="submit" >Log In &#38; Continue</button>
-                <SignupFormModal />
+                <SignupFormModal onClick={closeLoginModal} onClose={closeModal} />
             </form>
         </div>
     )

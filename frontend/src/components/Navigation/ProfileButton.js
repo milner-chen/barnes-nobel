@@ -50,18 +50,19 @@ const ProfileButton = () => {
         </>
     )
 // onMouseLeave={closeMenu}
+// onMouseOver={openMenu}
     return (
-        <div className="acc-block" >
-            <div  className="account-bar" onMouseOver={openMenu}>
+        <div className="acc-block">
+            <div  className="account-bar" >
                 <i className="fa-solid fa-user" />
                 {/* <i className="fa-light fa-circle-user" /> */}
                 <p id="my-acc">MY ACCOUNT</p>
             </div>
-            {showMenu && (
+            {/* {showMenu && ( */}
                 <ul className="profile-dropdown">
                     {buttons}
                 </ul>
-            )}
+            {/* )} */}
         </div>
     );
 }

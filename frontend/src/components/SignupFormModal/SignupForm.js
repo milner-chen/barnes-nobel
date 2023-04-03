@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import SignupFormModal from ".";
+import LoginFormModal from "../LoginFormModal";
 
-const SignupForm = () => {
+const SignupForm = ({closeModal}) => {
 
     const dispatch = useDispatch();
     // grabbing user from session slice of state
@@ -21,7 +23,7 @@ const SignupForm = () => {
     // redirect to home if currentUser is found
     // if (currentUser) return <Redirect to="/" />;
     
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
     // useEffect(() => {
     //     console.log(errors);
@@ -30,7 +32,10 @@ const SignupForm = () => {
     // }, [errors])
     
     const handleSubmit = (e) => {
+        console.log('errors', errors);
         e.preventDefault();
+        
+        setErrors([]);
         // let data;
         if (password === confirmPassword && email === confirmEmail) {
             // setErrors([]);
@@ -50,15 +55,25 @@ const SignupForm = () => {
             })
             
         } else {
-            setErrors([]);
-            if (password !== confirmPassword) setErrors([...errors, "Passwords must match"]);
-            if (email !== confirmEmail) setErrors([...errors, "Emails must match"]);
+            if (password !== confirmPassword) setErrors(["Passwords must match"]);
+            if (email !== confirmEmail) setErrors(["Emails must match"]);
         }
     }
 
+    // if (!showModal) return null;
+
     return (
         <div className="signup-comp">
-            <p>Create an Account</p>
+            <div className="signup-header">
+                <h3>Create an Account</h3>
+                <p onClick={closeModal}>x</p>
+            </div>
+            <div className="signup-login-link">
+                <p>
+                    Fill in the fields below to create a Barnes & Noble.com account. If you already have an account, please Sign In
+                    {/* <LoginFormModal /> */}
+                </p>
+            </div>
             <form onSubmit={handleSubmit} className="signup-form">
                 {!!errors.length && <div className="errors">
                     {errors.map(error => <p key={error}>{error}</p> )}
@@ -100,10 +115,12 @@ const SignupForm = () => {
                     placeholder="Confirm Password"
                     />
                 <button className="signup-button" type="submit">Create Account</button>
-                <p onClick={() => setShowModal(false)} id="cancel-signup">Cancel</p>
+                <p onClick={closeModal} id="cancel-signup">Cancel</p>
             </form>
         </div>
     )
+
+    //onClick={() => setShowModal(false)}
 }
 
 export default SignupForm;

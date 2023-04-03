@@ -3,7 +3,16 @@
 /* * {
     border: 1px solid red;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 body {
-    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: Georgia,serif;
+}
+
+h3 {
+    font-size: 25px;
 }

@@ -81,6 +81,5 @@ test:
 #
 production:
   <<: *default
-  database: barnes_nobel_production
-  username: barnes_nobel
-  password: <%= ENV["BARNES_NOBEL_DATABASE_PASSWORD"] %>
+  production:
+  url: <%= ENV['DATABASE_URL'] %>

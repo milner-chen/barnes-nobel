@@ -49,9 +49,9 @@ const ProfileButton = () => {
             <button className="demo-user" onClick={loginDemo}>Demo</button>
         </>
     )
-
+// onMouseLeave={closeMenu}
     return (
-        <div className="acc-block" onMouseLeave={closeMenu} >
+        <div className="acc-block" >
             <div  className="account-bar" onMouseOver={openMenu}>
                 <i className="fa-solid fa-user" />
                 {/* <i className="fa-light fa-circle-user" /> */}

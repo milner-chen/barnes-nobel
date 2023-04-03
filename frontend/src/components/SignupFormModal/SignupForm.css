@@ -1,3 +1,67 @@
-input {
+.signup-comp {
+    padding: 30px;
+    /* width: 300px; */
+}
+
+.signup-comp p {
+    margin-top: 0px;
+    font-size: 25px
+}
+
+.signup-form {
+    width: 400px;
+}
+
+.signup-form .errors {
+    color: red;
+    list-style: none;
+    border: 2px solid red;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.errors p {
+    font-size: 16px;
+}
+
+.signup-form input {
     display: block;
+    height: 40px;
+    width: inherit;
+    padding-inline: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+}
+
+.signup-form input:hover {
+    border: 2px solid teal;
+}
+
+.signup-form button {
+    width: inherit;
+    height: 40px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.signup-form .signup-button {
+    background-color:teal;
+    color: white;
+    border: none;
+}
+
+#cancel-signup {
+    margin: 0;
+    font-size: 14px;
+    color: teal;
+    text-align: center;
+    margin: auto;
+}
+
+#cancel-signup:hover {
+    /* border-bottom: 1px solid teal; */
+    text-decoration: underline;
 }

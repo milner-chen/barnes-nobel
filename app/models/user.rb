@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  validates :f_name, :l_name, :email, :session_token, presence: true
-  validates :f_name, :l_name, format: { with: /\A[a-z]+\z/i, message: "contains invalid characters." }
+  validates :first_name, :last_name, :email, :session_token, presence: true
+  validates :first_name, :last_name, format: { with: /\A[a-z]+\z/i, message: "contains invalid characters." }
   validates :email, :session_token, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "is invalid." }
   validates :password, length: { in: 8..255 }, allow_nil: true

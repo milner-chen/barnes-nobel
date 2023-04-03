@@ -31,10 +31,11 @@
     padding-inline: 5px;
     margin-bottom: 15px;
     box-sizing: border-box;
+    border: 1px solid gray;
 }
 
 .login-form input:hover {
-    border: 1px solid rgba(0, 128, 128, 0.3);
+    border: 2px solid teal;
 }
 
 .login-form button {

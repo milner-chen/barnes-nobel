@@ -4,30 +4,30 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
-const SignupFormPage = () => {
+const SignupForm = () => {
 
     const dispatch = useDispatch();
     // grabbing user from session slice of state
     // const currentUser = useSelector(state => state.session.user);
 
-    const [lName, setLName] = useState('');
-    const [fName, setFName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmEmail, setConfirmEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
-    const [showErrors, setShowErrors] = useState(false);
+    // const [showErrors, setShowErrors] = useState(false);
     // redirect to home if currentUser is found
     // if (currentUser) return <Redirect to="/" />;
     
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        console.log(errors);
-        if (errors.length !== 0) setShowErrors(true)
-        else setShowErrors(false);
-    }, [errors])
+    // useEffect(() => {
+    //     console.log(errors);
+    //     // if (errors.length !== 0) setShowErrors(true)
+    //     // else setShowErrors(false);
+    // }, [errors])
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,8 +38,8 @@ const SignupFormPage = () => {
             dispatch(sessionActions.signup(
                 { user: 
                     {
-                    fName: fName,
-                    lName: lName,
+                    firstName: firstName,
+                    lastName: lastName,
                     email: email,
                     password: password
                 }
@@ -60,19 +60,19 @@ const SignupFormPage = () => {
         <div className="signup-comp">
             <p>Create an Account</p>
             <form onSubmit={handleSubmit} className="signup-form">
-                {showErrors && <div>
+                {!!errors.length && <div className="errors">
                     {errors.map(error => <p key={error}>{error}</p> )}
                 </div>}
                     <input
                     type="text"
-                    value={fName}
-                    onChange={e => setFName(e.target.value)}
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
                     placeholder="First Name"
                     />
                     <input
                     type="text"
-                    value={lName}
-                    onChange={e => setLName(e.target.value)}
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
                     placeholder="Last Name"
                     />
                     <input
@@ -106,4 +106,4 @@ const SignupFormPage = () => {
     )
 }
 
-export default SignupFormPage;
+export default SignupForm;

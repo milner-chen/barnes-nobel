@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 // import { useSelector } from "react-redux";
-import './SignupForm.css';
+// import './SignupForm.css';
 
 
 const SignupFormPage = () => {
@@ -12,8 +12,8 @@ const SignupFormPage = () => {
     // grabbing user from session slice of state
     const currentUser = useSelector(state => state.session.user);
 
-    const [lName, setLName] = useState('');
-    const [fName, setFName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmEmail, setConfirmEmail] = useState('');
@@ -32,8 +32,8 @@ const SignupFormPage = () => {
             dispatch(sessionActions.signup(
                 { user: 
                     {
-                    fName: fName,
-                    lName: lName,
+                    firstName: firstName,
+                    lastName: lastName,
                     email: email,
                     password: password
                 }
@@ -58,15 +58,15 @@ const SignupFormPage = () => {
             <label>First Name
                 <input
                 type="text"
-                value={fName}
-                onChange={e => setFName(e.target.value)}
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
                 />
             </label>
             <label>Last Name
                 <input
                 type="text"
-                value={lName}
-                onChange={e => setLName(e.target.value)}
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
                 />
             </label>
             <label>Email

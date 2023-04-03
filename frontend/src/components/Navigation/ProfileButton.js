@@ -28,9 +28,13 @@ const ProfileButton = () => {
     //         setShowMenu(false);
     //     };
         
-    //     // document.addEventListener('mouseout', setShowMenu(false));
+    //     document.addEventListener('mouseenter', setShowMenu(false));
 
     // })
+
+    const loginDemo = () => {
+        dispatch(sessionActions.login({ email: 'demo@gmail.com', password: 'password' }));
+    }
 
     let buttons;
 
@@ -42,15 +46,16 @@ const ProfileButton = () => {
             {/* <button >Login</button> */}
             <SignupFormModal />
             {/* <button >Sign up</button> */}
+            <button className="demo-user" onClick={loginDemo}>Demo</button>
         </>
     )
 
     return (
-        <div className="acc-block" onMouseLeave={closeMenu}>
+        <div className="acc-block" onMouseLeave={closeMenu} >
             <div  className="account-bar" onMouseOver={openMenu}>
                 <i className="fa-solid fa-user" />
                 {/* <i className="fa-light fa-circle-user" /> */}
-                <p id="my-acc">My Account</p>
+                <p id="my-acc">MY ACCOUNT</p>
             </div>
             {showMenu && (
                 <ul className="profile-dropdown">

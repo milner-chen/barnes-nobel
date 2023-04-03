@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { NavLink } from "react-router-dom";
 import './Navigation.css'
@@ -14,6 +14,7 @@ const Navigation = () => {
     //                     <NavLink to="/signup">Sign Up</NavLink>
     //                 </>
     //             )
+
     return (
         <>
             <div className="top-slider"></div>

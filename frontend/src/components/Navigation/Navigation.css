@@ -35,17 +35,41 @@
     flex-direction: column;
     padding: 0;
     position: absolute;
-    top: 18px;
+    top: 19px;
     background-color: white;
     padding: 10px 20px;
+    border: 1px solid gray;
 }
 
 button {
-    display: block;
-    width: 100px;
+    /* display: block;
+    width: 100px; */
+    margin: 5px;
+}
+
+.dropdown-signin-button {
+    background-color:teal;
+    color: white;
+    border: none;
+    padding: 8px 55px;
+    width: max-content;
 }
 
 #my-acc {
     margin: 0;
     padding: 0 8px;
+}
+
+.demo-user {
+    width: 50px;
+}
+
+.signup-button {
+    background: none;
+    border: none;
+    color: teal;
+}
+
+.signup-button:hover {
+    text-decoration: underline;
 }

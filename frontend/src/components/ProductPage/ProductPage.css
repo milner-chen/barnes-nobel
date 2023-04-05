@@ -1,0 +1,25 @@
+.show-body {
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+
+.show-sidebar {
+    border: 1px solid black;
+    /* width: 20vw; */
+    min-width: 20%;
+}
+
+.show-content {
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 80%;
+    padding: 5%;
+}
+
+.show-header {
+    margin: 0 auto;
+    width: fit-content;
+}

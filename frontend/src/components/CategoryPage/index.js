@@ -26,10 +26,12 @@ const CategoryPage = () => {
     return (
         // <ul>{ productIds.map(id => <li>{products[id].name}</li>) }</ul>
         <div className="cat-page">
-            <h1 className="cat-header">{category}</h1>
             <div className="cat-body">
                 <div className="cat-sidebar">stuff</div>
-                <ul className="cat-content">{products.map(product => <CategoryPageItem product={product} />)}</ul>
+                <ul className="cat-content">
+                    <h1 className="cat-header">{category}</h1>
+                    {products.map(product => <CategoryPageItem product={product} />)}
+                </ul>
             </div>
         </div>
     )

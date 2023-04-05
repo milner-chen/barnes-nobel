@@ -84,12 +84,19 @@ button {
     display: flex;
     /* width: 100vw; */
     justify-content: space-around;
-    padding: 10px 0;
+    /* padding: 10px 0; */
     /* temp for testing */
     border: 1px solid red;
 }
 
 .cat-nav-bar a {
     text-decoration: none;
-    padding: 0 15px;
+    padding: 10px 15px 7px;
+    font-family: Georgia, serif;
+    border-bottom: 3px solid white;
+}
+
+.cat-nav-bar a:hover {
+    box-sizing: border-box;
+    border-bottom: 3px solid lightgray;
 }

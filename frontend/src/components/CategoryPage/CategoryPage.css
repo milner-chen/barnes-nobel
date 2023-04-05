@@ -1,17 +1,13 @@
 .cat-body {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
-.cat-header {
-    margin: 0 auto;
-    width: min-content;
-}
 
 .cat-sidebar {
     border: 1px solid black;
     /* width: 20vw; */
-    min-width: 15vw;
+    min-width: 20%;
 }
 
 .cat-content {
@@ -19,5 +15,11 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 70vw;
+    width: 80%;
+    padding: 5%;
+}
+
+.cat-header {
+    margin: 0 auto;
+    width: fit-content;
 }

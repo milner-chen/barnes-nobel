@@ -1,10 +1,54 @@
+a {
+    text-decoration: inherit;
+    color: inherit;
+    width: fit-content;
+}
+
+h2, p {
+    font-family: inherit;
+}
+
+h1 {
+    font-size: 23px;
+}
+
+p {
+    font-size: 13px;
+}
+
+h2, .price {
+    font-size: 17px;
+}
+
 img {
-    width: 100px;
+    width: 150px;
+    margin: 20px;
     border: 1px solid black;
 }
 
 .cat-page-item {
+    display: flex;
+    flex-direction: row;
     border: 1px solid black;
     margin: 10px 0;
-    width: inherit;
+    width: 100%;
+    align-items: center;
+}
+
+.item-info {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50%;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.price {
+    font-weight: bold;
 }

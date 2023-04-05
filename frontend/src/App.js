@@ -1,16 +1,28 @@
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import * as categoryActions from "./store/category";
+import * as productActions from "./store/product";
 import { Route, Switch } from "react-router-dom";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 // import SignupFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
-import ProductCategory from "./components/ProductCategory";
+import CategoryPage from "./components/CategoryPage";
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categoryActions.fetchCategories());
+    dispatch(productActions.fetchProducts());
+  }, [])
+
   return (
     // <h1>Hello from App</h1>
     <>
       <Navigation />
       <Switch>
-        <Route path={`/products/:category`} component={ProductCategory} />
+        <Route path={`/products/:category`} component={CategoryPage} />
         {/* <Route path="/login" component={LoginForm} /> */}
         {/* <Route path="/signup" component={SignupFormPage} /> */}
       </Switch>

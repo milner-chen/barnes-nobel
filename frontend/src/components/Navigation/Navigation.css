@@ -1,7 +1,7 @@
 .top-slider {
     background-color: cadetblue;
     height: 30px;
-    width: 100vw;
+    /* width: 100vw; */
     height: 40px;
 }
 
@@ -78,4 +78,18 @@ button {
 
 .signup-button:hover {
     text-decoration: underline;
+}
+
+.cat-nav-bar {
+    display: flex;
+    /* width: 100vw; */
+    justify-content: space-around;
+    padding: 10px 0;
+    /* temp for testing */
+    border: 1px solid red;
+}
+
+.cat-nav-bar a {
+    text-decoration: none;
+    padding: 0 15px;
 }

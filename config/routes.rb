@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     
     resources :products, only: [:index, :show]
-    resources :category, only: [:index]
+    resources :categories, only: [:index]
     
 
     # GET /api/products?category=

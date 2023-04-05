@@ -1,0 +1,23 @@
+.cat-body {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cat-header {
+    margin: 0 auto;
+    width: min-content;
+}
+
+.cat-sidebar {
+    border: 1px solid black;
+    /* width: 20vw; */
+    min-width: 15vw;
+}
+
+.cat-content {
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 70vw;
+}

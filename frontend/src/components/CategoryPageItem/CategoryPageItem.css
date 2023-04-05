@@ -1,0 +1,10 @@
+img {
+    width: 100px;
+    border: 1px solid black;
+}
+
+.cat-page-item {
+    border: 1px solid black;
+    margin: 10px 0;
+    width: inherit;
+}

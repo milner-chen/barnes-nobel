@@ -18,7 +18,7 @@ export const ModalProvider = ({ children }) => {
                 { children }
             </ModalContext.Provider>
             <div ref={modalRef}>
-                <h1>Modal Content</h1>
+                {/* <h1>Modal Content</h1> */}
             </div>
         </>
     )

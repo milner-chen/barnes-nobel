@@ -12,10 +12,12 @@ ApplicationRecord.transaction do
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
     Product.destroy_all
+    Category.destroy_all
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('products')
+    ApplicationRecord.connection.reset_pk_sequence!('categories')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -36,6 +38,13 @@ ApplicationRecord.transaction do
       }) 
     end
 
+    puts "Creating categories..."
+    5.times do
+      Category.create!({
+        name: Faker::Book.genre
+      })
+    end
+
     puts "Creating products..."
     # create products with seller, name, price, description, category
     50.times do
@@ -44,7 +53,7 @@ ApplicationRecord.transaction do
         name: Faker::Book.unique.title,
         price: Faker::Commerce.price(range: 0..99.99),
         description: Faker::Lorem.paragraph(sentence_count: 15),
-        category: Faker::Book.genre
+        category_id: Faker::Number.between(from: 1, to: 5)
       })
     end
   

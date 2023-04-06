@@ -33,7 +33,7 @@ const ProfileButton = () => {
     // })
 
     const loginDemo = () => {
-        dispatch(sessionActions.login({ email: 'demo@gmail.com', password: 'password' }));
+        dispatch(sessionActions.login({ email: 'demo@user.io', password: 'password' }));
     }
 
     let buttons;

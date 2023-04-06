@@ -45,6 +45,7 @@
     background-color: white;
     padding: 10px 20px;
     border: 1px solid gray;
+    z-index: 1;
 }
 
 button {

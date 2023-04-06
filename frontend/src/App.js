@@ -8,7 +8,7 @@ import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
-import FadeSwiper from "./components/FadeSwiper.js";
+import HomePage from "./components/HomePage";
 
 
 function App() {
@@ -23,10 +23,11 @@ function App() {
     // <h1>Hello from App</h1>
     <>
       <Navigation />
-      <FadeSwiper />
+      {/* <FadeSwiper /> */}
       <Switch>
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/:productId/`} component={ProductPage} />
+        <Route path="/" component={HomePage} />
         {/* <Route path="/login" component={LoginForm} /> */}
         {/* <Route path="/signup" component={SignupFormPage} /> */}
       </Switch>

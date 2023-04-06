@@ -20,35 +20,47 @@ h2, .price {
     font-size: 17px;
 }
 
+button {
+    border: none;
+}
+
 img {
     width: 150px;
-    margin: 20px;
+    /* margin: 20px 0; */
+    margin-top: 20px;
     border: 1px solid black;
 }
 
 .cat-page-item {
     display: flex;
     flex-direction: row;
-    border: 1px solid black;
+    /* border: 1px solid red; */
     margin: 10px 0;
     width: 100%;
-    align-items: center;
+    /* align-items: center; */
 }
 
-.item-info {
-    border: 1px solid red;
+.item-left {
+    width: inherit;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 50%;
-    box-sizing: border-box;
-    width: 100%;
+    position: relative;
 }
 
-.title:hover {
-    text-decoration: underline;
-}
-
-.price {
+.item-left button {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 10px 40px;
+    background-color: cornflowerblue;
+    color: white;
     font-weight: bold;
+    letter-spacing: 1px;
 }
+
+/* .cart-button {
+
+} */

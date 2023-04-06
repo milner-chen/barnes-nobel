@@ -33,8 +33,8 @@ const ProfileButton = () => {
 
     // })
 
-    let test;
-    currentUser ? test = `HI, ${currentUser.user?.firstName.toUpperCase()}` : test = 'MY ACCOUNT';
+    // let test;
+    // currentUser ? test = `HI, ${currentUser?.firstName.toUpperCase()}` : test = 'MY ACCOUNT';
 
     const loginDemo = () => {
         dispatch(sessionActions.login({ email: 'demo@user.io', password: 'password' }));
@@ -60,7 +60,7 @@ const ProfileButton = () => {
             <div  className="account-bar" >
                 <i className="fa-solid fa-user" />
                 {/* <i className="fa-light fa-circle-user" /> */}
-                <p id="my-acc">{test}</p>
+                <p id="my-acc">MY ACCOUNT</p>
             </div>
             {/* {showMenu && ( */}
                 <ul className="profile-dropdown">

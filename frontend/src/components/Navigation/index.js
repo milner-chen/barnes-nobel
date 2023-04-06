@@ -22,7 +22,7 @@ const Navigation = () => {
 
     return (
         <>
-            <div className="top-slider"></div>
+            {/* <div className="top-slider"></div> */}
             <ul className="mid-nav-bar">
                 <ProfileButton />
             </ul>

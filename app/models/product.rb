@@ -16,4 +16,7 @@ class Product < ApplicationRecord
     validates :name, uniqueness: true
     
     belongs_to :category
+    # product has many photos
+    # has_one_attached :photo # has one row of data
+    has_many_attached :photo # has an arr of data
 end

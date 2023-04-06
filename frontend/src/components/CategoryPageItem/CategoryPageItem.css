@@ -35,9 +35,11 @@ img {
     display: flex;
     flex-direction: row;
     /* border: 1px solid red; */
-    margin: 10px 0;
+    /* margin: 10px 0; */
     width: 100%;
     /* align-items: center; */
+    padding: 25px 0 50px;
+    border-bottom: 1px solid silver;
 }
 
 .item-left {

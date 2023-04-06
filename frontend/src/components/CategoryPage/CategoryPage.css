@@ -1,22 +1,21 @@
 .cat-body {
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: center;
 }
 
 
-.cat-sidebar {
+/* .cat-sidebar {
     border: 1px solid black;
-    /* width: 20vw; */
     min-width: 20%;
-}
+} */
 
 .cat-content {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 80%;
-    padding: 5%;
+    width: 75%;
+    padding: 5% 0;
 }
 
 .cat-header {

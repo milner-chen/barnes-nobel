@@ -21,6 +21,11 @@ h2 {
     /* border: 1px solid red; */
     /* padding-top: 20px; */
     padding-bottom: 10px;
+    display: flex;
+}
+
+.info-block {
+    width: 100%;
 }
 
 .line {

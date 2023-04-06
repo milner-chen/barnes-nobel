@@ -17,10 +17,24 @@ const PageItemInfo = ({ product }) => {
                 </p>
             </div>
             <div className="bottom-info">
-                <p className="stars">Price</p>
-                <div className="line"></div>
-                <p className='price'>${product.price}</p>
-                <div className="line"></div>
+                <div className="info-block">
+                    <p>Format</p>
+                    <div className="line"></div>
+                    <p className='price'>Placeholder</p>
+                    <div className="line"></div>
+                </div>
+                <div className="info-block">
+                    <p>Price</p>
+                    <div className="line"></div>
+                    <p className='price'>${product.price}</p>
+                    <div className="line"></div>
+                </div>
+                <div className="info-block">
+                    <p>Availability</p>
+                    <div className="line"></div>
+                    <p className='price'>Placeholder</p>
+                    <div className="line"></div>
+                </div>
             </div>
         </div>
     )

@@ -25,3 +25,9 @@
     background-color:white;
     /* z-index: 3; */
 }
+
+.fa-xmark {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}

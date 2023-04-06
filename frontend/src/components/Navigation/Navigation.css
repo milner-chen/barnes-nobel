@@ -17,6 +17,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    cursor: pointer;
 }
 
 .acc-block:hover .profile-dropdown {
@@ -67,19 +68,25 @@ button {
     padding: 0 8px;
 }
 
-.demo-user {
-    width: 50px;
-}
-
 .signup-button {
     background: none;
     border: none;
+    width: max-content;
     color: teal;
-}
-
-.signup-button:hover {
     text-decoration: underline;
 }
+
+.demo-user {
+    background-color: white;
+    color: teal;
+    border: 1px solid teal;
+    padding: 6px 39px;
+    width: max-content;
+}
+
+/* .signup-button:hover {
+    text-decoration: underline;
+} */
 
 .cat-nav-bar {
     display: flex;

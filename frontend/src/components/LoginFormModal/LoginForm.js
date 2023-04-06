@@ -39,7 +39,7 @@ const LoginForm = ({ closeLoginModal, closeModal }) => {
         <div className="login-comp">
             <div className="login-header">
                 <h3>Sign in or Create an Account</h3>
-                <p onClick={closeLoginModal}>x</p>
+                {/* <p onClick={closeLoginModal}>x</p> */}
             </div>
             <form className="login-form" onSubmit={handleSubmit}>
                 {!!errors.length && <div className="errors">

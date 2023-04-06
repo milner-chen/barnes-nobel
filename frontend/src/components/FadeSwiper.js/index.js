@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Navigation, Pagination } from 'swiper';
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade'; // fade effect
 import "swiper/css/navigation"; // arrows
@@ -22,17 +22,28 @@ const FadeSwiper = () => {
     //     sc
     // })
 
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+    };
+
     return (
         <>
             <Swiper className="fade-swiper"
                 spaceBetween={30}
                 effect={'fade'}
                 navigation={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
                 pagination={{
-                    clickable: true
+                    pagination
                 }}
                 loop={true}
-                modules={[EffectFade, Navigation, Pagination]}
+                modules={[Autoplay, EffectFade, Navigation, Pagination]}
             >
                 <SwiperSlide>
                     <img src={slide1} />

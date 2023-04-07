@@ -10,7 +10,10 @@ const CategoryPageItem = ({ product }) => {
     return (
         <div className="cat-page-item">
             <NavLink to={`/${product.id}`}>
+            <div className='img-wrapper'>
+                <i class="fa-regular fa-heart"></i>
                 <img src={fishImage} alt='fish' />
+            </div>
             </NavLink>
             <div className='item-left'>
                 <PageItemInfo product={product} />

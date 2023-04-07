@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import './ProductPage.css';
 import fishImage from '../../../src/cartoon-dead-fish.png';
 
@@ -13,7 +13,13 @@ const ProductPage = () => {
         <div className="show-page">
         <div className="show-body">
             <div className="show-content">
-                <img src={fishImage} />
+                <div className="img-wrapper">
+                    <img src={fishImage} />
+                    <div className="wishlist-button">
+                        <i class="fa-regular fa-heart"></i>
+                        <NavLink to={"/"}><p>Add to Wishlist</p></NavLink>
+                    </div>
+                </div>
                 <div className="product-info">
                     <h2>{product.name}</h2>
                     <p>by <span>{product.seller}</span></p>

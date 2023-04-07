@@ -18,24 +18,26 @@ const PageItemInfo = ({ product }) => {
             </div>
             <div className="bottom-info">
                 <div className="info-block">
-                    <p>Format</p>
+                    <p >Format</p>
                     <div className="line"></div>
-                    <p className='price'>Placeholder</p>
-                    <div className="line"></div>
+                    <p className="format">{product.format}</p>
+                    {/* <div className="line"></div> */}
                 </div>
                 <div className="info-block">
                     <p>Price</p>
                     <div className="line"></div>
                     <p className='price'>${product.price}</p>
-                    <div className="line"></div>
+                    {/* <div className="line"></div> */}
                 </div>
                 <div className="info-block">
                     <p>Availability</p>
                     <div className="line"></div>
-                    <p className='price'>Placeholder</p>
-                    <div className="line"></div>
+                    <p>
+                    <i className="fa-solid fa-check"></i> {product.availability}</p>
+                    {/* <div className="line"></div> */}
                 </div>
             </div>
+            <div className="line"></div>
         </div>
     )
 }

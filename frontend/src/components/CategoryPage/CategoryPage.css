@@ -15,10 +15,11 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 75%;
-    padding: 5% 0;
+    padding: 2% 0;
 }
 
 .cat-header {
     margin: 0 auto;
     width: fit-content;
+    text-transform: capitalize;
 }

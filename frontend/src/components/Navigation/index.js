@@ -21,16 +21,16 @@ const Navigation = () => {
     console.log("cats:", categories);
 
     return (
-        <>
+        <div className="nav">
             {/* <div className="top-slider"></div> */}
             <ul className="mid-nav-bar">
                 <ProfileButton />
             </ul>
-            <ul>
-                <NavLink exact to="/">Barnes &#38; Noble</NavLink>
+            <ul className="logo">
+                <NavLink exact to="/"><h1>Barnes<span>&#38;</span>Noble</h1></NavLink>
             </ul>
             <ul className="cat-nav-bar">{categories.map(cat => <NavLink to={`/category/${cat}`}>{cat}</NavLink>)}</ul>
-        </>
+        </div>
     )
 }
 

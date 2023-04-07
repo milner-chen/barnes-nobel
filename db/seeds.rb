@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
 
-ApplicationRecord.transaction do 
+# ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
@@ -41,21 +42,65 @@ ApplicationRecord.transaction do
     puts "Creating categories..."
     5.times do
       Category.create!({
-        name: Faker::Book.genre
+        name: Faker::Book.genre.capitalize
       })
     end
+
+    formats = ['Hardcover', 'Paperback', 'Signed Book', 'BN Exclusive', 'Large Print'];
+    availability = ['In Stock', 'Available Online'];
+    file = URI.open("https://barnes-nobel-seeds.s3.amazonaws.com/temp-cover.png")
 
     puts "Creating products..."
     # create products with seller, name, price, description, category
     50.times do
-      Product.create!({
+      product = Product.create({
         seller: Faker::Book.author,
-        name: Faker::Book.unique.title,
-        price: Faker::Commerce.price(range: 0..99.99),
+        name: Faker::Book.unique.title.capitalize,
+        # price: Faker::Commerce.price(range: 0..99.99),
+        price: rand(0..100.0).round(2),
         description: Faker::Lorem.paragraph(sentence_count: 15),
-        category_id: Faker::Number.between(from: 1, to: 5)
+        category_id: Faker::Number.between(from: 1, to: 5),
+        format: formats.sample.capitalize,
+        availability: availability.sample.capitalize
       })
+      product.photo.attach(
+        io: file,
+        filename: "temp-cover.png"
+      )
     end
-  
+
+    # file = File.open("app/assets/temp-cover.png")
+
+    # Product.all.each_with_index do |product|
+    #   product.photo.attach(
+    #     io: file,
+    #     filename: "temp-cover.png"
+    #   )
+    # end
+
+    # Product.first.photo.attach(
+    #   io: file,
+    #   filename: "temp-cover.png"
+    # )
+
+    # 50.times do |n|
+    #   URI.open('https://barnes-nobel-seeds.s3.amazonaws.com/temp-cover.png') do |file|
+    #     Product.new({
+    #       seller: Faker::Book.author,
+    #       name: Faker::Book.unique.title,
+    #       price: Faker::Commerce.price(range: 0..99.99),
+    #       description: Faker::Lorem.paragraph(sentence_count: 15),
+    #       category_id: Faker::Number.between(from: 1, to: 5),
+    #       format: formats.sample,
+    #       availability: availability.sample
+    #     }) do |p|
+    #       p.photo.attach(
+    #         io: file,
+    #         filename: "temp-cover.png"
+    #       )
+    #     end.save!
+    #   end
+    # end
+
     puts "Done!"
-  end
+  # end

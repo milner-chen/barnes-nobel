@@ -42,6 +42,30 @@ img {
     border-bottom: 1px solid silver;
 }
 
+.img-wrapper {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.fa-heart {
+    font-size: 14px;
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.cat-page-item .fa-heart {
+    position: absolute;
+    top: 25px;
+    right: 5px;
+
+}
+
+.cat-page-item:last-child {
+    border-bottom: none;
+}
+
 .item-left {
     width: inherit;
     padding-left: 20px;

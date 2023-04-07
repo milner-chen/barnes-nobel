@@ -18,25 +18,45 @@
 }
 
 .show-content {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     width: 75%;
-    padding: 5% 0;
+    padding: 2% 0;
+    justify-content: space-between;
 }
 
-.show-content img {
+.show-content .img-wrapper {
     width: 25%;
     height: auto;
     /* margin: 0 100px; */
-    margin: 0 5%;
+    /* margin: 0 5%; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.wishlist-button {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 15px;
+}
+
+.wishlist-button p {
+    padding-left: 10px;
+    color: teal;
+}
+
+.show-content img {
+    width: 100%;
 }
 
 .product-info {
     height: min-content;
     /* border: 1px solid red; */
-    width: 60%;
+    width: 70%;
 }
 
 .product-info p {

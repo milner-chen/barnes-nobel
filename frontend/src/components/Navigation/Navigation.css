@@ -126,11 +126,11 @@ button {
 
 .cat-nav-bar a {
     text-decoration: none;
-    margin: 10px 15px 7px;
+    margin: 10px 0 7px;
     font-family: Georgia, serif;
     border-bottom: 3px solid white;
     border-right: 1px solid olive;
-    padding-right: 25px;
+    padding: 0 20px;
 }
 
 .cat-nav-bar a:last-child {

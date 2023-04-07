@@ -1,8 +1,15 @@
+import CarouselSwiper from "../CarouselSwiper/index.js";
 import FadeSwiper from "../FadeSwiper.js"
+import './HomePage.css'
 
 const HomePage = () => {
     return (
-        <FadeSwiper />
+        <div className="home-page">
+            <FadeSwiper />
+            <CarouselSwiper />
+            <CarouselSwiper />
+            <CarouselSwiper />
+        </div>
     )
 }
 

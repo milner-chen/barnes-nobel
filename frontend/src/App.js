@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
 import HomePage from "./components/HomePage";
+import CarouselSwiper from "./components/CarouselSwiper";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
     // <h1>Hello from App</h1>
     <>
       <Navigation />
-      {/* <FadeSwiper /> */}
+      {/* <CarouselSwiper /> */}
       <Switch>
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/:productId/`} component={ProductPage} />

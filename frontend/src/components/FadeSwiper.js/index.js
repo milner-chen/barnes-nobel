@@ -12,23 +12,6 @@ import './FadeSwiper.css';
 
 const FadeSwiper = () => {
 
-    // const swiper = new Swiper('.swiper', {
-    //     direction: horizontal,
-    //     loop: true,
-    //     navigation: {
-    //         nextPic: '.swiper-button-next',
-    //         prevPic: '.swiper-button-prev'
-    //     },
-    //     sc
-    // })
-
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
-        },
-    };
-
     return (
         <>
             <Swiper className="fade-swiper"
@@ -40,7 +23,7 @@ const FadeSwiper = () => {
                     disableOnInteraction: false,
                   }}
                 pagination={{
-                    pagination
+                    clickable: true
                 }}
                 loop={true}
                 modules={[Autoplay, EffectFade, Navigation, Pagination]}

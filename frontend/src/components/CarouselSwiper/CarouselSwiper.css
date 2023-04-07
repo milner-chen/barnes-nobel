@@ -1,0 +1,21 @@
+.carousel {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-slide {
+    text-align: center;
+    background: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: unset;
+    height: 250px;
+}
+
+/* .carousel-slide img {
+    width: 100px;
+    height: 200px;
+} */

@@ -18,7 +18,7 @@ export const ModalProvider = ({ children }) => {
                 { children }
             </ModalContext.Provider>
             <div ref={modalRef}>
-                <h1>Modal Content</h1>
+                {/* <h1>Modal Content</h1> */}
             </div>
         </>
     )
@@ -33,6 +33,7 @@ export const Modal = ({ onClose, children }) => {
         <div id="modal">
             <div id="modal-background" onClick={onClose}></div>
             <div id="modal-content">
+                <i onClick={onClose} className="fa-solid fa-xmark"></i>
                 { children }
             </div>
         </div>, modalNode

@@ -7,6 +7,7 @@ import SignupFormModal from "../SignupFormModal";
 
 const ProfileButton = () => {
     const currentUser = useSelector(state => state.session.user);
+    console.log("current user", currentUser);
 
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
@@ -32,21 +33,24 @@ const ProfileButton = () => {
 
     // })
 
+    // let test;
+    // currentUser ? test = `HI, ${currentUser?.firstName.toUpperCase()}` : test = 'MY ACCOUNT';
+
     const loginDemo = () => {
-        dispatch(sessionActions.login({ email: 'demo@gmail.com', password: 'password' }));
+        dispatch(sessionActions.login({ email: 'demo@user.io', password: 'password' }));
     }
 
     let buttons;
 
     currentUser ? buttons = (
-        <button onClick={() => dispatch(sessionActions.logout())}>Log Out</button>
+        <button className="signup-button" onClick={() => dispatch(sessionActions.logout())}>Sign Out</button>
     ) : buttons = (
         <>
             <LoginFormModal />
             {/* <button >Login</button> */}
+            <button className="demo-user" onClick={loginDemo}>Demo Login</button>
             <SignupFormModal />
             {/* <button >Sign up</button> */}
-            <button className="demo-user" onClick={loginDemo}>Demo</button>
         </>
     )
 // onMouseLeave={closeMenu}

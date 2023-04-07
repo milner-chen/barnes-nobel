@@ -48,11 +48,12 @@ require "open-uri"
 
     formats = ['Hardcover', 'Paperback', 'Signed Book', 'BN Exclusive', 'Large Print'];
     availability = ['In Stock', 'Available Online'];
-    file = URI.open("https://barnes-nobel-seeds.s3.amazonaws.com/temp-cover.png")
+    file = URI.open("https://barnes-nobel-seeds.s3.amazonaws.com/testing.webp")
+    # file = File.open("app/assets/temp-cover.png")
 
     puts "Creating products..."
     # create products with seller, name, price, description, category
-    50.times do
+    50.times do #|n|
       product = Product.create({
         seller: Faker::Book.author,
         name: Faker::Book.unique.title.capitalize,
@@ -63,10 +64,11 @@ require "open-uri"
         format: formats.sample.capitalize,
         availability: availability.sample.capitalize
       })
-      product.photo.attach(
-        io: file,
-        filename: "temp-cover.png"
-      )
+      # product.photo.attach(
+      #   io: file,
+      #   filename: "testing-#{n}.webp",
+      #   # content_type: "image/webp"
+      # )
     end
 
     # file = File.open("app/assets/temp-cover.png")

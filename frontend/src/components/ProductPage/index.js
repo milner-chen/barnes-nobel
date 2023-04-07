@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import './ProductPage.css';
+import fishImage from '../../../src/cartoon-dead-fish.png';
 
 const ProductPage = () => {
     
@@ -11,10 +12,31 @@ const ProductPage = () => {
     return (
         <div className="show-page">
         <div className="show-body">
-            <div className="show-sidebar">stuff</div>
-            <ul className="show-content">
-                <h1 className="show-header">{product.name}</h1>
-            </ul>
+            <div className="show-content">
+                <img src={fishImage} />
+                <div className="product-info">
+                    <h2>{product.name}</h2>
+                    <p>by <span>{product.seller}</span></p>
+                    <p>
+                    <i className="fa-solid fa-star" />
+                    <i className="fa-solid fa-star" />
+                    <i className="fa-solid fa-star" />
+                    <i className="fa-solid fa-star" />
+                    </p>
+                    <div className="line"></div>
+                    <p className="format">Placeholder</p>
+                    <p className="price">${product.price}</p>
+                    <div className="line"></div>
+                    <h2 className="italic">Overview</h2>
+                    <div className="description">
+                        {product.description}
+                    </div>
+                    <div className="show-buttons">
+                        <button className="cart-button">ADD TO CART</button>
+                        <button className="purchase-button">Instant Purchase</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     )

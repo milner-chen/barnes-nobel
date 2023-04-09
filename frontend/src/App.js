@@ -10,6 +10,7 @@ import CategoryPage from "./components/CategoryPage";
 import ProductPage from "./components/ProductPage";
 import HomePage from "./components/HomePage";
 import CarouselSwiper from "./components/CarouselSwiper";
+import CartPage from "./components/CartPage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Navigation />
       {/* <CarouselSwiper /> */}
       <Switch>
+        <Route exact path={`/cart/testing`} component={CartPage} />
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/:productId/`} component={ProductPage} />
         <Route path="/" component={HomePage} />

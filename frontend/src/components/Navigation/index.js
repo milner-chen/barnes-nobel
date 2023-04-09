@@ -18,7 +18,7 @@ const Navigation = () => {
     //             )
 
     const categories = useSelector(state => Object.keys(state.category));
-    console.log("cats:", categories);
+    // console.log("cats:", categories);
 
     return (
         <div className="nav">

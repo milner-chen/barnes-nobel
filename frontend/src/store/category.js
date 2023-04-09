@@ -20,7 +20,7 @@ export const receiveCategories = (categories) => {
 export const fetchCategories = () => async (dispatch) => {
     const res = await csrfFetch('/api/categories');
     const data = await res.json();
-    await console.log(data);
+    // await console.log(data);
     dispatch(receiveCategories(data));
     return data;
 }

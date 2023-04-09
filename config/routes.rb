@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   # post 'api/test', to: 'application#test'
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:create] # make show later
+    resources :users, only: [:create] do
+      resources :cart_items, only: [:index, :create]
+    end
     resource :session, only: [:show, :create, :destroy]
-    
+
     resources :products, only: [:index, :show]
     resources :categories, only: [:index]
-    
+    resources :cart_items, only: [:update, :destroy, :show]
 
     # GET /api/products?category=
   end

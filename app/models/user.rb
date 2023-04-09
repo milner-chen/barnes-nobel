@@ -22,6 +22,9 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "is invalid." }
   validates :password, length: { in: 8..255 }, allow_nil: true
 
+  has_many :cart_items,
+  dependent: :destroy
+
   def User.find_by_credentials(email, password)
     user = User.find_by(email: email);
     if user && user.authenticate(password)

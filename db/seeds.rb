@@ -14,11 +14,13 @@ require "open-uri"
     User.destroy_all
     Product.destroy_all
     Category.destroy_all
+    CartItem.destroy_all
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('products')
     ApplicationRecord.connection.reset_pk_sequence!('categories')
+    ApplicationRecord.connection.reset_pk_sequence!('cart_items')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -54,7 +56,7 @@ require "open-uri"
     puts "Creating products..."
     # create products with seller, name, price, description, category
     50.times do #|n|
-      product = Product.create({
+      product = Product.create!({
         seller: Faker::Book.author,
         name: Faker::Book.unique.title.capitalize,
         # price: Faker::Commerce.price(range: 0..99.99),
@@ -103,6 +105,12 @@ require "open-uri"
     #     end.save!
     #   end
     # end
+
+    puts "Creating cart items..."
+    CartItem.create!({user_id: 5, product_id: 2, quantity: 2});
+    CartItem.create!({user_id: 5, product_id: 6, quantity: 1});
+    CartItem.create!({user_id: 5, product_id: 4, quantity: 5});
+    CartItem.create!({user_id: 6, product_id: 2, quantity: 1});
 
     puts "Done!"
   # end

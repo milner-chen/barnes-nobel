@@ -27,7 +27,7 @@ function App() {
       <Navigation />
       {/* <CarouselSwiper /> */}
       <Switch>
-        <Route exact path={`/cart/testing`} component={CartPage} />
+        <Route exact path={`/cart`} component={CartPage} />
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/:productId/`} component={ProductPage} />
         <Route path="/" component={HomePage} />

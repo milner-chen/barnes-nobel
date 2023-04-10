@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :categories, only: [:index]
     resources :cart_items, only: [:update, :destroy, :show]
+      delete '/checkout', to: 'cart_items#checkout', as: 'checkout'
 
     # GET /api/products?category=
   end

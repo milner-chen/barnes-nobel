@@ -71,7 +71,7 @@ const CartPage = () => {
                         <h1>Order Summary</h1>
                         <div className='checkout-side-bar'>
                             <p>Subtotal ({totalItems} items)</p>
-                            <p>${totalPrice}</p>
+                            <p>${totalPrice.toFixed(2)}</p>
                         </div>
                         <div className='checkout-side-bar'>
                             <p>Estimated Shipping</p>
@@ -86,7 +86,7 @@ const CartPage = () => {
                             <h2>Order Total:</h2>
                             <h2>${total}</h2>
                         </div>
-                        <button className='checkout-button'>CHECKOUT</button>
+                        <button onClick={() => dispatch(cartItemActions.emptyCart())} className='checkout-button'>CHECKOUT</button>
                     </div>
                 </div>
             </div>

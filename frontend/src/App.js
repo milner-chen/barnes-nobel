@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as categoryActions from "./store/category";
 import * as productActions from "./store/product";
+import * as cartItemActions from "./store/cartItem";
 import { Route, Switch } from "react-router-dom";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 // import SignupFormPage from "./components/SignUpFormPage";
@@ -15,10 +16,12 @@ import CartPage from "./components/CartPage";
 
 function App() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(categoryActions.fetchCategories());
     dispatch(productActions.fetchProducts());
+    dispatch(cartItemActions.fetchCartItems(user.id));
   }, [dispatch])
 
   return (

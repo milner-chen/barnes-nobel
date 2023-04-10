@@ -5,6 +5,7 @@ import csrfFetch from './csrf';
 const RECEIVE_CART_ITEM = 'cart_items/RECEIVE_CART_ITEM';
 const RECEIVE_CART_ITEMS = 'car_items/RECEIVE_CART_ITEMS';
 const REMOVE_CART_ITEM = 'cart_items/REMOVE_CART_ITEM';
+const CHECKOUT_CART = 'cart_items/CHECKOUT_CART';
 
 // ACTION CREATORS
 const receiveCartItem = (cartItem) => {
@@ -25,6 +26,12 @@ const removeCartItem = (cartItemId) => {
     return ({
         type: REMOVE_CART_ITEM,
         cartItemId
+    })
+}
+
+const checkoutCart = () => {
+    return ({
+        type: CHECKOUT_CART
     })
 }
 
@@ -91,6 +98,13 @@ export const deleteCartItem = (cartItemId) => async (dispatch) => {
     return res;
 }
 
+export const emptyCart  = () => async (dispatch) => {
+    const res = await csrfFetch("/api/checkout", {
+        method: 'DELETE'
+    });
+    dispatch(checkoutCart);
+}
+
 
 // REDUCER
 
@@ -104,6 +118,8 @@ const cartItemReducer = (state={}, action) => {
             const newState = { ...state };
             delete newState[action.cartItemId];
             return newState;
+        case CHECKOUT_CART:
+            return {};
         default:
             return state;
     }

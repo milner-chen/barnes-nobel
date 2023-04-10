@@ -36,6 +36,11 @@ class Api::CartItemsController < ApplicationController
         end
     end
 
+    def checkout
+        CartItem.where(user_id: current_user.id).destroy_all
+        head :no_content
+    end
+
     private
 
     def cart_params

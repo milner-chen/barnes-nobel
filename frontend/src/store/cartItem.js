@@ -102,7 +102,7 @@ export const emptyCart  = () => async (dispatch) => {
     const res = await csrfFetch("/api/checkout", {
         method: 'DELETE'
     });
-    dispatch(checkoutCart);
+    dispatch(checkoutCart());
 }
 
 

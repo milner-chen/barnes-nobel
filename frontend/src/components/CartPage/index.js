@@ -8,11 +8,7 @@ const CartPage = () => {
     
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user.id); // get the current user
-    
-    useEffect(() => {
-        dispatch(cartItemActions.fetchCartItems(userId));
-        // console.log(data);
-    }, [userId])
+
 
     // const items = useSelector(state => state.cartItems);
     // const products = useSelector(cartItemActions.getCartItemProducts(items));
@@ -30,8 +26,9 @@ const CartPage = () => {
         console.log("TOTAL PRICE", totalPrice);
         let totalItems = 0;
         items?.forEach(item => totalItems += item.quantity);
-        let shipping = (totalPrice * 0.1) > 40 ? 'Free' : (totalPrice * 0.1).toFixed(2);
+        let shipping = (totalPrice * 0.1) > 40 ? 'Free' : '$' + (totalPrice * 0.1).toFixed(2);
         shipping > 40 ? shipping = '$' + (40).toFixed(2) : shipping = shipping;
+        
         let total = (shipping instanceof Number) ? (parseInt(totalPrice) + parseInt(shipping)).toFixed(2) : totalPrice.toFixed(2);
         // console.log("PRODUCTS", productIds);
     // if (!items) return null;
@@ -44,6 +41,12 @@ const CartPage = () => {
         // {items.map(item => 
         //     <p>{item.id}</p>
         // )}
+
+            
+    useEffect(() => {
+        dispatch(cartItemActions.fetchCartItems(userId));
+        // console.log(data);
+    }, [userId])
 
     if (!total) return null;
 

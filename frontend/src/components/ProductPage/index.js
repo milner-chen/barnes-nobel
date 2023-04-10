@@ -17,7 +17,7 @@ const ProductPage = () => {
         let inCart = false;
         let cartItem;
         cartItems.forEach(item => {
-            if (item.productId === productId) {
+            if (parseInt(item.productId) === productId) {
                 console.log('product already exists in cart')
                 inCart = true;
                 cartItem = item;

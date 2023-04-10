@@ -58,13 +58,13 @@ require "open-uri"
     50.times do #|n|
       product = Product.create!({
         seller: Faker::Book.author,
-        name: Faker::Book.unique.title.capitalize,
+        name: Faker::Book.unique.title,
         # price: Faker::Commerce.price(range: 0..99.99),
         price: rand(0..100.0).round(2),
         description: Faker::Lorem.paragraph(sentence_count: 15),
         category_id: Faker::Number.between(from: 1, to: 5),
-        format: formats.sample.capitalize,
-        availability: availability.sample.capitalize
+        format: formats.sample,
+        availability: availability.sample
       })
       # product.photo.attach(
       #   io: file,

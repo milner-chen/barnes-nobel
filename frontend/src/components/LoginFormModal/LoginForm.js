@@ -55,7 +55,6 @@ const LoginForm = ({ closeLoginModal, closeModal }) => {
                     onChange={e => setPassword(e.target.value)} />
                 {/* </label> */}
                 <button className="login-button" type="submit" >Log In &#38; Continue</button>
-                <SignupFormModal onClick={closeLoginModal} onClose={closeModal} />
             </form>
         </div>
     )

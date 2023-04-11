@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as cartItemActions from '../../store/cartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../CartItem';
@@ -8,12 +8,13 @@ const CartPage = () => {
     
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user); // get the current user
-    const localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
+    let localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
     // const items = useSelector(state => state.cartItems);
     // const products = useSelector(cartItemActions.getCartItemProducts(items));
     // if (items.length) {
         //     console.log(products);
         // }
+    // const [localCart, setLocalCart] = useState(Object.values(JSON.parse(localStorage.getItem('cart'))));
         
         let realCart = useSelector(state => Object.values(state?.cartItems));
         let items;
@@ -38,6 +39,8 @@ const CartPage = () => {
         if (user) {
             console.log('asdfghjkl why is it not fetching');
             dispatch(cartItemActions.fetchCartItems(user.id));
+        } else {
+            localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
         }
         // console.log(data);
     }, [user, localCart])

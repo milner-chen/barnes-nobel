@@ -8,6 +8,11 @@ const AddToCartButton = ({ product }) => {
     const user = useSelector(state => state.session.user);
     let cartItems = useSelector(state => Object.values(state.cartItems));
 
+    // to determine when to allow button to work
+    let doneAdding = false;
+    // clicking on button will set doneAdding to false
+    // after the adding logic -> set doneAdding to true
+
     const addItems = () => {
         if (user) {
             return addToCart();
@@ -16,6 +21,7 @@ const AddToCartButton = ({ product }) => {
         }
     }
 
+    // adds to cart in localstorage
     const addtoLocal = () => {
         console.log('this is the adding to local function being hit');
         cartItems = JSON.parse(localStorage.getItem("cart"));
@@ -54,6 +60,7 @@ const AddToCartButton = ({ product }) => {
         console.log("local cart after", cartItems);
     }
 
+    // adds to cart in slice of state
     const addToCart = () => {
         console.log('add to cart function is being reached');
         let inCart = false;
@@ -84,10 +91,16 @@ const AddToCartButton = ({ product }) => {
             }));
             console.log(data);
         }
+        doneAdding = true;
     }
 
+    const handleClick = () => {
+        doneAdding = false;
+        return addItems();
+    }
+    console.log(doneAdding);
     return (
-        <button className="cart-button" onClick={addItems} >ADD TO CART</button>
+        <button disabled={doneAdding} className="cart-button" onClick={handleClick} >ADD TO CART</button>
     )
 }
 

@@ -15,8 +15,12 @@ Rails.application.routes.draw do
 
     resources :products, only: [:index, :show]
     resources :categories, only: [:index]
+
+    post '/cart_items/add_bulk', to: 'cart_items#add_bulk', as: 'add_bulk'
+
     resources :cart_items, only: [:update, :destroy, :show]
-      delete '/checkout', to: 'cart_items#checkout', as: 'checkout'
+
+    delete '/checkout', to: 'cart_items#checkout', as: 'checkout'
 
     # GET /api/products?category=
   end

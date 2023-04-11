@@ -10,7 +10,16 @@ class Api::CartItemsController < ApplicationController
     end
 
     def create
-        @cart_item = CartItem.new(cart_params)
+        @cart_item = CartItem.find_by(user_id: params[:user_id], product_id: params[:product_id])
+        
+        if @cart_item
+            # cart item exists, so update quantity
+            @cart_item.quantity += params[:quantity]
+        else
+            # cart item does not exist, so create new
+            @cart_item = CartItem.new(cart_params)
+        end
+
         if @cart_item.save
             render :show
         else
@@ -39,6 +48,15 @@ class Api::CartItemsController < ApplicationController
     def checkout
         CartItem.where(user_id: current_user.id).destroy_all
         head :no_content
+    end
+
+    def add_bulk
+        # params[:items].each do |param|
+        #     param.permit(:user_id, :product_id, :quantity)
+        # end
+        # debugger
+        CartItem.add_bulk(params[:items])
+        p CartItem.all
     end
 
     private

@@ -14,4 +14,16 @@ class CartItem < ApplicationRecord
 
   belongs_to :user
   belongs_to :product
+
+  def self.add_bulk(items)
+    items.each do |item|
+      curr_item = CartItem.find_by(product_id: item[:product_id], user_id: item[:user_id])
+      if curr_item
+        curr_item.quantity += item[:quantity]
+      else
+        curr_item = CartItem.new(item.permit(:user_id, :product_id, :quantity))
+      end
+      curr_item.save
+    end
+  end
 end

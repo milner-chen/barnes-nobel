@@ -19,11 +19,15 @@ function App() {
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {
-    localStorage.setItem("cart", localStorage.getItem('cart'));
+    // localStorage.setItem("cart", localStorage.getItem('cart'));
     dispatch(categoryActions.fetchCategories());
     dispatch(productActions.fetchProducts());
-    if (user) dispatch(cartItemActions.fetchCartItems(user.id));
+    // if (user) dispatch(cartItemActions.fetchCartItems(user.id));
   }, [dispatch])
+
+  useEffect(() => {
+    if (user) dispatch(cartItemActions.fetchCartItems(user.id));
+  }, [user]);
 
   return (
     // <h1>Hello from App</h1>

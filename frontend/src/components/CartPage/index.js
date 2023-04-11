@@ -8,7 +8,7 @@ const CartPage = () => {
     
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user); // get the current user
-    let localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
+    // let localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
     // const items = useSelector(state => state.cartItems);
     // const products = useSelector(cartItemActions.getCartItemProducts(items));
     // if (items.length) {
@@ -16,9 +16,9 @@ const CartPage = () => {
         // }
     // const [localCart, setLocalCart] = useState(Object.values(JSON.parse(localStorage.getItem('cart'))));
         
-        let realCart = useSelector(state => Object.values(state?.cartItems));
-        let items;
-        user ? items = realCart : items = localCart;
+        const items = useSelector(state => Object.values(state.cartItems));
+        // let items ;
+        // user ? items = realCart : items = localCart;
         // const productIds = useSelector(state => cartItemActions.getCartItemProducts(state));
         let totalPrice = 0;
         useSelector(state => {
@@ -40,14 +40,14 @@ const CartPage = () => {
             console.log('asdfghjkl why is it not fetching');
             dispatch(cartItemActions.fetchCartItems(user.id));
         } else {
-            localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
+            // setLocalCart(Object.values(JSON.parse(localStorage.getItem('cart'))));
         }
         // console.log(data);
-    }, [user, localCart])
+    }, [user])
 
     const handleCheckout = () => {
         if (user) 
-        return dispatch(cartItemActions.emptyCart())
+        dispatch(cartItemActions.emptyCart())
         // else // i need to open my login modal
     }
 
@@ -62,7 +62,7 @@ const CartPage = () => {
                         <div className='cart-holder'>
                             <h2 className='item-count'>({items.length}) Items from Barnes & Noble</h2>
                             <div className='cart-items'>
-                                {items.map(item => <CartItem item={item} user={user} />)}
+                                {items.map(item => <CartItem key={item.id} item={item} user={user} />)}
                             </div>
                         </div>
                     </div>

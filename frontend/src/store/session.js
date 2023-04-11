@@ -1,9 +1,10 @@
 import csrfFetch from "./csrf";
+import { addBulkToCart } from "./cartItem";
 
 // ACTIONS
 // nest under the name of the slice
 const SET_USER = 'session/SET_USER';
-const REMOVE_USER = 'session/REMOVE_USER';
+export const REMOVE_USER = 'session/REMOVE_USER';
 
 // ACTION CREATORS
 
@@ -34,7 +35,7 @@ export const signup = (user) => async (dispatch) => {
     return res;
 }
 
-export const login = (user) => async (dispatch) => {
+export const login = (user) => async (dispatch, getState) => {
     // request to backend
     const res = await csrfFetch('/api/session', {
         // headers taken care of in csrfFetch
@@ -43,8 +44,12 @@ export const login = (user) => async (dispatch) => {
     });
     const data = await res.json();
     // update frontend
-    dispatch(setUser(data));
+    dispatch(setUser(data.user));
     // for error handling?
+
+    const { cartItems } = getState();
+    const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user.id, quantity}));
+    dispatch(addBulkToCart({items}));
     return res;
 }
 

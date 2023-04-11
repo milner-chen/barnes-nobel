@@ -34,7 +34,7 @@ const Navigation = () => {
                     </NavLink>
                 </div>
             </ul>
-            <ul className="cat-nav-bar">{categories.map(cat => <NavLink to={`/category/${cat}`}>{cat}</NavLink>)}</ul>
+            <ul className="cat-nav-bar">{categories.map((cat, i) => <NavLink to={`/category/${cat}`} key={i}>{cat}</NavLink>)}</ul>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { REMOVE_USER } from './session';
 // import 
 
 // ACTIONS
@@ -8,7 +9,7 @@ const REMOVE_CART_ITEM = 'cart_items/REMOVE_CART_ITEM';
 const CHECKOUT_CART = 'cart_items/CHECKOUT_CART';
 
 // ACTION CREATORS
-const receiveCartItem = (cartItem) => {
+export const receiveCartItem = (cartItem) => {
     return ({
         type: RECEIVE_CART_ITEM,
         cartItem
@@ -105,17 +106,30 @@ export const emptyCart  = () => async (dispatch) => {
     dispatch(checkoutCart());
 }
 
+export const addToLocalStorage = (newItem) => (dispatch, getState) => {
+    dispatch(receiveCartItem(newItem));
+    const state = getState();
+    localStorage.setItem('cart', JSON.stringify(state.cartItems));
+    // debugger;
+    // localStorage.setItem
+}
 
 // adding to cart logic
 
-const addToCart = () => {
-    
+export const addBulkToCart = (items) => async (dispatch) => {
+    const res = await csrfFetch('/api/cart_items/add_bulk', {
+        method: 'POST',
+        body: JSON.stringify(items)
+    });
+
+    if (res.ok) localStorage.setItem('cart', null);
 }
 
 
 // REDUCER
-
-const cartItemReducer = (state={}, action) => {
+let preloadedState = JSON.parse(localStorage.getItem('cart'));
+preloadedState = preloadedState ? preloadedState : {};
+const cartItemReducer = (state= preloadedState, action) => {
     switch (action.type) {
         case RECEIVE_CART_ITEM:
             return { ...state, [action.cartItem.id]: action.cartItem };
@@ -125,6 +139,7 @@ const cartItemReducer = (state={}, action) => {
             const newState = { ...state };
             delete newState[action.cartItemId];
             return newState;
+        case REMOVE_USER:
         case CHECKOUT_CART:
             return {};
         default:

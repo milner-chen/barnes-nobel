@@ -7,57 +7,50 @@ import './CartPage.css';
 const CartPage = () => {
     
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.user.id); // get the current user
-
-
+    const user = useSelector(state => state.session.user); // get the current user
+    const localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
     // const items = useSelector(state => state.cartItems);
     // const products = useSelector(cartItemActions.getCartItemProducts(items));
     // if (items.length) {
         //     console.log(products);
         // }
         
-        const items = useSelector(state => Object.values(state?.cartItems));
+        let realCart = useSelector(state => Object.values(state?.cartItems));
+        let items;
+        user ? items = realCart : items = localCart;
         // const productIds = useSelector(state => cartItemActions.getCartItemProducts(state));
         let totalPrice = 0;
         useSelector(state => {
             items.forEach(item => totalPrice += ( state.products[item.productId]?.price * item?.quantity ))
         })
-        console.log(items);
-        console.log("TOTAL PRICE", totalPrice);
+        // console.log(items);
+        // console.log("TOTAL PRICE", totalPrice);
         let totalItems = 0;
         items?.forEach(item => totalItems += item.quantity);
         let shipping = (totalPrice * 0.1) > 40 ? 'Free' : '$' + (totalPrice * 0.1).toFixed(2);
         shipping > 40 ? shipping = '$' + (40).toFixed(2) : shipping = shipping;
         
         let total = (shipping instanceof Number) ? (parseInt(totalPrice) + parseInt(shipping)).toFixed(2) : totalPrice.toFixed(2);
-        // console.log("PRODUCTS", productIds);
-    // if (!items) return null;
-
-    // items.map(item => <p>{item.quantity}</p>)
-    // map each item to a component
-    // pass as prop
-    // select the corresponding product within the component
-
-        // {items.map(item => 
-        //     <p>{item.id}</p>
-        // )}
 
             
     useEffect(() => {
-        dispatch(cartItemActions.fetchCartItems(userId));
+        console.log(user);
+        if (user) {
+            console.log('asdfghjkl why is it not fetching');
+            dispatch(cartItemActions.fetchCartItems(user.id));
+        }
         // console.log(data);
-    }, [userId])
+    }, [user, localCart])
+
+    const handleCheckout = () => {
+        if (user) 
+        return dispatch(cartItemActions.emptyCart())
+        // else // i need to open my login modal
+    }
 
     if (!total) return null;
 
     return (
-        // <div>testing QAQ
-        //     <p>user id: {userId}</p>
-        //     {
-        //         products.map(p => <p>{p.name}</p>)
-        //     }
-            
-        // </div>
         <>
             <div className='cart-page'>
                 <div className='cart-body'>
@@ -66,7 +59,7 @@ const CartPage = () => {
                         <div className='cart-holder'>
                             <h2 className='item-count'>({items.length}) Items from Barnes & Noble</h2>
                             <div className='cart-items'>
-                                {items.map(item => <CartItem item={item}  userId={userId} />)}
+                                {items.map(item => <CartItem item={item} user={user} />)}
                             </div>
                         </div>
                     </div>
@@ -89,7 +82,7 @@ const CartPage = () => {
                             <h2>Order Total:</h2>
                             <h2>${total}</h2>
                         </div>
-                        <button onClick={() => dispatch(cartItemActions.emptyCart())} className='checkout-button'>CHECKOUT</button>
+                        <button onClick={handleCheckout} className='checkout-button'>CHECKOUT</button>
                     </div>
                 </div>
             </div>

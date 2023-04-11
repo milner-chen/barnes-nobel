@@ -5,21 +5,41 @@ import { useEffect, useState } from "react";
 import * as cartItemActions from '../../store/cartItem';
 import { NavLink } from "react-router-dom";
 
-const CartItem = ({item}) => {
+const CartItem = ({item, user}) => {
 
     const dispatch = useDispatch();
     const product = useSelector(state => state.products[item.productId]);
-    console.log("PRODUCT", product);
+    // console.log("PRODUCT", product);
     const [quantity, setQuantity] = useState(item.quantity);
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    // const 
 
     useEffect(() => {
-        dispatch(cartItemActions.updateCartItem({
-            id: item.id,
-            productId: item.productId,
-            quantity: quantity
-        }));
-        console.log("QUANTITY EWVNQWOVI", quantity);
-    }, [quantity])
+        if (user) {
+            dispatch(cartItemActions.updateCartItem({
+                id: item.id,
+                productId: item.productId,
+                quantity: quantity
+            }));
+        } else {
+            const updatedItem = {
+                productId: item.productId,
+                quantity: parseInt(quantity)
+            }
+            const newCart = { ...cart, [item.productId]: updatedItem };
+            localStorage.setItem('cart', JSON.stringify(newCart));
+        }
+        // console.log("QUANTITY EWVNQWOVI", quantity);
+    }, [quantity, cart]);
+
+    const handleRemove = () => {
+        if (user) dispatch(cartItemActions.deleteCartItem(item.id))
+        else {
+            const newCart = { ...cart };
+            delete newCart[item.productId];
+            localStorage.setItem('cart', JSON.stringify(newCart));
+        }
+    }
 
     if (!product) return null;
 
@@ -38,7 +58,7 @@ const CartItem = ({item}) => {
                         <p>{product.format}</p>
                     </NavLink>
                     <div className="cart-remove-button">
-                        <button onClick={() => dispatch(cartItemActions.deleteCartItem(item.id))}>Remove</button>
+                        <button onClick={handleRemove}>Remove</button>
                     </div>
                 </div>
                 <div className="pricing">

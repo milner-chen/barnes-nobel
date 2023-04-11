@@ -6,7 +6,7 @@ const AddToCartButton = ({ product }) => {
     const dispatch = useDispatch();
     
     const user = useSelector(state => state.session.user);
-    const cartItems = useSelector(state => Object.values(state.cartItems));
+    let cartItems = useSelector(state => Object.values(state.cartItems));
 
     const addItems = () => {
         if (user) {
@@ -18,6 +18,40 @@ const AddToCartButton = ({ product }) => {
 
     const addtoLocal = () => {
         console.log('this is the adding to local function being hit');
+        cartItems = JSON.parse(localStorage.getItem("cart"));
+        console.log("local cart", cartItems);
+        // adding logic
+
+        let currentItem = {
+            productId: product.id,
+            quantity: 1
+        }
+
+        // console.log("product id", typeof product.id); // number
+        
+        let newCart;
+        if (!cartItems) {
+            console.log('cart does not exist');
+            newCart = { [product.id]: currentItem };
+        } else if (!cartItems[product.id]) {
+            console.log('there is no existing');
+            newCart = { ...cartItems, [product.id]: currentItem };
+        } else {
+            console.log('there is an existing key for this product');
+            console.log('old product', cartItems[product.id]);
+            // const oldProduct = cartItems[product.id];
+            // console.log("product", product);
+            currentItem = {
+                productId: product.id,
+                quantity: cartItems[product.id].quantity + 1
+            }
+            newCart = { ...cartItems, [product.id]: currentItem };
+            // newCart = { ...cartItems, [product.id]: currentItem };
+        }
+        
+        // else newCart = { ...cartItems, [product.id]: currentItem };
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        console.log("local cart after", cartItems);
     }
 
     const addToCart = () => {

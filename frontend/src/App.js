@@ -19,6 +19,7 @@ function App() {
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {
+    localStorage.setItem("cart", localStorage.getItem('cart'));
     dispatch(categoryActions.fetchCategories());
     dispatch(productActions.fetchProducts());
     if (user) dispatch(cartItemActions.fetchCartItems(user.id));

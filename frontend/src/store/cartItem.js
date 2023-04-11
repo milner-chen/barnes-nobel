@@ -106,6 +106,13 @@ export const emptyCart  = () => async (dispatch) => {
 }
 
 
+// adding to cart logic
+
+const addToCart = () => {
+    
+}
+
+
 // REDUCER
 
 const cartItemReducer = (state={}, action) => {

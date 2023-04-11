@@ -58,10 +58,10 @@ const CartItem = ({item}) => {
                         <option selected={quantity === 9} >9</option>
                         <option selected={quantity === 10} >10</option>
                     </select>
-                    <p className="total-item-price">${product.price * item.quantity}</p>
+                    <p className="total-item-price">${(product.price * item.quantity).toFixed(2)}</p>
                 </div>
             </div>
-            
+
         </div>
     )
 }

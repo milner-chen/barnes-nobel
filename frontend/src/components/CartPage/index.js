@@ -66,7 +66,7 @@ const CartPage = () => {
                         <div className='cart-holder'>
                             <h2 className='item-count'>({items.length}) Items from Barnes & Noble</h2>
                             <div className='cart-items'>
-                                {items.map(item => <CartItem item={item} />)}
+                                {items.map(item => <CartItem item={item}  userId={userId} />)}
                             </div>
                         </div>
                     </div>

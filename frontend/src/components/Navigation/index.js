@@ -30,7 +30,7 @@ const Navigation = () => {
                 <NavLink exact to="/"><h1>Barnes<span>&#38;</span>Noble</h1></NavLink>
                 <div>
                     <NavLink exact to="/cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i className="fa-solid fa-cart-shopping"></i>
                     </NavLink>
                 </div>
             </ul>

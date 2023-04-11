@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(categoryActions.fetchCategories());
     dispatch(productActions.fetchProducts());
-    dispatch(cartItemActions.fetchCartItems(user.id));
+    if (user) dispatch(cartItemActions.fetchCartItems(user.id));
   }, [dispatch])
 
   return (

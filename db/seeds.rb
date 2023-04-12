@@ -50,7 +50,7 @@ require "open-uri"
 
     formats = ['Hardcover', 'Paperback', 'Signed Book', 'BN Exclusive', 'Large Print'];
     availability = ['In Stock', 'Available Online'];
-    file = URI.open("https://barnes-nobel-seeds.s3.amazonaws.com/testing.webp")
+    # file = URI.open("https://barnes-nobel-seeds.s3.amazonaws.com/testing.webp")
     # file = File.open("app/assets/temp-cover.png")
 
     puts "Creating products..."

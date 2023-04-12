@@ -53,10 +53,19 @@
     font-weight: bold;
 }
 
-select {
+/* select {
     height: fit-content;
     padding: 10px;
     border-radius: 0;
     border: 1px solid lightgray;
     background-color: rgb(247, 245, 245);
+} */
+
+.pricing input {
+    padding: 10px;
+    border-radius: 0;
+    border: 1px solid lightgray;
+    background-color: rgb(247, 245, 245);
+    min-width: 30px;
+    max-width: 50px;
 }

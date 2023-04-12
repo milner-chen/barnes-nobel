@@ -62,7 +62,10 @@ const CartItem = ({item, user}) => {
 
     const handleChange = (e) => {
         // debugger;
-        const currentQuantity = e.target.value;
+        let currentQuantity = e.target.value;
+        // if (currentQuantity > 10) currentQuantity = 10;
+        // if (currentQuantity <= 0) currentQuantity = 1;
+        if (!Number.isInteger(currentQuantity)) currentQuantity = Math.floor(currentQuantity);
         setQuantity(currentQuantity);
         const currentItem = {
             ...item,
@@ -110,7 +113,7 @@ const CartItem = ({item, user}) => {
                 </div>
                 <div className="pricing">
                     <p className="item-price">${product.price}</p>
-                    <select
+                    {/* <select
                     onChange={handleChange}
                     value={quantity}
                     >
@@ -124,7 +127,13 @@ const CartItem = ({item, user}) => {
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
-                    </select>
+                    </select> */}
+                    <input
+                        onChange={handleChange}
+                        type="number"
+                        min={1}
+                        value={quantity}
+                    ></input>
                     <p className="total-item-price">${(product.price * item.quantity).toFixed(2)}</p>
                 </div>
             </div>

@@ -51,11 +51,12 @@ const CartItem = ({item, user}) => {
     // }, [cart]);
 
     const handleRemove = () => {
-        if (user) dispatch(cartItemActions.deleteCartItem(item.id))
+        if (user) dispatch(cartItemActions.deleteCartItem(item.id));
         else {
             // const newCart = { ...cart };
             // delete newCart[item.productId];
             // localStorage.setItem('cart', JSON.stringify(newCart));
+            dispatch(cartItemActions.removeFromLocalStorage(item.id));
         }
     }
 

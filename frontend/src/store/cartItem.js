@@ -114,6 +114,12 @@ export const addToLocalStorage = (newItem) => (dispatch, getState) => {
     // localStorage.setItem
 }
 
+export const removeFromLocalStorage = (cartItemId) => (dispatch, getState) => {
+    dispatch(removeCartItem(cartItemId));
+    const state = getState();
+    localStorage.setItem('cart', JSON.stringify(state.cartItems));
+}
+
 // adding to cart logic
 
 export const addBulkToCart = (items) => async (dispatch) => {

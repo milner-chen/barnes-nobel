@@ -22,5 +22,8 @@
   "homepage": "https://github.com/milner-chen/b-n#readme",
   "engines": {
     "node": "16.19.0"
+  },
+  "dependencies": {
+    "swiper": "^9.2.0"
   }
 }

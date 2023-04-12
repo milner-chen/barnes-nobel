@@ -12,6 +12,7 @@
 .login-header {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 15px;
 }
 
 .login-header p {
@@ -50,6 +51,7 @@
 .login-form button {
     width: inherit;
     height: 40px;
+    margin: 0;
     margin-bottom: 15px;
     cursor: pointer;
 }

@@ -66,11 +66,11 @@ const SignupForm = ({closeModal}) => {
         <div className="signup-comp">
             <div className="signup-header">
                 <h3>Create an Account</h3>
-                <p onClick={closeModal}>x</p>
+                {/* <p onClick={closeModal}>x</p> */}
             </div>
             <div className="signup-login-link">
                 <p>
-                    Fill in the fields below to create a Barnes & Noble.com account. If you already have an account, please Sign In
+                    Fill in the fields below to create a Barnes & Noble.com account. If you already have an account, please <span>Sign In</span>
                     {/* <LoginFormModal /> */}
                 </p>
             </div>
@@ -118,6 +118,8 @@ const SignupForm = ({closeModal}) => {
                 <p onClick={closeModal} id="cancel-signup">Cancel</p>
             </form>
         </div>
+        // when clicking to close: dispatch action to modal to change the current modal to null
+        // when clicking to open: dispatch action to modal to change current modal to modal name
     )
 
     //onClick={() => setShowModal(false)}

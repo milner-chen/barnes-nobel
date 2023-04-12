@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
     }
   
 #modal-background {
@@ -16,9 +17,17 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    /* z-index: 2; */
 }
 
 #modal-content {
     position: absolute;
     background-color:white;
+    /* z-index: 3; */
+}
+
+.fa-xmark {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }

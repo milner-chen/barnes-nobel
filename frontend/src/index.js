@@ -10,6 +10,7 @@ import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import * as productActions from './store/product';
 import * as categoryActions from './store/category';
+import * as cartItemActions from './store/cartItem';
 import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
@@ -21,7 +22,8 @@ if (process.env.NODE_DEV !== 'production') {
   window.sessionActions = sessionActions;
   window.productActions = productActions;
   window.categoryActions = categoryActions;
-  window.useSelector = useSelector;
+  // window.useSelector = useSelector;
+  window.cartItemActions = cartItemActions;
 }
 
 const Root = () => {

@@ -7,7 +7,7 @@ import SignupFormModal from "../SignupFormModal";
 
 const ProfileButton = () => {
     const currentUser = useSelector(state => state.session.user);
-    console.log("current user", currentUser);
+    // console.log("current user", currentUser);
 
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
@@ -47,6 +47,7 @@ const ProfileButton = () => {
     ) : buttons = (
         <>
             <LoginFormModal />
+            {/* <button onClick={}>Login testing</button> */}
             {/* <button >Login</button> */}
             <button className="demo-user" onClick={loginDemo}>Demo Login</button>
             <SignupFormModal />

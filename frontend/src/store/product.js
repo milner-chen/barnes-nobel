@@ -39,6 +39,8 @@ export const getCategoryProducts = (category) => (state) => {
     console.log("products", products);
     // if (!products) return false;
     return products;
+
+    // can just do category.products in back end...
 }
 
 

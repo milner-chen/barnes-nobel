@@ -3,9 +3,12 @@ import ProfileButton from "./ProfileButton";
 import { NavLink } from "react-router-dom";
 import './Navigation.css'
 import * as categoryActions from "../../store/category";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchCartItems, getItemsCount } from "../../store/cartItem";
 
 const Navigation = () => {
+    const dispatch = useDispatch();
     // const currentUser = useSelector(state => state.session.user);
 
     // let links;
@@ -18,7 +21,11 @@ const Navigation = () => {
     //             )
 
     const categories = useSelector(state => Object.keys(state.category));
-    console.log("cats:", categories);
+    let sum = useSelector(getItemsCount);
+    // console.log("cats:", categories);
+
+    useEffect(() => {
+    }, [])
 
     return (
         <div className="nav">
@@ -28,8 +35,14 @@ const Navigation = () => {
             </ul>
             <ul className="logo">
                 <NavLink exact to="/"><h1>Barnes<span>&#38;</span>Noble</h1></NavLink>
+                <div>
+                    <NavLink className="shopping-cart-link" exact to="/cart">
+                        <i className="fa-solid fa-cart-shopping"></i>
+                        <p className="circle">{sum}</p>
+                    </NavLink>
+                </div>
             </ul>
-            <ul className="cat-nav-bar">{categories.map(cat => <NavLink to={`/category/${cat}`}>{cat}</NavLink>)}</ul>
+            <ul className="cat-nav-bar">{categories.map((cat, i) => <NavLink to={`/category/${cat}`} key={i}>{cat}</NavLink>)}</ul>
         </div>
     )
 }

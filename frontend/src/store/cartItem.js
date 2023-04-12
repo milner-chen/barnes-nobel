@@ -53,6 +53,14 @@ export const getCartItemProducts = (state) => {
     return productIds;
 }
 
+// get the total number of items
+export const getItemsCount = (state) => {
+    let sum = 0;
+    const cartItems = Object.values(state.cartItems).map(item => sum += item.quantity);
+    console.log("sum", sum);
+    return sum;
+}
+
 
 // THUNK ACTION CREATORS
 export const fetchCartItems = (userId) => async (dispatch) => {
@@ -130,7 +138,6 @@ export const addBulkToCart = (items) => async (dispatch) => {
 
     if (res.ok) localStorage.setItem('cart', null);
 }
-
 
 // REDUCER
 let preloadedState = JSON.parse(localStorage.getItem('cart'));

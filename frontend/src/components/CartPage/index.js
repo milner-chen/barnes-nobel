@@ -8,6 +8,7 @@ const CartPage = () => {
     
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user); // get the current user
+    const count = useSelector(cartItemActions.getItemsCount);
     // let localCart = Object.values(JSON.parse(localStorage.getItem('cart')));
     // const items = useSelector(state => state.cartItems);
     // const products = useSelector(cartItemActions.getCartItemProducts(items));
@@ -46,8 +47,9 @@ const CartPage = () => {
     }, [user])
 
     const handleCheckout = () => {
-        if (user) 
-        dispatch(cartItemActions.emptyCart())
+        if (user) {
+            dispatch(cartItemActions.emptyCart())
+        }
         // else // i need to open my login modal
     }
 

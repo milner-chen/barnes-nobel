@@ -148,3 +148,18 @@ button {
     box-sizing: border-box;
     border-bottom: 3px solid lightgray;
 }
+
+.shopping-cart-link {
+    position: relative;
+    /* font-size: 25px; */
+}
+
+.circle {
+    background-color: teal;
+    padding: 2.5px 5px;
+    border-radius: 10px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    color: white;
+}

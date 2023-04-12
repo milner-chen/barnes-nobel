@@ -23,7 +23,7 @@ const removeUser = () => {
 
 // THUNK ACTION CREATORS
 
-export const signup = (user) => async (dispatch) => {
+export const signup = (user) => async (dispatch, getState) => {
     const res = await csrfFetch('/api/users', {
         method: 'POST',
         body: JSON.stringify(user)
@@ -32,6 +32,9 @@ export const signup = (user) => async (dispatch) => {
     console.log("user data at create", data);
     storeCurrentUser(data.user);
     if (data.user) dispatch(setUser(data.user));
+
+    const { cartItems } = getState();
+    combineItems(cartItems, dispatch, data);
     return res;
 }
 
@@ -48,8 +51,9 @@ export const login = (user) => async (dispatch, getState) => {
     // for error handling?
 
     const { cartItems } = getState();
-    const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user.id, quantity}));
-    dispatch(addBulkToCart({items}));
+    // const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user.id, quantity}));
+    // dispatch(addBulkToCart({items}));
+    combineItems(cartItems, dispatch, data);
     return res;
 }
 
@@ -73,7 +77,12 @@ export const restoreSession = () => async (dispatch) => {
     return res;
 }
 
-// 
+// combineItems helper
+const combineItems = (cartItems, dispatch, data) => {
+    const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user.id, quantity}));
+    dispatch(addBulkToCart({items}));
+}
+
 
 // restore session helper methods
 

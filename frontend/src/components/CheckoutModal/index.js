@@ -1,25 +1,21 @@
-import { useState } from "react";
-import SignupForm from "./SignupForm";
-import { Modal } from "../../context/Modal";
+// import { useState } from "react";
+// import SignupForm from "./SignupForm";
+// import { Modal } from "../../context/Modal";
+import './GuestModal.css';
 
 const CheckoutModal = () => {
-    const [showModal, setShowModal] = useState(false);
-
-    const closeModal = () => {
-        // can pass function down to the child + have the child use the function
-        setShowModal(false);
-    }
-
     return (
-        <>
-            <button  className="signup-button" onClick={() => setShowModal(true)}>Create an Account</button>
-            {showModal && (
-                <Modal onClose={closeModal} >
-                    <h1>hi</h1>
-                </Modal>
-            )}
-        </>
+        <div className="guest-modal">
+            <h1>
+                Thank you for your order!
+            </h1>
+            <p>
+                Unfortunately, I can neither take your money, nor provide any books.
+            </p>
+            <p>Please order from us again! c:</p>
+        </div>
     )
 }
+
 
 export default CheckoutModal;

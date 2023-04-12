@@ -1,11 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import * as cartItemActions from '../../store/cartItem';
 import './ProductPage.css';
 import fishImage from '../../../src/cartoon-dead-fish.png';
 import AddToCartButton from "../AddToCartButton";
+import { useState } from "react";
+import { Modal } from "../../context/Modal";
+import CheckoutModal from "../CheckoutModal";
 
 const ProductPage = () => {
+
+    const [showModal, setShowModal] = useState(false);
+    const closeModal = () => {
+        setShowModal(false);
+    }
     
     // const dispatch = useDispatch();
     const { productId } = useParams();
@@ -82,7 +89,12 @@ const ProductPage = () => {
                     <div className="show-buttons">
                         {/* <button onClick={addToCart} className="cart-button">ADD TO CART</button> */}
                         <AddToCartButton product={product} />
-                        <button className="purchase-button">Instant Purchase</button>
+                        <button className="purchase-button" onClick={() => setShowModal(true)}>Instant Purchase</button>
+                        {showModal && (
+                            <Modal onClose={closeModal} >
+                                <CheckoutModal closeModal={closeModal} />
+                            </Modal>
+                        )}
                     </div>
                 </div>
             </div>

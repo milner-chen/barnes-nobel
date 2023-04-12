@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session';
 import '../LoginFormModal/LoginForm.css';
 import './GuestModal.css';
+import CheckoutModal from ".";
 
-const CheckoutLogin = ({closeModal}) => {
+const CheckoutLogin = ({closeModal, type}) => {
+    console.log('typeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', type);
 
-    const [currModal, setCurrModal] = useState('login');
+    const [currModal, setCurrModal] = useState(type);
     // get the current user stored in the session slice of state
     const dispatch = useDispatch();
     // debugger;
@@ -68,11 +70,7 @@ const CheckoutLogin = ({closeModal}) => {
                 </form>
             </div>)}
             {currModal === 'guest' && (
-                <div className="guest-modal">
-                    <h1>
-                        Unfortunately, I can neither take your money, nor provide any books.
-                    </h1>
-                </div>
+                <CheckoutModal />
             )}
         </>
     )

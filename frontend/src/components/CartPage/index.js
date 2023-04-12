@@ -9,6 +9,8 @@ import LoginFormModal from '../LoginFormModal';
 import CheckoutLogin from '../CheckoutModal/checkoutLogin';
 
 const CartPage = () => {
+    // let type = 'login';
+    const [type, setType] = useState('login');
     const [showModal, setShowModal] = useState(false);
     const closeModal = () => {
         setShowModal(false);
@@ -56,11 +58,14 @@ const CartPage = () => {
 
     const handleCheckout = () => {
         if (user) {
+            setType('guest');
+            setShowModal(true);
             dispatch(cartItemActions.emptyCart())
         }
         else {// i need to open my login modal
             setShowModal(true);
         }
+        console.log("drcfvgbnmlk,;cctfvgbnj,klfcfgvbnmkl type", type);
     }
 
     if (!total) return null;
@@ -100,7 +105,8 @@ const CartPage = () => {
                         <button onClick={handleCheckout} className='checkout-button'>CHECKOUT</button>
                         {showModal && (
                             <Modal onClose={closeModal } >
-                                <CheckoutLogin closeModal={closeModal} />
+                                {console.log('checking type before it gets passed to the child', type)}
+                                <CheckoutLogin closeModal={closeModal} type={type} />
                             </Modal>
                         )}
                     </div>

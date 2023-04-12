@@ -1,4 +1,18 @@
 .guest-modal {
-    width: 30%;
-    height: 50%;
+    width: 50vw;
+    height: fit-content;
+    background-color: antiquewhite;
+    padding: 20px;
+    text-align: center;
+    border: 3px solid teal;
+}
+
+.guest-modal h1 {
+    margin-bottom: 10px;
+}
+
+.guest-modal p {
+    margin: 0;
+    padding: 3px;
+    font-size: 16px;
 }

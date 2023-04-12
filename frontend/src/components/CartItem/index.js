@@ -60,35 +60,59 @@ const CartItem = ({item, user}) => {
         }
     }
 
+    const updateWithValue = (currentItem) => {
+        if (user) {
+            dispatch(cartItemActions.updateCartItem(currentItem));
+        } else {
+            dispatch(cartItemActions.addToLocalStorage(currentItem));
+        }
+    }
+
     const handleChange = (e) => {
         // debugger;
         let currentQuantity = e.target.value;
         // if (currentQuantity > 10) currentQuantity = 10;
         // if (currentQuantity <= 0) currentQuantity = 1;
-        if (!Number.isInteger(currentQuantity)) currentQuantity = Math.floor(currentQuantity);
-        setQuantity(currentQuantity);
-        const currentItem = {
-            ...item,
-            quantity: parseInt(currentQuantity)
+        if (Number(currentQuantity) || currentQuantity.length === 0) {
+            // if (!Number.isInteger(currentQuantity)) currentQuantity = Math.floor(currentQuantity);
+            setQuantity(currentQuantity);
+            if (currentQuantity.length > 0) {
+                const currentItem = {
+                    ...item,
+                    quantity: parseInt(currentQuantity)
+                }
+                updateWithValue(currentItem);
+                // if (user) {
+                //     console.log("heloooooooo");
+                //     console.log(quantity);
+                //     dispatch(cartItemActions.updateCartItem(currentItem));
+                // } else {
+
+                //     // const updatedItem = {
+                //     //     id: item.productId,
+                //     //     productId: item.productId,
+                //     //     quantity: parseInt(quantity)
+                //     // }
+                //     // const newCart = { ...cart, [item.productId]: updatedItem };
+                //     // localStorage.setItem('cart', JSON.stringify(newCart));
+                //     dispatch(cartItemActions.addToLocalStorage(currentItem));
+                // }
+            }
         }
-        if (user) {
-            console.log("heloooooooo");
-            console.log(quantity);
-            dispatch(cartItemActions.updateCartItem(currentItem));
-        } else {
+    };
 
-            // const updatedItem = {
-            //     id: item.productId,
-            //     productId: item.productId,
-            //     quantity: parseInt(quantity)
-            // }
-            // const newCart = { ...cart, [item.productId]: updatedItem };
-            // localStorage.setItem('cart', JSON.stringify(newCart));
-            dispatch(cartItemActions.addToLocalStorage(currentItem));
+    const handleBlur = e => {
+        let val = e.target.value;
+        if (val.length === 0 || !Number.isInteger(val)) {
+            val = val.length === 0 ? 1 : Math.floor(val);
+            if (val === 0) val = 1;
+            setQuantity(val);
+            const currentItem = {
+                ...item,
+                quantity: val
+            }
+            updateWithValue(currentItem);
         }
-
-
-
     }
 
     if (!product) return null;
@@ -104,7 +128,7 @@ const CartItem = ({item, user}) => {
             <div className="cart-item-content">
                 <div className="img-wrapper">
                     <NavLink to={`/${product.id}`}>
-                        <img src={fishImage} />
+                        <img src={product.photoUrl} />
                         <p>{product.format}</p>
                     </NavLink>
                     <div className="cart-remove-button">
@@ -130,8 +154,9 @@ const CartItem = ({item, user}) => {
                     </select> */}
                     <input
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         type="number"
-                        min={1}
+                        // min={1}
                         value={quantity}
                     ></input>
                     <p className="total-item-price">${(product.price * item.quantity).toFixed(2)}</p>

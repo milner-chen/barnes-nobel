@@ -63,7 +63,7 @@ const ProductPage = () => {
         <div className="show-body">
             <div className="show-content">
                 <div className="img-wrapper">
-                    <img src={fishImage} />
+                    <img src={product.photoUrl} />
                     <div className="wishlist-button">
                         <i className="fa-regular fa-heart"></i>
                         <NavLink to={"/"}><p>Add to Wishlist</p></NavLink>

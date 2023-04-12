@@ -52,7 +52,7 @@ const CategoryPageItem = ({ product }) => {
             <NavLink to={`/${product.id}`}>
             <div className='img-wrapper'>
                 <i className="fa-regular fa-heart"></i>
-                <img src={fishImage} alt='fish' />
+                <img src={product.photoUrl} alt='fish' />
             </div>
             </NavLink>
             <div className='item-left'>

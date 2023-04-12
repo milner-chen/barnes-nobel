@@ -66,6 +66,7 @@
     background-color: white;
     color: teal;
     border: 1px solid teal;
+    text-decoration: none;
 }
 
 .login-form .signup-button:hover {

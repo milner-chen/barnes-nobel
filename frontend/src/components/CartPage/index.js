@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react';
 import * as cartItemActions from '../../store/cartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../CartItem';
+import { Modal } from "../../context/Modal";
 import './CartPage.css';
+import LoginForm from "../LoginFormModal/LoginForm";
 
 const CartPage = () => {
+    const [showModal, setShowModal] = useState(false);
+    const closeModal = () => {
+        setShowModal(false);
+    }
     
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user); // get the current user
@@ -50,7 +56,9 @@ const CartPage = () => {
         if (user) {
             dispatch(cartItemActions.emptyCart())
         }
-        // else // i need to open my login modal
+        else {// i need to open my login modal
+            setShowModal(true);
+        }
     }
 
     if (!total) return null;
@@ -88,6 +96,11 @@ const CartPage = () => {
                             <h2>${total}</h2>
                         </div>
                         <button onClick={handleCheckout} className='checkout-button'>CHECKOUT</button>
+                        {showModal && (
+                            <Modal onClose={closeModal} >
+                                <LoginForm closeModal={closeModal} />
+                            </Modal>
+                        )}
                     </div>
                 </div>
             </div>

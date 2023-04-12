@@ -5,6 +5,8 @@ import CartItem from '../CartItem';
 import { Modal } from "../../context/Modal";
 import './CartPage.css';
 import LoginForm from "../LoginFormModal/LoginForm";
+import LoginFormModal from '../LoginFormModal';
+import CheckoutLogin from '../CheckoutModal/checkoutLogin';
 
 const CartPage = () => {
     const [showModal, setShowModal] = useState(false);
@@ -97,8 +99,8 @@ const CartPage = () => {
                         </div>
                         <button onClick={handleCheckout} className='checkout-button'>CHECKOUT</button>
                         {showModal && (
-                            <Modal onClose={closeModal} >
-                                <LoginForm closeModal={closeModal} />
+                            <Modal onClose={closeModal } >
+                                <CheckoutLogin closeModal={closeModal} />
                             </Modal>
                         )}
                     </div>

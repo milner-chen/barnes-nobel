@@ -77,3 +77,7 @@ div {
 .bold {
     font-weight: bold;
 }
+
+.cart-page .dropdown-signin-button {
+    display: none;
+}

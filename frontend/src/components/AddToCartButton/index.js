@@ -100,11 +100,11 @@ const AddToCartButton = ({ product }) => {
         // } else {
             console.log('product was not found in cart so we make a new cartItem');
             const data = dispatch(cartItemActions.createCartItem({
-                cartItem: {
+                // cartItem: {
                     userId: user.id,
                     productId: product.id,
                     quantity: 1
-                }
+                // }
             }));
             console.log(data);
         // }

@@ -10,16 +10,21 @@ class Api::CartItemsController < ApplicationController
     end
 
     def create
+        # debugger
         @cart_item = CartItem.find_by(user_id: params[:user_id], product_id: params[:product_id])
         
         if @cart_item
+            # debugger
+            p 'cart item exists'
             # cart item exists, so update quantity
             @cart_item.quantity += params[:quantity]
         else
+            # debugger
+            p 'cart item does not exist'
             # cart item does not exist, so create new
-            @cart_item = CartItem.new(cart_params)
+            @cart_item = CartItem.new(user_id: params[:user_id], product_id: params[:product_id], quantity: params[:quantity])
         end
-
+        # debugger
         if @cart_item.save
             render :show
         else

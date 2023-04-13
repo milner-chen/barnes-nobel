@@ -79,7 +79,7 @@ const AddToCartButton = ({ product }) => {
 
     // adds to cart in slice of state
     const addToCart = () => {
-        console.log('add to cart function is being reached');
+        // console.log('add to cart function is being reached');
         // let inCart = false;
         // let cartItem;
         // cartItems.forEach(item => {

@@ -47,6 +47,7 @@
 .wishlist-button p {
     padding-left: 10px;
     color: teal;
+    cursor: not-allowed;
 }
 
 .show-content img {

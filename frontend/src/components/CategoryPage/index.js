@@ -11,6 +11,10 @@ const CategoryPage = () => {
     const dispatch = useDispatch();
     const products = useSelector(productActions.getCategoryProducts(category));
     // console.log(products);
+
+    useEffect(() => {
+        dispatch(productActions.fetchProducts())
+    }, [category])
     
     if (!products) return null;
     return (

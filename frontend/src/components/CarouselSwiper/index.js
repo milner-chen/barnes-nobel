@@ -46,7 +46,7 @@ const CarouselSwiper = ({ category }) => {
                 modules={[Navigation, Pagination]}
             >
                 {photos.map(photo => {
-                    return <SwiperSlide className="carousel-slide">
+                    return <SwiperSlide key={photo.id} className="carousel-slide">
                         <NavLink to={`/${photo.id}`} >
                             <img src={photo.photoUrl} />
                         </NavLink>

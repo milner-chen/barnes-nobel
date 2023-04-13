@@ -24,9 +24,6 @@ const Navigation = () => {
     let sum = useSelector(getItemsCount);
     // console.log("cats:", categories);
 
-    useEffect(() => {
-    }, [])
-
     return (
         <div className="nav">
             {/* <div className="top-slider"></div> */}

@@ -15,7 +15,7 @@ const FadeSwiper = () => {
     return (
         <>
             <Swiper className="fade-swiper"
-                spaceBetween={30}
+                // spaceBetween={20}
                 effect={'fade'}
                 navigation={true}
                 autoplay={{

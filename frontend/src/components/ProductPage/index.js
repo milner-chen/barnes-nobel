@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import './ProductPage.css';
-import fishImage from '../../../src/cartoon-dead-fish.png';
 import AddToCartButton from "../AddToCartButton";
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
@@ -79,7 +78,7 @@ const ProductPage = () => {
                     <i className="fa-solid fa-star" />
                     </p>
                     <div className="line"></div>
-                    <p className="format">Placeholder</p>
+                    <p className="format">{product.format}</p>
                     <p className="price">${product.price}</p>
                     <div className="line"></div>
                     <h2 className="italic">Overview</h2>

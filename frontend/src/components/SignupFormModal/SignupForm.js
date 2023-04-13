@@ -105,18 +105,18 @@ const SignupForm = ({closeModal}) => {
                         placeholder="Confirm Email"
                         />
                         <input
-                        type="text"
+                        type="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         placeholder="Password"
                         />
                         <input
-                        type="text"
+                        type="password"
                         value={confirmPassword}
                         onChange={e => setConfirmPassword(e.target.value)}
                         placeholder="Confirm Password"
                         />
-                    <button onClick={() => setCurrModal('login')} className="signup-button" type="submit">Create Account</button>
+                    <button className="signup-button" type="submit">Create Account</button>
                     <p onClick={closeModal} id="signup-links">Cancel</p>
                 </form>
             </div>)}

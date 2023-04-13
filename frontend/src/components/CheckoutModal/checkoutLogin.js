@@ -64,7 +64,7 @@ const CheckoutLogin = ({closeModal, type}) => {
                     {/* </label> */}
 
                     {/* <label>Password: */}
-                        <input type="text" value={password} placeholder="Password"
+                        <input type="password" value={password} placeholder="Password"
                         onChange={e => setPassword(e.target.value)} />
                     {/* </label> */}
                     <button className="login-button" type="submit" >Log In &#38; Continue</button>

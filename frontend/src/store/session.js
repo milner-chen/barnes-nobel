@@ -29,7 +29,7 @@ export const signup = (user) => async (dispatch, getState) => {
         body: JSON.stringify(user)
     });
     const data = await res.json();
-    console.log("user data at create", data);
+    // console.log("user data at create", data);
     storeCurrentUser(data.user);
     if (data.user) dispatch(setUser(data.user));
 

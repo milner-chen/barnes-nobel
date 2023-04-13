@@ -47,7 +47,7 @@ export const getCartItemProducts = (state) => {
     // return products;
     const productIds = state?.cartItems ? Object.values(state.cartItems).map(item => item.productId) : [];
     const products = productIds.length ? productIds.map(id => state.products[id]) : null;
-    console.log(productIds);
+    // console.log(productIds);
     // const test = Object.values(state.cartItems).map(item => item.productId);
     // console.log(test);
     return productIds;
@@ -57,7 +57,7 @@ export const getCartItemProducts = (state) => {
 export const getItemsCount = (state) => {
     let sum = 0;
     const cartItems = Object.values(state.cartItems).map(item => sum += item.quantity);
-    console.log("sum", sum);
+    // console.log("sum", sum);
     return sum;
 }
 
@@ -84,8 +84,8 @@ export const createCartItem = (cartItem) => async (dispatch) => {
         body: JSON.stringify(cartItem)
     });
     const data = await res.json();
-    await console.log("data", data);
-    await console.log("data.cartItem", data.cartItem);
+    // await console.log("data", data);
+    // await console.log("data.cartItem", data.cartItem);
     dispatch(receiveCartItem(data));
     return data;
 }

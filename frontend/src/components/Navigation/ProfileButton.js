@@ -12,15 +12,15 @@ const ProfileButton = () => {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    }
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // }
 
-    const closeMenu = () => {
-        if (!showMenu) return;
-        setShowMenu(false);
-    }
+    // const closeMenu = () => {
+    //     if (!showMenu) return;
+    //     setShowMenu(false);
+    // }
 
     // useEffect(() => {
     //     if (!showMenu) return;
@@ -33,8 +33,8 @@ const ProfileButton = () => {
 
     // })
 
-    // let test;
-    // currentUser ? test = `HI, ${currentUser?.firstName.toUpperCase()}` : test = 'MY ACCOUNT';
+    let profileText;
+    currentUser ? profileText = `HI, ${currentUser?.firstName.toUpperCase()}` : profileText = 'MY ACCOUNT';
 
     const loginDemo = () => {
         dispatch(sessionActions.login({ email: 'demo@user.io', password: 'password' }));
@@ -61,7 +61,7 @@ const ProfileButton = () => {
             <div  className="account-bar" >
                 <i className="fa-solid fa-user" />
                 {/* <i className="fa-light fa-circle-user" /> */}
-                <p id="my-acc">MY ACCOUNT</p>
+                <p id="my-acc">{profileText}</p>
             </div>
             {/* {showMenu && ( */}
                 <ul className="profile-dropdown">

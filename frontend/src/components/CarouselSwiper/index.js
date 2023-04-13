@@ -15,11 +15,11 @@ import { NavLink } from "react-router-dom";
 
 // const CarouselSwiper = () => {
 const CarouselSwiper = ({ category }) => {
-    console.log("category", category);
+    // console.log("category", category);
     // debugger
     const photos = useSelector(getCategoryProducts(category));
 
-    console.log("photos on this page", photos);
+    // console.log("photos on this page", photos);
     // const dispatch = useDispatch();
     // const photos = [slide1, slide2, slide3, slide4,
     //     slide1, slide2, slide3, slide4,

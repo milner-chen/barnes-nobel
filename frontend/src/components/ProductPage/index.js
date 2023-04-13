@@ -56,7 +56,7 @@ const ProductPage = () => {
         //
     }
 
-    console.log(product);
+    // console.log(product);
     if (!product) return null;
     return (
         <div className="show-page">

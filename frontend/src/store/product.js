@@ -32,11 +32,11 @@ const receiveProducts = (products) => {
 
 export const getCategoryProducts = (category) => (state) => {
     const productIds = state?.category[category] ? state.category[category] : [];
-    console.log("ids", productIds);
+    // console.log("ids", productIds);
     // will throw error if you try to map over null/undef
     const products = state?.products[1] ? productIds.map(id => state.products[id])
     : null;
-    console.log("products", products);
+    // console.log("products", products);
     // if (!products) return false;
     return products;
 

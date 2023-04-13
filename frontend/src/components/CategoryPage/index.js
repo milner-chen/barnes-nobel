@@ -10,7 +10,7 @@ const CategoryPage = () => {
     const { category } = useParams();
     const dispatch = useDispatch();
     const products = useSelector(productActions.getCategoryProducts(category));
-    console.log(products);
+    // console.log(products);
     
     if (!products) return null;
     return (

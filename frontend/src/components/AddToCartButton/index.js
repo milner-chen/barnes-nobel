@@ -24,9 +24,9 @@ const AddToCartButton = ({ product }) => {
 
     // adds to cart in localstorage
     const addtoLocal = () => {
-        console.log('this is the adding to local function being hit');
+        // console.log('this is the adding to local function being hit');
         // cartItems = JSON.parse(localStorage.getItem("cart"));
-        console.log("local cart", cartItems);
+        // console.log("local cart", cartItems);
         // adding logic
 
         let currentItem = cartItems[product.id];
@@ -98,7 +98,7 @@ const AddToCartButton = ({ product }) => {
         //         quantity: cartItem.quantity += 1
         //     }))
         // } else {
-            console.log('product was not found in cart so we make a new cartItem');
+            // console.log('product was not found in cart so we make a new cartItem');
             const data = dispatch(cartItemActions.createCartItem({
                 // cartItem: {
                     userId: user.id,
@@ -106,7 +106,7 @@ const AddToCartButton = ({ product }) => {
                     quantity: 1
                 // }
             }));
-            console.log(data);
+            // console.log(data);
         // }
         doneAdding = true;
     }
@@ -115,7 +115,7 @@ const AddToCartButton = ({ product }) => {
         doneAdding = false;
         return addItems();
     }
-    console.log(doneAdding);
+    // console.log(doneAdding);
     return (
         <button disabled={doneAdding} className="cart-button" onClick={handleClick} >ADD TO CART</button>
     )

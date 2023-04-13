@@ -14,7 +14,7 @@ const LoginForm = ({closeModal}) => {
     // debugger;
     const currentUser = useSelector(state => {
         const testing = state.session.user;
-        console.log(testing); // console log current user
+        // console.log(testing); // console log current user
         return testing;
     });
     

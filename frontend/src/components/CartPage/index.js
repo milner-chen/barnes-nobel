@@ -46,9 +46,9 @@ const CartPage = () => {
 
             
     useEffect(() => {
-        console.log(user);
+        // console.log(user);
         if (user) {
-            console.log('asdfghjkl why is it not fetching');
+            // console.log('asdfghjkl why is it not fetching');
             dispatch(cartItemActions.fetchCartItems(user.id));
         } else {
             // setLocalCart(Object.values(JSON.parse(localStorage.getItem('cart'))));
@@ -65,7 +65,7 @@ const CartPage = () => {
         else {// i need to open my login modal
             setShowModal(true);
         }
-        console.log("drcfvgbnmlk,;cctfvgbnj,klfcfgvbnmkl type", type);
+        // console.log("drcfvgbnmlk,;cctfvgbnj,klfcfgvbnmkl type", type);
     }
 
     if (!total) return null;
@@ -77,7 +77,7 @@ const CartPage = () => {
                     <div className='cart-content'>
                     <h1 className='cart-title'>My Shopping Cart</h1>
                         <div className='cart-holder'>
-                            <h2 className='item-count'>({items.length}) Items from Barnes & Noble</h2>
+                            <h2 className='item-count'>({items.length}) Items from Barnes &#38; Nobel</h2>
                             <div className='cart-items'>
                                 {items.map(item => <CartItem key={item.id} item={item} user={user} />)}
                             </div>
@@ -105,7 +105,7 @@ const CartPage = () => {
                         <button onClick={handleCheckout} className='checkout-button'>CHECKOUT</button>
                         {showModal && (
                             <Modal onClose={closeModal } >
-                                {console.log('checking type before it gets passed to the child', type)}
+                                {/* {console.log('checking type before it gets passed to the child', type)} */}
                                 <CheckoutLogin closeModal={closeModal} type={type} />
                             </Modal>
                         )}

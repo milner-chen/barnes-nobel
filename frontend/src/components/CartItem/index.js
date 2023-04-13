@@ -6,7 +6,7 @@ import * as cartItemActions from '../../store/cartItem';
 import { NavLink } from "react-router-dom";
 
 const CartItem = ({item, user}) => {
-    console.log("what item looks like for the local cart", item);
+    // console.log("what item looks like for the local cart", item);
     const dispatch = useDispatch();
     const product = useSelector(state => state.products[item.productId]);
     // console.log("PRODUCT", product);

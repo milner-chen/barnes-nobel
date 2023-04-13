@@ -34,7 +34,7 @@ const Navigation = () => {
                 <ProfileButton />
             </ul>
             <ul className="logo">
-                <NavLink exact to="/"><h1>Barnes<span>&#38;</span>Noble</h1></NavLink>
+                <NavLink exact to="/"><h1>Barnes<span>&#38;</span>Nobel</h1></NavLink>
                 <div>
                     <NavLink className="shopping-cart-link" exact to="/cart">
                         <i className="fa-solid fa-cart-shopping"></i>

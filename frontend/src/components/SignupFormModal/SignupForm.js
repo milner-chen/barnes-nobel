@@ -34,7 +34,7 @@ const SignupForm = ({closeModal}) => {
     // }, [errors])
     
     const handleSubmit = (e) => {
-        console.log('errors', errors);
+        // console.log('err/ors', errors);
         e.preventDefault();
         
         setErrors([]);
@@ -73,7 +73,7 @@ const SignupForm = ({closeModal}) => {
                 </div>
                 <div className="signup-login-link">
                     <p onClick={() => setCurrModal('login') }>
-                        Fill in the fields below to create a Barnes & Noble.com account. If you already have an account, please <span id="signup-links">Sign In</span>
+                        Fill in the fields below to create a Barnes &#38; Nobel.com account. If you already have an account, please <span id="signup-links">Sign In</span>
                     </p>
                 </div>
                 <form onSubmit={handleSubmit} className="signup-form">

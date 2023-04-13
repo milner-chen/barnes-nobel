@@ -7,7 +7,7 @@ import './GuestModal.css';
 import CheckoutModal from ".";
 
 const CheckoutLogin = ({closeModal, type}) => {
-    console.log('typeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', type);
+    // console.log('typeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', type);
 
     const [currModal, setCurrModal] = useState(type);
     // get the current user stored in the session slice of state
@@ -15,7 +15,7 @@ const CheckoutLogin = ({closeModal, type}) => {
     // debugger;
     const currentUser = useSelector(state => {
         const testing = state.session.user;
-        console.log(testing); // console log current user
+        // console.log(testing); // console log current user
         return testing;
     });
     

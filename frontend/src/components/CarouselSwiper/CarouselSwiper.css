@@ -6,13 +6,39 @@
 .swiper-slide {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .swiper-holder h1 {
-    margin-top: 35px;
+    margin-top: 50px;
     text-transform: capitalize;
-    text-align: center;
+    
+    /* text-align: center; */
+    font-weight: bold;
+}
+
+.swiper-holder .carousel-img {
+    width: unset;
+    height: 15vw;
+    margin-bottom: 2vw;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    color: gray;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    /* background: white; */
+    /* opacity: 50%; */
+    border: 1px solid white;
+}
+
+.swiper-pagination-bullet-active {
+    background: teal;
+    /* border: 2px solid teal; */
+    opacity: 100%;
 }
 
 .carousel {

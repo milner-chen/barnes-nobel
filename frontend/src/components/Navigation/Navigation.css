@@ -12,21 +12,35 @@
 .mid-nav-bar {
     display: flex;
     justify-content: right;
+    /* justify-content: space-between; */
     /* margin: 15px 60px; */
     /* margin: 0 12.5%; */
     margin: 15px 0;
+    /* padding-left: 20px; */
 }
 
 .logo {
     text-transform: uppercase;
     font-size: 25px;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     justify-content: space-between;
 }
 
-.logo div {
-    /* color: teal; */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    justify-content: center;
+}
+
+/* .social-links {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+.nav-links i {
+    margin: 0 4px;
 }
 
 .logo h1 {
@@ -134,7 +148,7 @@ button {
     text-decoration: none;
     margin: 10px 0 7px;
     font-family: Georgia, serif;
-    border-bottom: 3px solid white;
+    /* border-bottom: 3px solid white; */
     border-right: 1px solid olive;
     padding: 0 20px;
 }
@@ -146,7 +160,10 @@ button {
 
 .cat-nav-bar a:hover {
     box-sizing: border-box;
-    border-bottom: 3px solid lightgray;
+    /* border-bottom: 3px solid lightgray; */
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: lightgray;
 }
 
 .shopping-cart-link {

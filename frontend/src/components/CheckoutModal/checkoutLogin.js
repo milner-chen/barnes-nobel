@@ -26,23 +26,25 @@ const CheckoutLogin = ({closeModal, type}) => {
     // if user is already logged in, redirect to homepage
     // if (currentUser) return <Redirect to="/" />;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // empty out errors
         setErrors([]);
-            //const res = 
-            dispatch(sessionActions.login({ email, password }))
+            // MUST ASYNC/AWAIT dispatches
+            const res = await dispatch(sessionActions.login({ email, password }))
             .catch(async res => {
                 const data = await res.json();
                 if (data.errors) setErrors(data.errors);
             });
-        if (!errors.length) closeModal();
+        // if login was successful, close modal
+        if (res.ok) closeModal();
     }
 
     const handleGuest = () => {
         localStorage.setItem('cart', null);
         dispatch(sessionActions.logout());
         setCurrModal('guest');
+        closeModal();
     }
 
     return (

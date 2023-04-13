@@ -18,7 +18,7 @@ const CategoryPage = () => {
             <div className="cat-body">
                 <ul className="cat-content">
                     <h1 className="cat-header">{category}</h1>
-                    {products.map(product => <CategoryPageItem product={product} />)}
+                    {products.map(product => <CategoryPageItem key={product.id} product={product} />)}
                 </ul>
             </div>
         </div>

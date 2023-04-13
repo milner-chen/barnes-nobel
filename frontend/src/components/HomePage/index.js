@@ -6,9 +6,9 @@ const HomePage = () => {
     return (
         <div className="home-page">
             <FadeSwiper />
-            <CarouselSwiper />
-            <CarouselSwiper />
-            <CarouselSwiper />
+            <CarouselSwiper category='fantasy' />
+            <CarouselSwiper category='science Fiction' />
+            <CarouselSwiper category='classics' />
         </div>
     )
 }

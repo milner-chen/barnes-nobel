@@ -33,8 +33,8 @@ const CarouselSwiper = ({ category }) => {
             <Swiper
             speed={700}
                 className="carousel"
-                slidesPerView={4}
-                slidesPerGroup={4}
+                slidesPerView={7}
+                slidesPerGroup={7}
                 slidesPerGroupAuto={true}
                 // slidesPerGroupSkip={1}
                 spaceBetween={15}
@@ -47,6 +47,13 @@ const CarouselSwiper = ({ category }) => {
             >
                 {photos.map(photo => {
                     return <SwiperSlide key={photo.id} className="carousel-slide">
+                        <NavLink to={`/${photo.id}`} >
+                            <img className="carousel-img" src={photo.photoUrl} />
+                        </NavLink>
+                    </SwiperSlide>
+                })}
+                {photos.map(photo => {
+                    return <SwiperSlide key={photo.id * 2} className="carousel-slide">
                         <NavLink to={`/${photo.id}`} >
                             <img className="carousel-img" src={photo.photoUrl} />
                         </NavLink>

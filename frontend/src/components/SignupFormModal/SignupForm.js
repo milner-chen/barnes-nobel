@@ -116,7 +116,7 @@ const SignupForm = ({closeModal}) => {
                         onChange={e => setConfirmPassword(e.target.value)}
                         placeholder="Confirm Password"
                         />
-                    <button className="signup-button" type="submit">Create Account</button>
+                    <button className="signup-button" type="submit" onSubmit={e => e.preventDefault() }>Create Account</button>
                     <p onClick={closeModal} id="signup-links">Cancel</p>
                 </form>
             </div>)}

@@ -14,7 +14,7 @@ const CategoryPage = () => {
 
     useEffect(() => {
         dispatch(productActions.fetchProducts())
-    }, [category])
+    }, [])
     
     if (!products) return null;
     return (

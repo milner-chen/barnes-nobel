@@ -15,7 +15,10 @@ const CartPage = () => {
     const closeModal = () => {
         setShowModal(false);
     }
-    
+    let buttonText = "Cart Empty";
+    let isEmpty = true;
+    let buttonColor = 'gray';
+    let cursorType = 'initial';
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user); // get the current user
     const count = useSelector(cartItemActions.getItemsCount);
@@ -56,11 +59,19 @@ const CartPage = () => {
         // console.log(data);
     }, [user])
 
+    console.log('total', total);
+    if (total > 0) {
+        buttonText = "CHECKOUT";
+        isEmpty = false;
+        buttonColor = 'teal';
+        cursorType = 'pointer';
+    }
+
     const handleCheckout = () => {
         if (user) {
             setType('guest');
             setShowModal(true);
-            dispatch(cartItemActions.emptyCart())
+            dispatch(cartItemActions.emptyCart());
         }
         else {// i need to open my login modal
             setShowModal(true);
@@ -102,7 +113,7 @@ const CartPage = () => {
                             <h2>Order Total:</h2>
                             <h2>${total}</h2>
                         </div>
-                        <button onClick={handleCheckout} className='checkout-button'>CHECKOUT</button>
+                        <button onClick={handleCheckout} className='checkout-button' disabled={isEmpty} style={{ backgroundColor: buttonColor, cursor: cursorType }} >{buttonText}</button>
                         {showModal && (
                             <Modal onClose={closeModal } >
                                 {/* {console.log('checking type before it gets passed to the child', type)} */}

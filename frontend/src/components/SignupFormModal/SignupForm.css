@@ -1,7 +1,7 @@
 .signup-comp {
     padding: 30px;
     overflow: auto;
-    
+    max-height: 90vh;
     /* width: 300px; */
 }
 
@@ -35,7 +35,7 @@
     color: red;
     list-style: none;
     border: 2px solid red;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 10px;
     border-radius: 3px;
     text-align: center;
@@ -44,6 +44,7 @@
 .errors p {
     font-size: 16px;
     margin: 2px;
+    padding: 0;
 }
 
 .signup-form input {

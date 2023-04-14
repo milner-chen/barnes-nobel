@@ -41,11 +41,13 @@ const CheckoutLogin = ({closeModal, type}) => {
     }
 
     const handleGuest = () => {
+        setCurrModal('guest');
         localStorage.setItem('cart', null);
         dispatch(sessionActions.logout());
-        setCurrModal('guest');
-        closeModal();
+        // closeModal();
     }
+
+    // disabled={} 
 
     return (
         <>
@@ -68,7 +70,7 @@ const CheckoutLogin = ({closeModal, type}) => {
                         onChange={e => setPassword(e.target.value)} />
                     {/* </label> */}
                     <button className="login-button" type="submit" >Log In &#38; Continue</button>
-                    <button onClick={handleGuest} className="signup-button">Checkout as Guest</button>
+                    <button onClick={handleGuest} className="signup-button" >Checkout as Guest</button>
                 </form>
             </div>)}
             {currModal === 'guest' && (

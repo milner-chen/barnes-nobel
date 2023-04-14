@@ -110,7 +110,8 @@ button {
 
 #my-acc {
     margin: 0;
-    padding: 0 8px;
+    /* padding: 0 8px; */
+    padding-left: 8px;
 }
 
 .signup-button {

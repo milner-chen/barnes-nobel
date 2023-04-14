@@ -12,6 +12,7 @@ import ProductPage from "./components/ProductPage";
 import HomePage from "./components/HomePage";
 import CarouselSwiper from "./components/CarouselSwiper";
 import CartPage from "./components/CartPage";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         {/* <Route path="/login" component={LoginForm} /> */}
         {/* <Route path="/signup" component={SignupFormPage} /> */}
       </Switch>
+      <Footer />
     </>
   );
 }

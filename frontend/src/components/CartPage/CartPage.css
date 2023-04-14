@@ -10,6 +10,7 @@ div {
     /* justify-content: center;
     flex-direction: column; */
     /* border: 1px solid red; */
+    min-height: 550px;
 }
 
 .cart-body {

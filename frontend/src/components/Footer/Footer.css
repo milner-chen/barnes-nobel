@@ -1,0 +1,37 @@
+.footer-content p {
+    padding: 5px 0;
+    margin: 0;
+    text-align: center;
+    /* width: 350px; */
+}
+
+.footer {
+    height: fit-content;
+    padding-top: 15px;
+    justify-content: center;
+}
+
+.footer .line {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-items: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+}
+
+.footer i {
+    padding: 0 5px;
+    padding-bottom: 5px;
+}
+

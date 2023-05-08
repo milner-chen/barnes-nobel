@@ -26,14 +26,15 @@ const removeWishlist = (wishlistId) => ({
 export const fetchWishlists = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/wishlists`);
     const data = await res.json();
-    dispatch(receiveWishlists(data));
+    console.log(data);
+    await dispatch(receiveWishlists(data));
     return res;
 }
 
 export const fetchWishlist = (wishlistId) => async (dispatch) => {
     const res = await csrfFetch(`/api/wishlists/${wishlistId}`);
     const data = await res.json();
-    dispatch(receiveWishlist(data));
+    await dispatch(receiveWishlist(data));
     return res;
 }
 
@@ -43,7 +44,7 @@ export const createWishlist = (wishlistInfo) => async (dispatch) => {
         body: JSON.stringify(wishlistInfo)
     });
     const data = await res.json();
-    dispatch(receiveWishlist(data));
+    await dispatch(receiveWishlist(data));
     return res;
 }
 
@@ -53,7 +54,7 @@ export const updateWishlist = (wishlistInfo) => async (dispatch) => {
         body: JSON.stringify(wishlistInfo)
     });
     const data = await res.json();
-    dispatch(receiveWishlist(data));
+    await dispatch(receiveWishlist(data));
     return res;
 }
 
@@ -61,7 +62,7 @@ export const deleteWishlist = (wishlistId) => async (dispatch) => {
     const res = await csrfFetch(`/api/wishlists/${wishlistId}`, {
         method: 'DELETE'
     });
-    dispatch(removeWishlist(wishlistId));
+    await dispatch(removeWishlist(wishlistId));
     return res;
 }
 

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import * as categoryActions from "./store/category";
 import * as productActions from "./store/product";
 import * as cartItemActions from "./store/cartItem";
+import * as wishlistActions from "./store/wishlist";
 import { Route, Switch } from "react-router-dom";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 // import SignupFormPage from "./components/SignUpFormPage";
@@ -13,6 +14,7 @@ import HomePage from "./components/HomePage";
 import CarouselSwiper from "./components/CarouselSwiper";
 import CartPage from "./components/CartPage";
 import Footer from "./components/Footer";
+import WishlistPage from "./components/WishlistPage";
 
 
 function App() {
@@ -27,7 +29,10 @@ function App() {
   }, [dispatch])
 
   useEffect(() => {
-    if (user) dispatch(cartItemActions.fetchCartItems(user.id));
+    if (user) {
+      dispatch(cartItemActions.fetchCartItems(user.id));
+      // dispatch(wishlistActions.fetchWishlists(user.id));
+    }
   }, [user]);
 
   return (
@@ -38,6 +43,7 @@ function App() {
       <Switch>
         <Route exact path={`/cart`} component={CartPage} />
         <Route exact path={`/category/:category`} component={CategoryPage} />
+        <Route exact path={`/wishlist`} component={WishlistPage} />
         <Route exact path={`/:productId/`} component={ProductPage} />
         <Route path="/" component={HomePage} />
         {/* <Route path="/login" component={LoginForm} /> */}

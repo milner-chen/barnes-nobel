@@ -12,6 +12,7 @@ import * as productActions from './store/product';
 import * as categoryActions from './store/category';
 import * as cartItemActions from './store/cartItem';
 import * as wishlistActions from './store/wishlist';
+import * as wishlistItemActions from './store/wishlistItem';
 import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
@@ -26,6 +27,7 @@ if (process.env.NODE_DEV !== 'production') {
   // window.useSelector = useSelector;
   window.cartItemActions = cartItemActions;
   window.wishlistActions = wishlistActions;
+  window.wishlistItemActions = wishlistItemActions;
 }
 
 const Root = () => {

@@ -1,5 +1,5 @@
 class Api::WishlistItemsController < ApplicationController
-    wrap_parameters include: WishlistItems.attribute_names
+    wrap_parameters include: WishlistItem.attribute_names
 
     def index
         @wishlist_items = WishlistItem.where(wishlist_id: params[:wishlist_id])
@@ -11,13 +11,13 @@ class Api::WishlistItemsController < ApplicationController
 
     def create
         @wishlist_item = WishlistItem.new(wishlist_item_params)
-        if CartItem.find(@wishlist_item.product_id)
-            p 'already in cart'
-            @wishlist_item.in_cart = true
-        else
-            p 'not in cart'
-            @wishlist_item.in_cart = false
-        end
+        # if CartItem.find(@wishlist_item.product_id).where(user_id: @wishlist_item.user_id)
+        #     p 'already in cart'
+        #     @wishlist_item.in_cart = true
+        # else
+        #     p 'not in cart'
+        #     @wishlist_item.in_cart = false
+        # end
 
         if @wishlist_item.save
             render :show
@@ -29,13 +29,13 @@ class Api::WishlistItemsController < ApplicationController
     
     def update
         @wishlist_item = WishlistItem.find(params[:id])
-        if CartItem.find(@wishlist_item.product_id)
-            p 'already in cart'
-            @wishlist_item.in_cart = true
-        else
-            p 'not in cart'
-            @wishlist_item.in_cart = false
-        end
+        # if CartItem.find(@wishlist_item.product_id)
+        #     p 'already in cart'
+        #     @wishlist_item.in_cart = true
+        # else
+        #     p 'not in cart'
+        #     @wishlist_item.in_cart = false
+        # end
 
         if @wishlist_item.update(wishlist_item_params)
             render :show
@@ -54,7 +54,7 @@ class Api::WishlistItemsController < ApplicationController
     end
 
     def wishlist_item_params
-        params.require(:wishlist_item).permit(:wishlist_id, :product_id)
+        params.require(:wishlist_item).permit(:wishlist_id, :product_id, :in_cart)
     end
 
 end

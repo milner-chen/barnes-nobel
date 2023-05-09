@@ -22,6 +22,9 @@ class Product < ApplicationRecord
     has_many :cart_items,
     dependent: :destroy
 
+    has_many :wishlist_items,
+    dependent: :destroy
+
     # product has many photos
     has_one_attached :photo # has one row of data
     # has_many_attached :photo # has an arr of data

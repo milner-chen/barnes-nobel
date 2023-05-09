@@ -1,0 +1,1 @@
+json.extract! @wishlist_item, :id, :wishlist_id, :product_id, :in_cart

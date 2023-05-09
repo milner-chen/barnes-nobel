@@ -16,6 +16,7 @@ class Api::WishlistsController < ApplicationController
             render :show
         else
             render json: @wishlist.errors.full_messages, status: 422
+            p @wishlist.errors.full_messages
         end
     end
 

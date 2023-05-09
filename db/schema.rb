@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_220623) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "name"], name: "index_wishlists_on_user_id_and_name"
+    t.index ["user_id", "name"], name: "index_wishlists_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 

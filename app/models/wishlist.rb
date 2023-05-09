@@ -11,6 +11,7 @@
 #
 class Wishlist < ApplicationRecord
   validates :user_id, :name, presence: true
+  validates :name, uniqueness: { scope: :user_id, message: "is already in use by another wishlist."}
   validates :description, length: { maximum: 250 }
   validates :name, length: { maximum: 30 }
 

@@ -44,17 +44,18 @@ export const createWishlist = (wishlistInfo) => async (dispatch) => {
         body: JSON.stringify(wishlistInfo)
     });
     const data = await res.json();
-    await dispatch(receiveWishlist(data));
+    dispatch(receiveWishlist(data));
     return res;
 }
 
 export const updateWishlist = (wishlistInfo) => async (dispatch) => {
-    const res = await csrfFetch(`/api/wishlists/${wishlistInfo.id}`, {
+    // console.log()
+    const res = await csrfFetch(`/api/wishlists/${wishlistInfo.wishlist.id}`, {
         method: 'PATCH',
         body: JSON.stringify(wishlistInfo)
     });
     const data = await res.json();
-    await dispatch(receiveWishlist(data));
+    dispatch(receiveWishlist(data));
     return res;
 }
 

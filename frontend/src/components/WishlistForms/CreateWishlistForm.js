@@ -11,49 +11,58 @@ const CreateWishlistForm = ({closeModal, userId}) => {
 
     const handleChange = (type, value) => {
         if (type === "name") {
-            let currName = value;
-            setName(currName);
-            // if (currName)
+            setName(value);
         } else {
-            let currDescription = value;
-            setDescription(currDescription);
+            setDescription(value);
         }
     }
 
-    const handleSubmit = () => {
-        dispatch(wishlistActions.createWishlist({
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrors([]);
+        const otherRes = await dispatch(wishlistActions.createWishlist({
             wishlist: {
                 userId,
                 name,
                 description
             }
-        }));
+        }))
+        .catch(async res => {
+            const data = await res.json();
+            console.log(data);
+            if (data) setErrors(data);
+        });
+        if (otherRes.ok) closeModal();
     }
     
     return (
-        <div>
+        <div className="wishlist-section">
             <div className="form-header">
                 <h3>Create a New Wishlist</h3>
             </div>
-            <form>
+            <form className="wishlist-form" onSubmit={handleSubmit}>
                 {!!errors.length && <div className="errors">
                     {errors.map((error, i) => <p key={i}>{error}</p>)}
                 </div>}
-                <label>Wishlist Name
+
+                <p className="label">Wishlist Name</p>
                     <input
+                    maxLength="30"
+                    // placeholder="Wishlist Name"
                     type="text"
                     value={name}
                     onChange={(e) => handleChange("name", e.target.value)}
                     />
-                </label>
-                <label>Wishlist description
+                <p className="label">Wishlist description</p>
                     <textarea
-                    value={description}
-                    onChange={(e) => handleChange("description", e.target.value)}
+                        maxLength="250"
+                        value={description}
+                        onChange={(e) => handleChange("description", e.target.value)}
                     />
-                </label>
-                <div onClick={handleSubmit}>Create New Wishlist</div>
-                <p onClick={closeModal}>Cancel</p>
+                <div className="two-buttons">
+                    <button type="submit" onSubmit={e => e.preventDefault()} className="button submit-button">Create New Wishlist</button>
+                    <p onClick={closeModal} className="button cancel-button">Cancel</p>
+                </div>
             </form>
         </div>
     )

@@ -22,6 +22,8 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "is invalid." }
   validates :password, length: { in: 8..255 }, allow_nil: true
 
+  after_create :create_default_wishlist
+
   has_many :cart_items,
   dependent: :destroy
 
@@ -52,6 +54,11 @@ class User < ApplicationRecord
   
   def ensure_session_token
     self.session_token ||= generate_unique_session_token
+  end
+
+  def create_default_wishlist
+    @wishlist = Wishlist.create!(user_id: self.id, name: "My Wishlist")
+    p @wishlist
   end
   
 end

@@ -4,12 +4,14 @@ import sessionReducer from './session';
 import productReducer from './product';
 import categoryReducer from './category';
 import cartItemReducer from './cartItem';
+import wishlistReducer from './wishlist';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   products: productReducer,
   category: categoryReducer,
-  cartItems: cartItemReducer
+  cartItems: cartItemReducer,
+  wishlists: wishlistReducer
 });
 
 let enhancer;

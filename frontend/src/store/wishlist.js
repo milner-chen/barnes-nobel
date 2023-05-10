@@ -67,6 +67,12 @@ export const deleteWishlist = (wishlistId) => async (dispatch) => {
     return res;
 }
 
+// CUSTOM SELECTORS
+
+// export const getWishlistItems = (wishlistId) => (state) => {
+//     const items = Object.values(state?.wishlistItems)
+// } 
+
 // REDUCER
 
 const wishlistReducer = (state={}, action) => {

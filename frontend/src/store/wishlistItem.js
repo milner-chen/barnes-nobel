@@ -3,7 +3,7 @@ import csrfFetch from "./csrf";
 // ACTIONS
 const RECEIVE_WISHLIST_ITEMS = "wishlistItems/RECEIVE_WISHLIST_ITEMS";
 const RECEIVE_WISHLIST_ITEM = "wishlistItems/RECEIVE_WISHLIST_ITEM";
-const REMOVE_WISHLIST_ITEM = "wishlistItem/REMOVE_WISHLIST_ITEM";
+const REMOVE_WISHLIST_ITEM = "wishlistItems/REMOVE_WISHLIST_ITEM";
 
 // ACTION CREATORS
 export const receiveWishlistItem = (wishlistItem) => ({
@@ -62,6 +62,14 @@ export const deleteWishlistItem = (wishlistItemId) => async (dispatch) => {
     });
     await dispatch(removeWishlistItem(wishlistItemId));
     return res;
+}
+
+// CUSTOM SELECTOR
+
+export const getItems = (state) => {
+    const items = Object.values(state?.wishlistItems);
+    const products = items.length ? items.map(items => state.products[items?.productId]) : null;
+    return products;
 }
 
 const wishlistItemReducer = (state={}, action) => {

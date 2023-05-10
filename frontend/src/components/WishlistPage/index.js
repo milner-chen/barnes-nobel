@@ -46,7 +46,7 @@ const WishlistPage = () => {
                 <div className="main-content">
                     {/* <p>+ Create New Wishlist</p> */}
                     {/* <p>{ currWishlist ? "okay" : wishlists[0]?.name }</p> */}
-                    <p>{ wishlists[currWishlist]?.name }</p>
+                    {/* <p>{ wishlists[currWishlist]?.name }</p> */}
                     <WishlistListing currWishlist={ wishlists[currWishlist] } />
                 </div>
             </div>

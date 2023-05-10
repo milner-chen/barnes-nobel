@@ -5,7 +5,7 @@
 }
 
 .sizing {
-    width: 70vw;
+    width: 75vw;
     display: flex;
 }
 
@@ -32,6 +32,7 @@
     flex-direction: column;
     padding: 20px 50px;
     border-left: 1px solid gray;
+    padding-right: 0;
 }
 
 .wishlist-header {

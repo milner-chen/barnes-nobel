@@ -1,14 +1,15 @@
-img {
-    width: 120px;
-    margin-top: 0;
-    border: 1px solid black;
-}
-
 .wishlist-page-item {
     display: flex;
     width: 100%;
     padding: 25px 0;
     border-bottom: 1px solid silver;
+    position: inherit;
+}
+
+.wishlist-page-item img {
+    width: 120px;
+    margin-top: 0;
+    border: 1px solid black;
 }
 
 .wishlist-page-item:last-child {
@@ -43,6 +44,10 @@ img {
     font-size: 15px;
 }
 
+.show-buttons {
+    margin-top: 12px;
+}
+
 .show-buttons .in-cart {
     margin-right: 20px;
     border: none;
@@ -65,4 +70,27 @@ img {
     padding: 10px 40px;
     letter-spacing: 1px;
     margin-right: 10px;
+} */
+
+.remove-item {
+    width: 150px;
+    height: fit-content;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.remove-item:hover {
+    font-weight: bold;
+}
+
+.remove-item div {
+    width: max-content;
+}
+
+/* .remove-item .fa-xmark {
+    position: initial;
+    padding-left: 5px;
 } */

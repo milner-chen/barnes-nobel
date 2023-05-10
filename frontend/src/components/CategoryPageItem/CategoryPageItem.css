@@ -53,7 +53,8 @@ img {
     border: 1px solid black;
     padding: 4px;
     border-radius: 20px;
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
+    cursor: pointer;
 }
 
 .cat-page-item .fa-heart {

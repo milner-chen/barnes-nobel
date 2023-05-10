@@ -5,6 +5,10 @@ import AddToCartButton from "../AddToCartButton";
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
 import CheckoutModal from "../CheckoutModal";
+import * as wishlistActions from "../../store/wishlist";
+import * as wishlistItemActions from "../../store/wishlistItem";
+import AddToWishlistForm from "../WishlistForms/AddToWishlistForm";
+import { useEffect } from "react";
 
 const ProductPage = () => {
 
@@ -12,12 +16,18 @@ const ProductPage = () => {
     const closeModal = () => {
         setShowModal(false);
     }
+
+    const [showList, setShowList] = useState(false);
+    const closeList = () => {
+        setShowList(false);
+    }
     
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const { productId } = useParams();
     // const userId = useSelector(state => state.session.user);
     // const cartItems = useSelector(state => Object.values(state.cartItems));
     const product = useSelector(state => state.products[productId]);
+    const userId = useSelector(state => state.session?.user?.id);
 
     // const addToCart = () => {
     //     console.log('add to cart function is being reached');
@@ -51,9 +61,17 @@ const ProductPage = () => {
     //     }
     // }
 
-    const addItems = () => {
-        //
+    // const addItems = () => {
+        
+    // }
+
+    const handleHeart = () => {
+
     }
+
+    useEffect(() => {
+        dispatch(wishlistActions.fetchWishlists(userId));
+    }, []);
 
     // console.log(product);
     if (!product) return null;
@@ -62,11 +80,17 @@ const ProductPage = () => {
         <div className="show-body">
             <div className="show-content">
                 <div className="img-wrapper">
-                    <img src={product.photoUrl} />
-                    <div className="wishlist-button">
+                    <img src={product.photoUrl} alt={`${product.photoUrl}`} />
+                    <div className="wishlist-button" onClick={() => {setShowList(true)}}>
                         <i className="fa-regular fa-heart"></i>
-                        <NavLink to={"/"}><p>Add to Wishlist</p></NavLink>
+                        <p>Add to Wishlist</p>
                     </div>
+                    {showList && (
+                            <Modal onClose={closeList} >
+                                {/* <CheckoutModal closeModal={closeList} /> */}
+                                <AddToWishlistForm closeList={closeList} product={product} />
+                            </Modal>
+                    )}
                 </div>
                 <div className="product-info">
                     <h2>{product.name}</h2>

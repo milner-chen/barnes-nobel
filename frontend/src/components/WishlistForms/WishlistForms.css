@@ -66,6 +66,11 @@
     padding-bottom: 15px;
 }
 
+.product-preview {
+    display: flex;
+    flex-direction: column;
+}
+
 .wishlist-form {
     width: 400px;
 }
@@ -134,6 +139,8 @@
     color: white;
     border: none;
     text-decoration: none;
+    /*  */
+    margin: 0;
 }
 
 .cancel-button {

@@ -2,7 +2,7 @@ import EditWishlistModal from "../WishlistForms/EditWishlistModal";
 
 
 const WishlistListing = ({ currWishlist }) => {
-    console.log(currWishlist);
+    // console.log("the currentWishlist on the other side", currWishlist);
     
     return (
         <>

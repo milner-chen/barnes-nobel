@@ -45,6 +45,7 @@ const Navigation = () => {
                         <i className="fa-solid fa-cart-shopping"></i>
                         <p className="circle">{sum}</p>
                     </NavLink>
+                    <NavLink exact to="/wishlist" >Wishlist</NavLink>
                 </div>
             </ul>
             <ul className="cat-nav-bar">{categories.map((cat, i) => <NavLink to={`/category/${cat}`} key={i}>{cat}</NavLink>)}</ul>

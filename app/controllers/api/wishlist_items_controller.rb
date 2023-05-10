@@ -11,13 +11,16 @@ class Api::WishlistItemsController < ApplicationController
 
     def create
         @wishlist_item = WishlistItem.new(wishlist_item_params)
-        # if CartItem.find(@wishlist_item.product_id).where(user_id: @wishlist_item.user_id)
-        #     p 'already in cart'
-        #     @wishlist_item.in_cart = true
-        # else
-        #     p 'not in cart'
-        #     @wishlist_item.in_cart = false
-        # end
+        found = CartItem.where({user_id: params[:user_id], product_id: @wishlist_item.product_id})
+        # p found
+
+        if found.length > 0
+            p 'already in cart'
+            @wishlist_item.in_cart = true
+        else
+            p 'not in cart'
+            @wishlist_item.in_cart = false
+        end
 
         if @wishlist_item.save
             render :show
@@ -29,13 +32,16 @@ class Api::WishlistItemsController < ApplicationController
     
     def update
         @wishlist_item = WishlistItem.find(params[:id])
-        # if CartItem.find(@wishlist_item.product_id)
-        #     p 'already in cart'
-        #     @wishlist_item.in_cart = true
-        # else
-        #     p 'not in cart'
-        #     @wishlist_item.in_cart = false
-        # end
+        found = CartItem.where({user_id: params[:user_id], product_id: @wishlist_item.product_id})
+        # p found
+
+        if found.length > 0
+            p 'already in cart'
+            @wishlist_item.in_cart = true
+        else
+            p 'not in cart'
+            @wishlist_item.in_cart = false
+        end
 
         if @wishlist_item.update(wishlist_item_params)
             render :show

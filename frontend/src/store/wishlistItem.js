@@ -77,7 +77,8 @@ const wishlistItemReducer = (state={}, action) => {
         case RECEIVE_WISHLIST_ITEMS:
             return { ...action.wishlistItems };
         case RECEIVE_WISHLIST_ITEM:
-            return { ...state, [action.wishlistItem.id]: action.wishlistItem };
+            // return { ...state, [action.wishlistItem.id]: action.wishlistItem };
+            return state;
         case REMOVE_WISHLIST_ITEM:
             const newState = { ...state };
             delete newState[action.wishlistItemId];

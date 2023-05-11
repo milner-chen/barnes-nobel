@@ -88,7 +88,7 @@ const ProductPage = () => {
                     {showList && (
                             <Modal onClose={closeList} >
                                 {/* <CheckoutModal closeModal={closeList} /> */}
-                                <AddToWishlistForm closeList={closeList} product={product} />
+                                <AddToWishlistForm closeModal={closeList} product={product} />
                             </Modal>
                     )}
                 </div>

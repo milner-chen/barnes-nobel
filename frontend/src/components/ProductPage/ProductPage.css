@@ -45,6 +45,10 @@
     cursor: pointer;
 }
 
+.wishlist-button:hover i {
+    font-weight: bold;
+}
+
 .wishlist-button p {
     padding-left: 10px;
     color: teal;

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as wishlistActions from "../../store/wishlist";
 import * as wishlistItemActions from "../../store/wishlistItem";
+import "../WishlistForms/WishlistForms.css";
 
 const AddToWishlistForm = ({ closeModal, product }) => {
 
@@ -10,14 +11,15 @@ const AddToWishlistForm = ({ closeModal, product }) => {
     const dispatch = useDispatch();
     
     const [showDrop, setShowDrop] = useState(false);
+    const [errors, setErrors] = useState([]);
     const userId = useSelector(state => state.session?.user?.id);
     const wishlists = useSelector(state => Object.values(state?.wishlists));
-    const inCart = useSelector(state => state?.cartItems[product?.id]);
+    // const inCart = useSelector(state => state?.cartItems[product?.id]);
     const [list, setList] = useState(wishlists[0]);
     console.log(product.id);
 
     const handleSubmit = async () => {
-        // setErrors([]);
+        setErrors([]);
         const result = await dispatch(wishlistItemActions.createWishlistItem({
             wishlistItem: {
                 wishlistId: list.id,
@@ -25,7 +27,12 @@ const AddToWishlistForm = ({ closeModal, product }) => {
                 // inCart: false
             },
             userId
-        }));
+        }))
+        .catch(async res => {
+            const data = await res.json();
+            if (data) setErrors(data);
+        });
+        if (result.ok) closeModal();
     }
 
     // useEffect(() => {
@@ -37,15 +44,28 @@ const AddToWishlistForm = ({ closeModal, product }) => {
             <div className="form-header">
                 <h3>Add an item to a wishlist</h3>
             </div>
+            <div className="wishlist-form">
+            
+            {!!errors.length && <div className="errors">
+                    {errors.map((error, i) => <p key={i}>{error}</p>)}
+                </div>}
             <div className="product-preview">
                 <img src={`${product.photoUrl}`} />
-                {product?.name}
+                <div>
+                    <p className="title">{product?.name}</p>
+                    <p>by {product?.seller}</p>
+                    <p>{product?.format}</p>
+                    <p className="price">${product?.price}</p>
+                </div>
             </div>
             <div>
                 <p>Select a wishlist</p>
-                <div onClick={() => setShowDrop(!showDrop)}>{list?.name}</div>
+                <div className="wishlist-holder" onClick={() => setShowDrop(!showDrop)}>
+                    <p>{list?.name}</p>
+                    <i className="fa-solid fa-angle-down"></i>
+                </div>
                 {showDrop && (
-                    <div>
+                    <div className="wishlist-dropdown">
                         {wishlists.map(list => {
                             return <p onClick={() => {setList(list); setShowDrop(false)}} key={list.id} >{list.name}</p>
                         })}
@@ -55,6 +75,7 @@ const AddToWishlistForm = ({ closeModal, product }) => {
                     <button onClick={handleSubmit} className="button submit-button">Add Item</button>
                     <p onClick={closeModal} className="button cancel-button">Cancel</p>
                 </div>
+            </div>
             </div>
         </div>
     )

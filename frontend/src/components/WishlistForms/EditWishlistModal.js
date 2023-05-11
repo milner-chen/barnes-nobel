@@ -10,7 +10,10 @@ const EditWishlistModal = ({ wishlist, userId }) => {
 
     return (
         <>
-        <div onClick={() => setShowModal(true)}>Edit this Wishlist</div>
+        <div style={{display: "flex"}} onClick={() => setShowModal(true)}>
+            <i style={{paddingRight: "5px"}} className="fa-solid fa-pen"></i>
+            <div className="remove-item">Edit this Wishlist</div>
+            </div>
         {showModal && (
             <Modal onClose={closeModal}>
                 <EditWishlistForm closeModal={closeModal} userId={userId} wishlistInfo={wishlist} />

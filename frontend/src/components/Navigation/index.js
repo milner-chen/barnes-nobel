@@ -29,6 +29,11 @@ const Navigation = () => {
             {/* <div className="top-slider"></div> */}
             <ul className="mid-nav-bar">
                 <ProfileButton />
+                <p>|</p>
+                <NavLink exact to="/wishlist"  className="nav-wishlist">
+                        <i className="fa-regular fa-heart" />
+                        <p>WISHLIST</p>
+                </NavLink>
             </ul>
             <ul className="logo">
                 <NavLink exact to="/"><h1>Barnes<span>&#38;</span>Nobel</h1></NavLink>
@@ -45,7 +50,6 @@ const Navigation = () => {
                         <i className="fa-solid fa-cart-shopping"></i>
                         <p className="circle">{sum}</p>
                     </NavLink>
-                    <NavLink exact to="/wishlist" >Wishlist</NavLink>
                 </div>
             </ul>
             <ul className="cat-nav-bar">{categories.map((cat, i) => <NavLink to={`/category/${cat}`} key={i}>{cat}</NavLink>)}</ul>

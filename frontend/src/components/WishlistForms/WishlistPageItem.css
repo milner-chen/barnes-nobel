@@ -44,7 +44,7 @@
     font-size: 15px;
 }
 
-.show-buttons {
+.wishlist-page-item .show-buttons {
     margin-top: 12px;
 }
 
@@ -73,14 +73,14 @@
 } */
 
 .remove-item {
-    width: 150px;
+    /* width: 150px; */
     height: fit-content;
     text-decoration: underline;
+    text-decoration-thickness: 0.5px;
     display: flex;
     justify-content: center;
     align-content: center;
 }
-
 
 .remove-item:hover {
     font-weight: bold;

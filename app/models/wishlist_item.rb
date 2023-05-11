@@ -12,7 +12,7 @@
 class WishlistItem < ApplicationRecord
   validates :wishlist_id, :product_id, presence: true
   validates :in_cart, inclusion: [true, false]
-  validates :product_id, uniqueness: { scope: :wishlist_id, message: "This product is already in this wishlist." }
+  validates :product_id, uniqueness: { scope: :wishlist_id, message: " is already in this wishlist." }
 
   belongs_to :wishlist
   belongs_to :product

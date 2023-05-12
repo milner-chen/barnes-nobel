@@ -9,6 +9,7 @@ import * as wishlistActions from "../../store/wishlist";
 import * as wishlistItemActions from "../../store/wishlistItem";
 import AddToWishlistForm from "../WishlistForms/AddToWishlistForm";
 import { useEffect } from "react";
+import LoginForm from "../LoginFormModal/LoginForm";
 
 const ProductPage = () => {
 
@@ -24,10 +25,9 @@ const ProductPage = () => {
     
     const dispatch = useDispatch();
     const { productId } = useParams();
-    // const userId = useSelector(state => state.session.user);
     // const cartItems = useSelector(state => Object.values(state.cartItems));
     const product = useSelector(state => state.products[productId]);
-    const userId = useSelector(state => state.session?.user?.id);
+    const user = useSelector(state => state.session?.user);
 
     // const addToCart = () => {
     //     console.log('add to cart function is being reached');
@@ -70,8 +70,8 @@ const ProductPage = () => {
     }
 
     useEffect(() => {
-        dispatch(wishlistActions.fetchWishlists(userId));
-    }, []);
+        dispatch(wishlistActions.fetchWishlists(user?.id));
+    }, [user?.id]);
 
     // console.log(product);
     if (!product) return null;
@@ -85,10 +85,16 @@ const ProductPage = () => {
                         <i className="fa-regular fa-heart"></i>
                         <p>Add to Wishlist</p>
                     </div>
-                    {showList && (
+                    {showList && user?.id && (
                             <Modal onClose={closeList} >
                                 {/* <CheckoutModal closeModal={closeList} /> */}
                                 <AddToWishlistForm closeModal={closeList} product={product} />
+                            </Modal>
+                    )}
+                    {showList && !user?.id && (
+                            <Modal onClose={closeList} >
+                                {/* <CheckoutModal closeModal={closeList} /> */}
+                                <LoginForm />
                             </Modal>
                     )}
                 </div>

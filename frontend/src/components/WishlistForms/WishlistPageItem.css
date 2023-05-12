@@ -72,6 +72,15 @@
     margin-right: 10px;
 } */
 
+.edit-wishlist-modal {
+    display: flex;
+    cursor: pointer;
+}
+
+.edit-wishlist-modal i {
+    padding-right: 5px;
+}
+
 .remove-item {
     /* width: 150px; */
     height: fit-content;
@@ -80,6 +89,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    cursor: pointer;
 }
 
 .remove-item:hover {

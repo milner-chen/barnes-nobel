@@ -11,7 +11,7 @@
 
 .list-list {
     /* padding: 10px 20px; */
-    max-width: 200px;
+    max-width: 250px;
     min-width: 150px;
     margin-right: 10px;
 }
@@ -23,6 +23,12 @@
 
 .wishlist {
     padding: 5px 0;
+    cursor: pointer;
+    color: teal;
+}
+
+.wishlist:hover {
+    text-decoration: underline;
 }
 
 .main-content {
@@ -57,6 +63,7 @@
     border-top: 1px solid silver;
     margin-top: 20px;
     padding-top: 10px;
+    cursor: pointer;
 }
 
 .wishlist-section {

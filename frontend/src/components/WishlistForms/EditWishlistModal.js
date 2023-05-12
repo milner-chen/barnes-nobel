@@ -10,8 +10,8 @@ const EditWishlistModal = ({ wishlist, userId }) => {
 
     return (
         <>
-        <div style={{display: "flex"}} onClick={() => setShowModal(true)}>
-            <i style={{paddingRight: "5px"}} className="fa-solid fa-pen"></i>
+        <div className="edit-wishlist-modal" onClick={() => setShowModal(true)}>
+            <i className="fa-solid fa-pen"></i>
             <div className="remove-item">Edit this Wishlist</div>
             </div>
         {showModal && (

@@ -16,7 +16,7 @@ const AddToWishlistForm = ({ closeModal, product }) => {
     const wishlists = useSelector(state => Object.values(state?.wishlists));
     // const inCart = useSelector(state => state?.cartItems[product?.id]);
     const [list, setList] = useState(wishlists[0]);
-    console.log(product.id);
+    console.log("first wishlist, supposedly:", wishlists);
 
     const handleSubmit = async () => {
         setErrors([]);
@@ -28,11 +28,14 @@ const AddToWishlistForm = ({ closeModal, product }) => {
             },
             userId
         }))
+        .then(async res => {
+            if (res.ok) closeModal();
+        })
         .catch(async res => {
             const data = await res.json();
             if (data) setErrors(data);
         });
-        if (result.ok) closeModal();
+        // if (result.ok) closeModal();
     }
 
     // useEffect(() => {
@@ -61,7 +64,7 @@ const AddToWishlistForm = ({ closeModal, product }) => {
             <div>
                 <p>Select a wishlist</p>
                 <div className="wishlist-holder" onClick={() => setShowDrop(!showDrop)}>
-                    <p>{list?.name}</p>
+                    <p>{list?.name || wishlists[0]?.name}</p>
                     <i className="fa-solid fa-angle-down"></i>
                 </div>
                 {showDrop && (

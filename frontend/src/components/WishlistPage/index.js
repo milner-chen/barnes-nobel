@@ -4,17 +4,21 @@ import * as wishlistActions from '../../store/wishlist';
 import CreateWishlistModal from "../WishlistForms/CreateWishlistModal";
 import "../WishlistForms/WishlistForms.css";
 import WishlistListing from "./WishlistListing";
+import { Modal } from "../../context/Modal";
+import LoginForm from "../LoginFormModal/LoginForm";
+import { useHistory } from "react-router-dom";
 
 const WishlistPage = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = useSelector(state => state.session?.user);
     // const wishlists = useSelector(state => state?.wishlists);
     const wishlists = useSelector(state => Object.values(state?.wishlists));
     const [currWishlist, setCurrWishlist] = useState(0);
 
     const fetch = async () => {
-        await dispatch(wishlistActions.fetchWishlists(user.id));
+        await dispatch(wishlistActions.fetchWishlists(user?.id));
     }
 
     useEffect(() => {
@@ -24,13 +28,24 @@ const WishlistPage = () => {
     }, [user, wishlists[currWishlist]?.name])
 
     useEffect(() => {
-        dispatch(wishlistActions.fetchWishlists(user.id));
+        dispatch(wishlistActions.fetchWishlists(user?.id));
         setCurrWishlist(0);
     }, [wishlists.length])
-    
 
-    // will have to open the login modal later
-    if (!user) return <h1>you aint logged in bro!!</h1>;
+    // const [showList, setShowList] = useState(false);
+    // const closeList = () => {
+    //     setShowList(false);
+    // }
+    
+    // // will have to open the login modal later
+    // if (!user) return (
+    // // <h1>you aint logged in bro!!</h1>
+    // <Modal onClose={closeList} >
+    //     <LoginForm />
+    // </Modal>
+    // );
+
+    if (!user) history.push("/");
 
     return (
         <div className="wishlist-page">

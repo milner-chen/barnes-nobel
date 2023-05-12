@@ -9,8 +9,9 @@ import AddToCartButton from '../AddToCartButton';
 import AddToWishlistForm from '../WishlistForms/AddToWishlistForm';
 import { Modal } from '../../context/Modal';
 import { useState } from 'react';
+import LoginForm from '../LoginFormModal/LoginForm';
 
-const CategoryPageItem = ({ product }) => {
+const CategoryPageItem = ({ product, user }) => {
 
     // const dispatch = useDispatch();
     // WILL PROBABLY HAVE TO EXTRACT ITEM-INFO INTO ANOTHER COMPONENT
@@ -59,10 +60,16 @@ const CategoryPageItem = ({ product }) => {
         <div className="cat-page-item">
             <div className='img-wrapper'>
                 <i className="fa-regular fa-heart" onClick={() => {setShowList(true)}} />
-                {showList && (
+                {showList && user && (
                             <Modal onClose={closeList} >
                                 {/* <CheckoutModal closeModal={closeList} /> */}
                                 <AddToWishlistForm closeModal={closeList} product={product} />
+                            </Modal>
+                )}
+                {showList && !user && (
+                            <Modal onClose={closeList} >
+                                {/* <CheckoutModal closeModal={closeList} /> */}
+                                <LoginForm />
                             </Modal>
                 )}
                 <NavLink to={`/${product.id}`}>

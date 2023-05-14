@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:show, :create, :destroy]
 
+    get '/products/search', to: 'products#search', as: 'search'
+
     resources :products, only: [:index, :show]
     resources :categories, only: [:index]
 

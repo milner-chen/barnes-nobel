@@ -1,0 +1,48 @@
+.search-form {
+    display: flex;
+    width: 40vw;
+}
+
+.search-bar {
+    display: flex;
+    width: 40vw;
+    position: relative;
+    height: min-content;
+}
+
+.search-drop {
+    border: 1px solid silver;
+    max-height: 50vh;
+    height: fit-content;
+    overflow-y: auto;
+    /* width: 100%; */
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    /* top: 200px; */
+    border-top: none;
+    margin-top: 37.5px;
+    width: inherit;
+    box-sizing: border-box;
+}
+
+.search-drop p {
+    padding: 8px 0;
+    padding-left: 10px;
+    border-left: 2px solid transparent;
+    text-transform: none;
+    cursor: pointer;
+}
+
+.search-drop p:hover {
+    border-left: 2px solid silver;
+}
+
+form button {
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    background-color: teal;
+    color: white;
+    height: 37.5px;
+}

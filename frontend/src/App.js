@@ -15,6 +15,7 @@ import CarouselSwiper from "./components/CarouselSwiper";
 import CartPage from "./components/CartPage";
 import Footer from "./components/Footer";
 import WishlistPage from "./components/WishlistPage";
+import SearchPage from "./components/SearchPage";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
       <Navigation />
       {/* <CarouselSwiper /> */}
       <Switch>
+        <Route exact path={`/search`} component={SearchPage} />
         <Route exact path={`/cart`} component={CartPage} />
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/wishlist`} component={WishlistPage} />

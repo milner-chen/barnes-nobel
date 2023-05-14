@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { fetchCartItems, getItemsCount } from "../../store/cartItem";
 import { Modal } from "../../context/Modal";
 import LoginForm from "../LoginFormModal/LoginForm";
-import SearchBar from "../Search";
+import SearchBar from "../SearchBar";
 
 const Navigation = () => {
     const dispatch = useDispatch();

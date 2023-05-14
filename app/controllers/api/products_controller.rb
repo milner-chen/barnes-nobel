@@ -18,4 +18,10 @@ class Api::ProductsController < ApplicationController
         @product = Product.find_by(id: params[:id])
         render :show
     end
+
+    def search
+        @products = Product.where("lower(name) LIKE ? OR lower(seller) LIKE ? OR lower(description) LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+        render :search
+    end
+
 end

@@ -6,6 +6,7 @@ import categoryReducer from './category';
 import cartItemReducer from './cartItem';
 import wishlistReducer from './wishlist';
 import wishlistItemReducer from './wishlistItem';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   cartItems: cartItemReducer,
   wishlists: wishlistReducer,
-  wishlistItems: wishlistItemReducer
+  wishlistItems: wishlistItemReducer,
+  search: searchReducer
 });
 
 let enhancer;

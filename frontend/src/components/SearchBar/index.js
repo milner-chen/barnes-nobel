@@ -14,16 +14,25 @@ const SearchBar = () => {
     const history = useHistory();
     let data = [];
 
+    // const getSearch = async () => {
+    //     await dispatch(searchActions.fetchSearch(search))
+    //     .then(data => setResults(data));
+    // }
+    
+    const handleChange = async (e) => {
+        await setSearch(e.target.value);
+    }
+
     useEffect(() => {
-        if (search !== "") {
-            // const fetch = async () => {
-                // data = await 
-                dispatch(searchActions.fetchSearch(search))
-                .then(data => setResults(data));
-                // }
-                // fetch();
-            }
-            // console.log("search results in frontend", results);
+        
+        // console.log("finished search term:", search);
+
+        const ue = setTimeout(() => {
+            
+            dispatch(searchActions.fetchSearch(search))
+            .then(data => setResults(data));
+        }, 500);
+        return () => clearTimeout(ue);
     }, [search])
 
     const handleSubmit = (e) => {
@@ -67,10 +76,11 @@ const SearchBar = () => {
                 className="search-bar"
                 placeholder="Search by Title, Author, or Keyword"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                // onChange={(e) => setSearch(e.target.value)}
+                onChange={handleChange}
                 onClick={() => setShowDrop(true)}
             />
-            {search !== "" && showDrop && (
+            {search.length !== 0 && showDrop && (
                 <div className="search-drop">
                     {/* {console.log("why the fuck is the dropdown empty", results)} */}
                     {

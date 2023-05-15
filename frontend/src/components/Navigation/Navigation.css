@@ -82,6 +82,7 @@
     width: fit-content;
     justify-content: center;
     align-items: center;
+    min-width: 100px;
 }
 
 /* .social-links {

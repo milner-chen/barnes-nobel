@@ -1,11 +1,14 @@
 .search-form {
     display: flex;
-    width: 40vw;
+    /* width: 40vw; */
+    width: 100%;
+    margin: 0 20px;
 }
 
 .search-bar {
     display: flex;
-    width: 40vw;
+    /* width: 40vw; */
+    width: 100%;
     position: relative;
     height: min-content;
 }

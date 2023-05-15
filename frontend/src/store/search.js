@@ -14,9 +14,11 @@ export const receiveSearch = (results) => {
 // THUNK ACTION CREATOR
 
 export const fetchSearch = (query) => async (dispatch) => {
+    // console.log("search query", query);
     const res = await csrfFetch(`/api/products/search?q=${query}`);
     const data = await res.json();
     // await dispatch(receiveSearch(data));
+    // console.log("data from the store", data);
     return data;
 }
 

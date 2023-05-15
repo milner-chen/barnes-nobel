@@ -1,14 +1,14 @@
 .search-form {
     display: flex;
-    /* width: 40vw; */
-    width: 100%;
+    width: 50vw;
+    /* width: 100%; */
     margin: 0 20px;
 }
 
 .search-bar {
     display: flex;
-    /* width: 40vw; */
-    width: 100%;
+    width: calc(40vw - 75px);
+    /* width: 100%; */
     position: relative;
     height: min-content;
 }
@@ -25,13 +25,13 @@
     /* top: 200px; */
     border-top: none;
     margin-top: 37.5px;
-    width: inherit;
+    width: 40vw;
     box-sizing: border-box;
 }
 
 .search-drop p {
-    padding: 8px 0;
-    padding-left: 10px;
+    padding: 8px 10px;
+    /* padding-left: 10px; */
     border-left: 2px solid transparent;
     text-transform: none;
     cursor: pointer;

@@ -51,9 +51,15 @@ img {
 .fa-heart {
     font-size: 14px;
     border: 1px solid black;
-    padding: 4px;
+    padding: 4.5px 4px;
     border-radius: 20px;
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
+    cursor: pointer;
+    background-color:rgba(255, 255, 255, 0.7);
+}
+
+.fa-heart:hover {
+    font-weight: bold;
 }
 
 .cat-page-item .fa-heart {

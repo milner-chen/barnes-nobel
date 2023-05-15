@@ -5,13 +5,17 @@ import productReducer from './product';
 import categoryReducer from './category';
 import cartItemReducer from './cartItem';
 import wishlistReducer from './wishlist';
+import wishlistItemReducer from './wishlistItem';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   products: productReducer,
   category: categoryReducer,
   cartItems: cartItemReducer,
-  wishlists: wishlistReducer
+  wishlists: wishlistReducer,
+  wishlistItems: wishlistItemReducer,
+  search: searchReducer
 });
 
 let enhancer;

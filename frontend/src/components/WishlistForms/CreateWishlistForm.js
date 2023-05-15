@@ -29,7 +29,7 @@ const CreateWishlistForm = ({closeModal, userId}) => {
         }))
         .catch(async res => {
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             if (data) setErrors(data);
         });
         if (otherRes.ok) closeModal();

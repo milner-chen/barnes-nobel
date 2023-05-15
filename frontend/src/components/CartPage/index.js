@@ -59,7 +59,7 @@ const CartPage = () => {
         // console.log(data);
     }, [user])
 
-    console.log('total', total);
+    // console.log('total', total);
     if (total > 0) {
         buttonText = "CHECKOUT";
         isEmpty = false;

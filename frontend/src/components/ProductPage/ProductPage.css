@@ -42,12 +42,17 @@
     align-items: center;
     justify-items: center;
     padding: 15px;
+    cursor: pointer;
+}
+
+.wishlist-button:hover i {
+    font-weight: bold;
 }
 
 .wishlist-button p {
     padding-left: 10px;
     color: teal;
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
 }
 
 .show-content img {

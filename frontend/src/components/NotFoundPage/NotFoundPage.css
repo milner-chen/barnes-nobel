@@ -1,0 +1,9 @@
+.not-found-header {
+    margin: 100px 0;
+    text-align: center;
+}
+
+.not-found-header p {
+    font-size: 25px;
+    padding-bottom: 20px;
+}

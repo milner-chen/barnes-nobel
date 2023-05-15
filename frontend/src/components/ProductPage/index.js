@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import './ProductPage.css';
 import AddToCartButton from "../AddToCartButton";
 import { useState } from "react";
@@ -24,6 +24,7 @@ const ProductPage = () => {
     }
     
     const dispatch = useDispatch();
+    const history = useHistory();
     const { productId } = useParams();
     // const cartItems = useSelector(state => Object.values(state.cartItems));
     const product = useSelector(state => state.products[productId]);
@@ -73,8 +74,11 @@ const ProductPage = () => {
         dispatch(wishlistActions.fetchWishlists(user?.id));
     }, [user?.id]);
 
-    // console.log(product);
-    if (!product) return null;
+    console.log("what is product", product);
+    if (!product) {
+        history.push('/404')
+        return null;
+    };
     return (
         <div className="show-page">
         <div className="show-body">

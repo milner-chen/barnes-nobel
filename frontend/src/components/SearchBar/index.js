@@ -12,13 +12,35 @@ const SearchBar = () => {
     const ref = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
+    let data = [];
 
     useEffect(() => {
         if (search !== "") {
-            dispatch(searchActions.fetchSearch(search))
-            .then(data => setResults(data));
-        }
+            // const fetch = async () => {
+                // data = await 
+                dispatch(searchActions.fetchSearch(search))
+                .then(data => setResults(data));
+                // }
+                // fetch();
+            }
+            console.log("search results in frontend", results);
     }, [search])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        
+        
+        // const wait = async () => {
+            // await
+            dispatch(searchActions.fetchSearch(search))
+            .then(data => {dispatch(searchActions.receiveSearch(data)); console.log("search results", data)})
+            // dispatch(searchActions.receiveSearch(results));
+        // }
+        // setResults(data);
+        setShowDrop(false);
+        history.push("/search")
+    }
 
     useEffect(() => {
         // debugger;
@@ -37,23 +59,7 @@ const SearchBar = () => {
             console.log("unmounting");
             document.removeEventListener("mousedown", closeDrop);
         }
-
-        // if (!showDrop) return;
-
-        // const closeDrop = () => {
-        //     setShowDrop(false);
-        // };
-
-        // document.addEventListener('mousedown', closeDrop);
-    }, [showDrop])
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("results from fetching search", results);
-        dispatch(searchActions.receiveSearch(results));
-        setShowDrop(false);
-        history.push("/search")
-    }
+    }, [showDrop]);
 
     return (
         <form className="search-form" onSubmit={handleSubmit} ref={ref} >
@@ -66,6 +72,7 @@ const SearchBar = () => {
             />
             {search !== "" && showDrop && (
                 <div className="search-drop">
+                    {/* {console.log("why the fuck is the dropdown empty", results)} */}
                     {
                     Object.values(results).map(item =>
                         <NavLink key={item.id} to={`/${item.id}`}>

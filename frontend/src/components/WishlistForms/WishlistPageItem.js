@@ -18,7 +18,7 @@ const WishlistPageItem = ({ product, item }) => {
     }
 
     const inCart = useSelector(state => Object.values(state?.cartItems).find(cart => cart?.productId === product?.id));
-    console.log(`is ${product?.name}`, inCart);
+    // console.log(`is ${product?.name}`, inCart);
 
     const handleDelete = () => {
         dispatch(wishlistItemActions.deleteWishlistItem(item?.id));

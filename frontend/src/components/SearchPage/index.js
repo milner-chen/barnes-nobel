@@ -13,7 +13,7 @@ const SearchPage = () => {
     // const dispatch = useDispatch();
     // const products = useSelector(productActions.getCategoryProducts(category));
     const search = useSelector(state => Object.values(state.search));
-    console.log("search results", search);
+    // console.log("search results", search);
     const user = useSelector(state => state.session?.user);
 
     // const [results, setResults] = useState(search);

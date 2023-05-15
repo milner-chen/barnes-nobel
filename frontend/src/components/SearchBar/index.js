@@ -23,7 +23,7 @@ const SearchBar = () => {
                 // }
                 // fetch();
             }
-            console.log("search results in frontend", results);
+            // console.log("search results in frontend", results);
     }, [search])
 
     const handleSubmit = (e) => {
@@ -34,7 +34,7 @@ const SearchBar = () => {
         // const wait = async () => {
             // await
             dispatch(searchActions.fetchSearch(search))
-            .then(data => {dispatch(searchActions.receiveSearch(data)); console.log("search results", data)})
+            .then(data => dispatch(searchActions.receiveSearch(data)))
             // dispatch(searchActions.receiveSearch(results));
         // }
         // setResults(data);
@@ -44,19 +44,19 @@ const SearchBar = () => {
 
     useEffect(() => {
         // debugger;
-        console.log("show drop: ", showDrop, "ref.current: ", ref.current);
+        // console.log("show drop: ", showDrop, "ref.current: ", ref.current);
         const closeDrop = e => {
-            console.log("e.target:", e.target);
+            // console.log("e.target:", e.target);
             if (showDrop && ref.current && !ref.current.contains(e.target)) {
                 setShowDrop(false);
             }
         }
 
-        console.log("listening for mousedown...")
+        // console.log("listening for mousedown...")
         document.addEventListener("mousedown", closeDrop);
 
         return () => {
-            console.log("unmounting");
+            // console.log("unmounting");
             document.removeEventListener("mousedown", closeDrop);
         }
     }, [showDrop]);

@@ -46,7 +46,7 @@ const EditWishlistForm = ({ closeModal, wishlistInfo, userId }) => {
         })
         .catch(async res => {
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             if (data) setErrors(data);
         })
     }

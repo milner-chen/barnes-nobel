@@ -16,7 +16,7 @@ const AddToWishlistForm = ({ closeModal, product }) => {
     const wishlists = useSelector(state => Object.values(state?.wishlists));
     // const inCart = useSelector(state => state?.cartItems[product?.id]);
     const [list, setList] = useState(wishlists[0]);
-    console.log("first wishlist, supposedly:", wishlists);
+    // console.log("first wishlist, supposedly:", wishlists);
 
     const handleSubmit = async () => {
         setErrors([]);

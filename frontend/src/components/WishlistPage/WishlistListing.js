@@ -18,7 +18,7 @@ const WishlistListing = ({ currWishlist }) => {
     
     useEffect(() => {
         fetch();
-        console.log("these are the items that should be displayed", products);
+        // console.log("these are the items that should be displayed", products);
     }, [currWishlist]);
 
     return (

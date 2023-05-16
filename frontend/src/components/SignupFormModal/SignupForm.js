@@ -32,6 +32,10 @@ const SignupForm = ({closeModal}) => {
     //     // if (errors.length !== 0) setShowErrors(true)
     //     // else setShowErrors(false);
     // }, [errors])
+
+    const loginDemo = () => {
+        dispatch(sessionActions.login({ email: 'demo@user.io', password: 'password' }));
+    }
     
     const handleSubmit = (e) => {
         // console.log('err/ors', errors);
@@ -117,11 +121,12 @@ const SignupForm = ({closeModal}) => {
                         placeholder="Confirm Password"
                         />
                     <button className="signup-button" type="submit" onSubmit={e => e.preventDefault() }>Create Account</button>
+                    <button className="demo-user" onClick={loginDemo}>Demo Login</button>
                     <p onClick={closeModal} id="signup-links">Cancel</p>
                 </form>
             </div>)}
             {currModal === 'login' && (
-                <LoginForm />
+                <LoginForm closeModal={closeModal} />
             )}
         </>
         // when clicking to close: dispatch action to modal to change the current modal to null

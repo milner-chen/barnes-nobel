@@ -58,7 +58,7 @@ const Navigation = () => {
                     )}
                     {showList && !user?.id && (
                         <Modal onClose={closeList} >
-                            <LoginForm />
+                            <LoginForm closeModal={closeList} />
                         </Modal>
                     )}
 

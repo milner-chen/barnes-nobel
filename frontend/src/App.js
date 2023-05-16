@@ -16,6 +16,7 @@ import CartPage from "./components/CartPage";
 import Footer from "./components/Footer";
 import WishlistPage from "./components/WishlistPage";
 import SearchPage from "./components/SearchPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route exact path={`/cart`} component={CartPage} />
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/wishlist`} component={WishlistPage} />
+        <Route exact path={`/404`} component={NotFoundPage} />
         <Route exact path={`/:productId/`} component={ProductPage} />
         <Route path="/" component={HomePage} />
         {/* <Route path="/login" component={LoginForm} /> */}

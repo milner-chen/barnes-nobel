@@ -48,6 +48,12 @@ const WishlistPage = () => {
     if (!user) history.push("/");
 
     return (
+        <>
+        <div className="wishlist-title">
+            <span />
+            <h1>Your Wishlists</h1>
+            <span />
+        </div>
         <div className="wishlist-page">
             {/* <h1>{user.firstName}</h1> */}
             <div className="sizing">
@@ -66,6 +72,7 @@ const WishlistPage = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

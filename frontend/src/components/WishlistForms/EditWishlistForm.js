@@ -80,9 +80,9 @@ const EditWishlistForm = ({ closeModal, wishlistInfo, userId }) => {
             </form>
             {wishlistInfo.id !== wishlists[0]?.id && (
                 <div className="delete-section">
-                    <p>{wishlistInfo?.id}</p>
-                    <div>test</div>
-                    <p onClick={handleDelete}> Delete this Wishlist</p>
+                    {/* <p>{wishlistInfo?.id}</p>
+                    <div>test</div> */}
+                    <p className="cancel-button" onClick={handleDelete}> Delete this Wishlist</p>
                 </div>
             )}
         </div>

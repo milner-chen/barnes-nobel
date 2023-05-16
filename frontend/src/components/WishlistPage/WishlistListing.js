@@ -30,7 +30,7 @@ const WishlistListing = ({ currWishlist }) => {
             <div>
                 {products ? products.map((item, i) =>
                     <WishlistPageItem key={item?.id} product={item} item={items[i]} />
-                ) : <p>nothing here</p>}
+                ) : <p>Nothing here yet c:</p>}
             </div>
         </>
     )

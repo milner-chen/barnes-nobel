@@ -4,6 +4,24 @@
     justify-content: center;
 }
 
+.wishlist-title {
+    margin: 25px 0;
+    text-align: center;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wishlist-title span {
+    border-top: 1px solid silver;
+    width: 30%;
+}
+
+.wishlist-title h1 {
+    padding: 0 20px;
+}
+
 .sizing {
     width: 75vw;
     display: flex;
@@ -36,12 +54,15 @@
     /* justify-content: center; */
     width: 100%;
     flex-direction: column;
-    padding: 20px 50px;
+    /* padding: 20px 50px; */
     border-left: 1px solid gray;
-    padding-right: 0;
+    /* padding-right: 0; */
+    padding-left: 50px;
+    padding-bottom: 20px;
 }
 
 .wishlist-header {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     /* width: 100%; */
@@ -64,6 +85,19 @@
     margin-top: 20px;
     padding-top: 10px;
     cursor: pointer;
+    color: teal;
+    display: flex;
+    /* align-items: center; */
+}
+
+.create-wish-modal p:hover {
+    text-decoration: underline;
+}
+
+.create-wish-modal span {
+    padding-right: 5px;
+    color: black;
+    font-size: 20px;
 }
 
 .wishlist-section {
@@ -210,6 +244,7 @@
 
 .cancel-button {
     color: teal;
+    cursor: pointer;
 }
 
 .cancel-button:hover {
@@ -218,4 +253,10 @@
 
 .delete-section {
     text-align: center;
+}
+
+.delete-section p {
+    margin-top: 15px;
+    border-top: 1px solid silver;
+    padding-top: 20px;
 }

@@ -11,7 +11,10 @@ const CreateWishlistModal = ({userId}) => {
 
     return (
         <>
-        <p className="create-wish-modal" onClick={() => setShowModal(true)}>+ Create New Wishlist</p>
+        <div className="create-wish-modal" onClick={() => setShowModal(true)}>
+            <span >+</span>
+            <p>Create New Wishlist</p>
+            </div>
             {showModal && (
                 <Modal onClose={closeModal}>
                     <CreateWishlistForm closeModal={closeModal} userId={userId} />

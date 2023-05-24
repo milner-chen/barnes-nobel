@@ -16,12 +16,22 @@ const CategoryPage = () => {
     const user = useSelector(state => state.session?.user);
     // console.log(products);
 
+    // const fetchFunc = async () => {
+    //     await dispatch(productActions.fetchProducts());
+    //     await dispatch(wishlistActions.fetchWishlists(user?.id));
+    // }
+
     useEffect(() => {
         dispatch(productActions.fetchProducts());
         dispatch(wishlistActions.fetchWishlists(user?.id));
+        // fetchFunc();
     }, [user?.id])
     
-    if (!isCategory) history.push('/404');
+    if (!isCategory && products?.length) {
+        // console.log(isCategory);
+        // console.log(products);
+        history.push('/404')
+    };
     if (!products) return null;
 
     return (

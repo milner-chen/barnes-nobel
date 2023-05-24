@@ -15,7 +15,7 @@ class Api::WishlistsController < ApplicationController
         if @wishlist.save
             render :show
         else
-            render json: @wishlist.errors.full_messages, status: 422
+            render json: {errors: @wishlist.errors.full_messages} #, status: 422
             p @wishlist.errors.full_messages
         end
     end
@@ -25,7 +25,7 @@ class Api::WishlistsController < ApplicationController
         if @wishlist.update(wishlist_params)
             render :show
         else
-            render json: @wishlist.errors.full_messages, status: 422
+            render json: {errors: @wishlist.errors.full_messages} #, status: 422
         end
     end
 

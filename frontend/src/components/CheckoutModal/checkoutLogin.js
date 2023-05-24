@@ -31,13 +31,17 @@ const CheckoutLogin = ({closeModal, type}) => {
         // empty out errors
         setErrors([]);
             // MUST ASYNC/AWAIT dispatches
-            const res = await dispatch(sessionActions.login({ email, password }))
-            .catch(async res => {
-                const data = await res.json();
+            await dispatch(sessionActions.login({ email, password }))
+            .then(data => {
                 if (data.errors) setErrors(data.errors);
-            });
+                else closeModal();
+            })
+            // .catch(async res => {
+            //     const data = await res.json();
+            //     if (data.errors) setErrors(data.errors);
+            // });
         // if login was successful, close modal
-        if (res?.ok) closeModal();
+        // if (res?.ok) closeModal();
     }
 
     const handleGuest = () => {

@@ -34,19 +34,21 @@ const AddToWishlistForm = ({ closeModal, product }) => {
             },
             userId
         }))
-        .then(async res => {
+        .then(async data => {
 
-            if (res.ok) {
+            if (data.errors) {
+                setErrors(data.errors);
+            } else {
                 setMessage("Item Added");
                 await changeMessage(1000);
                 setMessage("Add Item");
                 closeModal();
             }
         })
-        .catch(async res => {
-            const data = await res.json();
-            if (data) setErrors(data);
-        });
+        // .catch(async res => {
+        //     const data = await res.json();
+        //     if (data) setErrors(data);
+        // });
         // if (result.ok) closeModal();
     }
 

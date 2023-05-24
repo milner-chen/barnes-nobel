@@ -25,30 +25,30 @@ class Api::WishlistItemsController < ApplicationController
         if @wishlist_item.save
             render :show
         else
-            render json: @wishlist_item.errors.full_messages, status: 422
-            p @wishlist_item.errors.full_messages
+            render json: {errors: @wishlist_item.errors.full_messages} #, status: 422
+            # p @wishlist_item.errors.full_messages
         end
     end
     
-    def update
-        @wishlist_item = WishlistItem.find(params[:id])
-        found = CartItem.where({user_id: params[:user_id], product_id: @wishlist_item.product_id})
-        # p found
+    # def update
+    #     @wishlist_item = WishlistItem.find(params[:id])
+    #     found = CartItem.where({user_id: params[:user_id], product_id: @wishlist_item.product_id})
+    #     # p found
 
-        if found.length > 0
-            p 'already in cart'
-            @wishlist_item.in_cart = true
-        else
-            p 'not in cart'
-            @wishlist_item.in_cart = false
-        end
+    #     if found.length > 0
+    #         p 'already in cart'
+    #         @wishlist_item.in_cart = true
+    #     else
+    #         p 'not in cart'
+    #         @wishlist_item.in_cart = false
+    #     end
 
-        if @wishlist_item.update(wishlist_item_params)
-            render :show
-        else
-            render json: @wishlist_item.errors.full_messages, status: 422
-        end
-    end
+    #     if @wishlist_item.update(wishlist_item_params)
+    #         render :show
+    #     else
+    #         render json: @wishlist_item.errors.full_messages, status: 422
+    #     end
+    # end
 
     def destroy
         @wishlist_item = WishlistItem.find(params[:id])

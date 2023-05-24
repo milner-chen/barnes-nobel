@@ -74,7 +74,7 @@ const ProductPage = () => {
         dispatch(wishlistActions.fetchWishlists(user?.id));
     }, [user?.id]);
 
-    console.log("what is product", product);
+    // console.log("what is product", product);
     if (!product) {
         history.push('/404')
         return null;

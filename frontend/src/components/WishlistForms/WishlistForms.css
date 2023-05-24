@@ -5,21 +5,24 @@
 }
 
 .wishlist-title {
-    margin: 25px 0;
+    margin: 25px auto;
     text-align: center;
     font-size: 26px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+    width: 75vw;
 }
 
 .wishlist-title span {
     border-top: 1px solid silver;
-    width: 30%;
+    /* width: 31vw; */
+    width: 100%;
 }
 
 .wishlist-title h1 {
     padding: 0 20px;
+    width: 100%;
 }
 
 .sizing {
@@ -240,6 +243,12 @@
     text-decoration: none;
     /*  */
     margin: 0;
+}
+
+.added-item {
+    background-color: white;
+    border: 1px solid teal;
+    color: black;
 }
 
 .cancel-button {

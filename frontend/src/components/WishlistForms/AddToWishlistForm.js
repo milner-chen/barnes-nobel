@@ -17,6 +17,12 @@ const AddToWishlistForm = ({ closeModal, product }) => {
     // const inCart = useSelector(state => state?.cartItems[product?.id]);
     const [list, setList] = useState(wishlists[0]);
     // console.log("first wishlist, supposedly:", wishlists);
+    // let message = "Add Item";
+    const [message, setMessage] = useState("Add Item");
+
+    const changeMessage = (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     const handleSubmit = async () => {
         setErrors([]);
@@ -29,7 +35,13 @@ const AddToWishlistForm = ({ closeModal, product }) => {
             userId
         }))
         .then(async res => {
-            if (res.ok) closeModal();
+
+            if (res.ok) {
+                setMessage("Item Added");
+                await changeMessage(1000);
+                setMessage("Add Item");
+                closeModal();
+            }
         })
         .catch(async res => {
             const data = await res.json();
@@ -75,7 +87,7 @@ const AddToWishlistForm = ({ closeModal, product }) => {
                     </div>
                 )}
                 <div className="two-buttons">
-                    <button onClick={handleSubmit} className="button submit-button">Add Item</button>
+                    <button onClick={handleSubmit} className={`button submit-button ${message === "Item Added" ? "added-item" : ""}`} >{message}</button>
                     <p onClick={closeModal} className="button cancel-button">Cancel</p>
                 </div>
             </div>

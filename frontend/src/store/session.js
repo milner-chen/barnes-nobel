@@ -79,7 +79,7 @@ export const restoreSession = () => async (dispatch) => {
 
 // combineItems helper
 const combineItems = (cartItems, dispatch, data) => {
-    const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user.id, quantity}));
+    const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user?.id, quantity}));
     dispatch(addBulkToCart({items}));
 }
 

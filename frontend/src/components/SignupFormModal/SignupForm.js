@@ -121,7 +121,7 @@ const SignupForm = ({closeModal}) => {
                         placeholder="Confirm Password"
                         />
                     <button className="signup-button" type="submit" onSubmit={e => e.preventDefault() }>Create Account</button>
-                    <button className="demo-user" onClick={loginDemo}>Demo Login</button>
+                    <button className="demo-user" onClick={loginDemo} type="button">Demo Login</button>
                     <p onClick={closeModal} id="signup-links">Cancel</p>
                 </form>
             </div>)}

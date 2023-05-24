@@ -28,6 +28,7 @@ const ProductPage = () => {
     const { productId } = useParams();
     // const cartItems = useSelector(state => Object.values(state.cartItems));
     const product = useSelector(state => state.products[productId]);
+    const productLength = useSelector(state => Object.values(state.products)?.length);
     const user = useSelector(state => state.session?.user);
 
     // const addToCart = () => {
@@ -75,16 +76,17 @@ const ProductPage = () => {
     }, [user?.id]);
 
     // console.log("what is product", product);
-    if (!product) {
+    if (productLength && !product) {
         history.push('/404')
-        return null;
     };
+    if (!product) return null;
+    
     return (
         <div className="show-page">
         <div className="show-body">
             <div className="show-content">
                 <div className="img-wrapper">
-                    <img src={product.photoUrl} alt={`${product.photoUrl}`} />
+                    <img src={product?.photoUrl} alt={`${product?.photoUrl}`} />
                     <div className="wishlist-button" onClick={() => {setShowList(true)}}>
                         <i className="fa-regular fa-heart"></i>
                         <p>Add to Wishlist</p>
@@ -103,8 +105,8 @@ const ProductPage = () => {
                     )}
                 </div>
                 <div className="product-info">
-                    <h2>{product.name}</h2>
-                    <p>by <span>{product.seller}</span></p>
+                    <h2>{product?.name}</h2>
+                    <p>by <span>{product?.seller}</span></p>
                     <p>
                     <i className="fa-solid fa-star" />
                     <i className="fa-solid fa-star" />
@@ -112,12 +114,12 @@ const ProductPage = () => {
                     <i className="fa-solid fa-star" />
                     </p>
                     <div className="line"></div>
-                    <p className="format">{product.format}</p>
-                    <p className="price">${product.price}</p>
+                    <p className="format">{product?.format}</p>
+                    <p className="price">${product?.price}</p>
                     <div className="line"></div>
                     <h2 className="italic">Overview</h2>
                     <div className="description">
-                        {product.description}
+                        {product?.description}
                     </div>
                     <div className="show-buttons">
                         {/* <button onClick={addToCart} className="cart-button">ADD TO CART</button> */}

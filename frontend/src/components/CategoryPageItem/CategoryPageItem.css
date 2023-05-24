@@ -97,3 +97,9 @@ img {
 /* .cart-button {
     border: 1px solid black;
 } */
+
+.item-left .added-book {
+    background-color: white;
+    color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+}

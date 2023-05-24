@@ -87,7 +87,7 @@ export const createCartItem = (cartItem) => async (dispatch) => {
     // await console.log("data", data);
     // await console.log("data.cartItem", data.cartItem);
     dispatch(receiveCartItem(data));
-    return data;
+    return res;
 }
 
 export const updateCartItem = (cartItem) => async (dispatch) => {

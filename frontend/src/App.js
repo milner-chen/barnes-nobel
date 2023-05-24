@@ -48,7 +48,7 @@ function App() {
         <Route exact path={`/category/:category`} component={CategoryPage} />
         <Route exact path={`/wishlist`} component={WishlistPage} />
         <Route exact path={`/404`} component={NotFoundPage} />
-        <Route exact path={`/:productId/`} component={ProductPage} />
+        <Route exact path={`/:productId`} component={ProductPage} />
         <Route path="/" component={HomePage} />
         {/* <Route path="/login" component={LoginForm} /> */}
         {/* <Route path="/signup" component={SignupFormPage} /> */}

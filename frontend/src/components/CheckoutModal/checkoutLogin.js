@@ -37,7 +37,7 @@ const CheckoutLogin = ({closeModal, type}) => {
                 if (data.errors) setErrors(data.errors);
             });
         // if login was successful, close modal
-        if (res.ok) closeModal();
+        if (res?.ok) closeModal();
     }
 
     const handleGuest = () => {
@@ -70,7 +70,7 @@ const CheckoutLogin = ({closeModal, type}) => {
                         onChange={e => setPassword(e.target.value)} />
                     {/* </label> */}
                     <button className="login-button" type="submit" >Log In &#38; Continue</button>
-                    <button onClick={handleGuest} className="signup-button" >Checkout as Guest</button>
+                    <button onClick={handleGuest} className="signup-button" type="button" >Checkout as Guest</button>
                 </form>
             </div>)}
             {currModal === 'guest' && (

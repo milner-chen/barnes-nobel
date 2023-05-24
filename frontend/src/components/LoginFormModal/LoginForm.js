@@ -58,7 +58,7 @@ const LoginForm = ({closeModal}) => {
                         onChange={e => setPassword(e.target.value)} />
                     {/* </label> */}
                     <button className="login-button" type="submit" >Log In &#38; Continue</button>
-                    <button onClick={() => setCurrModal('signup')} className="signup-button">Create an Account</button>
+                    <button onClick={() => setCurrModal('signup')} className="signup-button" type="button">Create an Account</button>
                 </form>
             </div>)}
             {currModal === 'signup' && (

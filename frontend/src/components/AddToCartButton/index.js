@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as cartItemActions from '../../store/cartItem';
+import { useState } from "react";
 
 
 const AddToCartButton = ({ product }) => {
@@ -13,6 +14,11 @@ const AddToCartButton = ({ product }) => {
     let doneAdding = false;
     // clicking on button will set doneAdding to false
     // after the adding logic -> set doneAdding to true
+    const [message, setMessage] = useState("ADD TO CART");
+
+    const changeMessage = (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     const addItems = () => {
         if (user) {
@@ -105,7 +111,14 @@ const AddToCartButton = ({ product }) => {
                     productId: product.id,
                     quantity: 1
                 // }
-            }));
+            }))
+            .then(async res => {
+                if (res.ok) {
+                    setMessage("BOOK ADDED");
+                    await changeMessage(1000);
+                    setMessage("ADD TO CART");
+                }
+            });
             // console.log(data);
         // }
         doneAdding = true;
@@ -117,7 +130,7 @@ const AddToCartButton = ({ product }) => {
     }
     // console.log(doneAdding);
     return (
-        <button disabled={doneAdding} className="cart-button" onClick={handleClick} >ADD TO CART</button>
+        <button disabled={doneAdding} className={`cart-button ${message === "BOOK ADDED" ? "added-book" : ""}`} onClick={handleClick} >{message}</button>
     )
 }
 

@@ -10,6 +10,7 @@ import './CarouselSwiper.css';
 // import slide2 from '../../assets/slide_2.jpg';
 // import slide3 from '../../assets/slide_3.jpg';
 // import slide4 from '../../assets/slide_4.jpg';
+import randSlide from '../../assets/cartoon-dead-fish.png';
 import { getCategoryProducts } from "../../store/product";
 import { NavLink } from "react-router-dom";
 
@@ -36,15 +37,21 @@ const CarouselSwiper = ({ category }) => {
                 slidesPerView={7}
                 slidesPerGroup={7}
                 slidesPerGroupAuto={true}
-                // slidesPerGroupSkip={1}
-                spaceBetween={15}
-                pagination={{
-                    clickable: true
-                }}
+                // slidesPerGroupSkip={7}
+                spaceBetween={-5}
+                // pagination={{
+                //     clickable: true
+                // }}
                 navigation={true}
                 loop={true}
                 modules={[Navigation, Pagination]}
             >
+                {/* <SwiperSlide className="carousel-slide">
+                    <NavLink to={`/${photos[Math.floor(Math.random() * photos.length)].id}`} >
+                        <img className="carousel-img" src={randSlide} />
+                        <p>Random</p>
+                    </NavLink>
+                </SwiperSlide> */}
                 {photos.map(photo => {
                     return <SwiperSlide key={photo.id} className="carousel-slide">
                         <NavLink to={`/${photo.id}`} >

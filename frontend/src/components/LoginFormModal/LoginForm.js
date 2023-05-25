@@ -31,10 +31,13 @@ const LoginForm = ({closeModal}) => {
         setErrors([]);
             //const res = 
             dispatch(sessionActions.login({ email, password }))
-            .catch(async res => {
-                const data = await res.json();
+            .then(data => {
                 if (data.errors) setErrors(data.errors);
-            });
+            })
+            // .catch(async res => {
+            //     const data = await res.json();
+            //     if (data.errors) setErrors(data.errors);
+            // });
     }
 
     return (

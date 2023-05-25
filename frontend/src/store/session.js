@@ -35,7 +35,7 @@ export const signup = (user) => async (dispatch, getState) => {
 
     const { cartItems } = getState();
     combineItems(cartItems, dispatch, data);
-    return res;
+    return data;
 }
 
 export const login = (user) => async (dispatch, getState) => {
@@ -47,14 +47,14 @@ export const login = (user) => async (dispatch, getState) => {
     });
     const data = await res.json();
     // update frontend
-    dispatch(setUser(data.user));
+    if (data.user) dispatch(setUser(data.user));
     // for error handling?
 
     const { cartItems } = getState();
     // const items = Object.values(cartItems).map(({productId, quantity}) => ({productId, userId: data.user.id, quantity}));
     // dispatch(addBulkToCart({items}));
     combineItems(cartItems, dispatch, data);
-    return res;
+    return data;
 }
 
 export const logout = () => async (dispatch) => {

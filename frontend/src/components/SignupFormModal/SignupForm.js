@@ -55,10 +55,13 @@ const SignupForm = ({closeModal}) => {
                     password: password
                 }
             }))
-            .catch(async res => {
-            const data = await res.json();
-            if (data.errors) setErrors(data.errors);
+            .then(data => {
+                if (data.errors) setErrors(data.errors)
             })
+            // .catch(async res => {
+            // const data = await res.json();
+            // if (data.errors) setErrors(data.errors);
+            // })
             
         } else {
             if (password !== confirmPassword) setErrors(["Passwords must match"]);

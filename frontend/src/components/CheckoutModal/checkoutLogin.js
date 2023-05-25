@@ -9,6 +9,11 @@ import CheckoutModal from ".";
 const CheckoutLogin = ({closeModal, type}) => {
     // console.log('typeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', type);
 
+    const loginDemo = async () => {
+        await dispatch(sessionActions.login({ email: 'demo@user.io', password: 'password' }));
+        closeModal();
+    }
+
     const [currModal, setCurrModal] = useState(type);
     // get the current user stored in the session slice of state
     const dispatch = useDispatch();
@@ -18,6 +23,8 @@ const CheckoutLogin = ({closeModal, type}) => {
         // console.log(testing); // console log current user
         return testing;
     });
+
+    // const products = useSelector(state => state?.cartItems);
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -31,13 +38,17 @@ const CheckoutLogin = ({closeModal, type}) => {
         // empty out errors
         setErrors([]);
             // MUST ASYNC/AWAIT dispatches
-            const res = await dispatch(sessionActions.login({ email, password }))
-            .catch(async res => {
-                const data = await res.json();
+            await dispatch(sessionActions.login({ email, password }))
+            .then(data => {
                 if (data.errors) setErrors(data.errors);
-            });
+                else closeModal();
+            })
+            // .catch(async res => {
+            //     const data = await res.json();
+            //     if (data.errors) setErrors(data.errors);
+            // });
         // if login was successful, close modal
-        if (res?.ok) closeModal();
+        // if (res?.ok) closeModal();
     }
 
     const handleGuest = () => {
@@ -71,6 +82,7 @@ const CheckoutLogin = ({closeModal, type}) => {
                     {/* </label> */}
                     <button className="login-button" type="submit" >Log In &#38; Continue</button>
                     <button onClick={handleGuest} className="signup-button" type="button" >Checkout as Guest</button>
+                    <p id="signup-links" onClick={loginDemo}>Demo Login</p>
                 </form>
             </div>)}
             {currModal === 'guest' && (

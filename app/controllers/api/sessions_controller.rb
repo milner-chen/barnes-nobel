@@ -17,7 +17,7 @@ class Api::SessionsController < ApplicationController
       # render json: { user: @user }
       render 'api/users/show'
     else
-      render json: { errors: ['The email and password combination does not match our records. Please try again.'] }, status: :unauthorized
+      render json: { errors: ['The email and password combination does not match our records. Please try again.'] }#, status: :unauthorized
     end
   end
 

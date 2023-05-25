@@ -50,6 +50,12 @@ const AddToCartButton = ({ product }) => {
         }
 
         dispatch(cartItemActions.addToLocalStorage(currentItem));
+        const test = async () => {
+            setMessage("BOOK ADDED");
+            await changeMessage(1000);
+            setMessage("ADD TO CART");
+        }
+        test();
 
         // let currentItem = {
         //     productId: product.id,
@@ -105,7 +111,7 @@ const AddToCartButton = ({ product }) => {
         //     }))
         // } else {
             // console.log('product was not found in cart so we make a new cartItem');
-            const data = dispatch(cartItemActions.createCartItem({
+            dispatch(cartItemActions.createCartItem({
                 // cartItem: {
                     userId: user.id,
                     productId: product.id,
@@ -113,6 +119,7 @@ const AddToCartButton = ({ product }) => {
                 // }
             }))
             .then(async res => {
+                console.log('what is res', res);
                 if (res.ok) {
                     setMessage("BOOK ADDED");
                     await changeMessage(1000);

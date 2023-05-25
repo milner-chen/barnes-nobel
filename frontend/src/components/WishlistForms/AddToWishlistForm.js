@@ -16,6 +16,7 @@ const AddToWishlistForm = ({ closeModal, product }) => {
     const wishlists = useSelector(state => Object.values(state?.wishlists));
     // const inCart = useSelector(state => state?.cartItems[product?.id]);
     const [list, setList] = useState(wishlists[0]);
+    console.log("initialList", list);
     // console.log("first wishlist, supposedly:", wishlists);
     // let message = "Add Item";
     const [message, setMessage] = useState("Add Item");
@@ -26,27 +27,32 @@ const AddToWishlistForm = ({ closeModal, product }) => {
 
     const handleSubmit = async () => {
         setErrors([]);
+        console.log("wishlists", wishlists);
+        console.log("list", list);
+        console.log("productId", product);
         const result = await dispatch(wishlistItemActions.createWishlistItem({
             wishlistItem: {
-                wishlistId: list.id,
+                wishlistId: list ? list?.id : wishlists[0]?.id,
                 productId: product.id,
                 // inCart: false
             },
             userId
         }))
-        .then(async res => {
+        .then(async data => {
 
-            if (res.ok) {
+            if (data.errors) {
+                setErrors(data.errors);
+            } else {
                 setMessage("Item Added");
                 await changeMessage(1000);
                 setMessage("Add Item");
                 closeModal();
             }
         })
-        .catch(async res => {
-            const data = await res.json();
-            if (data) setErrors(data);
-        });
+        // .catch(async res => {
+        //     const data = await res.json();
+        //     if (data) setErrors(data);
+        // });
         // if (result.ok) closeModal();
     }
 

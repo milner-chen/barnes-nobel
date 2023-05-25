@@ -42,19 +42,19 @@ export const createWishlistItem = (wishlistItem) => async (dispatch) => {
         body: JSON.stringify(wishlistItem)
     });
     const data = await res.json();
-    await dispatch(receiveWishlistItem(data));
-    return res;
+    if (!data.errors) await dispatch(receiveWishlistItem(data));
+    return data;
 }
 
-export const updateWishlistItem = (wishlistItemInfo) => async (dispatch) => {
-    const res = await csrfFetch(`/api/wishlist_items/${wishlistItemInfo.wishlistItem.id}`, {
-        method: "PATCH",
-        body: JSON.stringify(wishlistItemInfo)
-    });
-    const data = await res.json();
-    await dispatch(receiveWishlistItem(data));
-    return res;
-}
+// export const updateWishlistItem = (wishlistItemInfo) => async (dispatch) => {
+//     const res = await csrfFetch(`/api/wishlist_items/${wishlistItemInfo.wishlistItem.id}`, {
+//         method: "PATCH",
+//         body: JSON.stringify(wishlistItemInfo)
+//     });
+//     const data = await res.json();
+//     await dispatch(receiveWishlistItem(data));
+//     return res;
+// }
 
 export const deleteWishlistItem = (wishlistItemId) => async (dispatch) => {
     const res = await csrfFetch(`/api/wishlist_items/${wishlistItemId}`, {

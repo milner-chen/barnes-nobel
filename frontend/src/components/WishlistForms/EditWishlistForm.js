@@ -41,14 +41,15 @@ const EditWishlistForm = ({ closeModal, wishlistInfo, userId }) => {
                 description
             }
         }))
-        .then(res => {
-            if (res.ok) closeModal();
+        .then(data => {
+            if (data.errors) setErrors(data.errors);
+            else closeModal();
         })
-        .catch(async res => {
-            const data = await res.json();
-            // console.log(data);
-            if (data) setErrors(data);
-        })
+        // .catch(async res => {
+        //     const data = await res.json();
+        //     // console.log(data);
+        //     if (data) setErrors(data);
+        // })
     }
 
     return (

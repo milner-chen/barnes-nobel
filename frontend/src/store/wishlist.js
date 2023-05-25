@@ -44,8 +44,8 @@ export const createWishlist = (wishlistInfo) => async (dispatch) => {
         body: JSON.stringify(wishlistInfo)
     });
     const data = await res.json();
-    dispatch(receiveWishlist(data));
-    return res;
+    if (!data.errors) dispatch(receiveWishlist(data));
+    return data;
 }
 
 export const updateWishlist = (wishlistInfo) => async (dispatch) => {
@@ -55,8 +55,8 @@ export const updateWishlist = (wishlistInfo) => async (dispatch) => {
         body: JSON.stringify(wishlistInfo)
     });
     const data = await res.json();
-    dispatch(receiveWishlist(data));
-    return res;
+    if (!data.errors) dispatch(receiveWishlist(data));
+    return data;
 }
 
 export const deleteWishlist = (wishlistId) => async (dispatch) => {

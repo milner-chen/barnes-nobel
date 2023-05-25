@@ -87,11 +87,12 @@ img {
     position: absolute;
     right: 0;
     bottom: 0;
-    padding: 10px 40px;
+    padding: 9px 40px;
     background-color: cornflowerblue;
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
+    border: 2px solid cornflowerblue;
 }
 
 /* .cart-button {
@@ -101,5 +102,4 @@ img {
 .item-left .added-book {
     background-color: white;
     color: cornflowerblue;
-    border: 2px solid cornflowerblue;
 }

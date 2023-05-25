@@ -69,7 +69,7 @@ const CategoryPageItem = ({ product, user }) => {
                 {showList && !user && (
                             <Modal onClose={closeList} >
                                 {/* <CheckoutModal closeModal={closeList} /> */}
-                                <LoginForm />
+                                <LoginForm closeModal={closeList} />
                             </Modal>
                 )}
                 <NavLink to={`/${product.id}`}>

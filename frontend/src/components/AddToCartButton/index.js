@@ -119,7 +119,7 @@ const AddToCartButton = ({ product }) => {
                 // }
             }))
             .then(async res => {
-                console.log('what is res', res);
+                // console.log('what is res', res);
                 if (res.ok) {
                     setMessage("BOOK ADDED");
                     await changeMessage(1000);

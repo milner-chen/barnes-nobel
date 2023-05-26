@@ -120,6 +120,24 @@ require "open-uri"
       availability: "Store Pickup Available"
     })
 
+    product_10 = Product.create!({
+      seller: "V. E. Schwab",
+      name: "A Darker Shade of Magic (Shades of Magic Series #1)",
+      price: 17.99,
+      description: "Kell is one of the last Antari—magicians with a rare, coveted ability to travel between parallel Londons; Red, Grey, White, and, once upon a time, Black.
+
+      Kell was raised in Arnes—Red London—and officially serves the Maresh Empire as an ambassador, traveling between the frequent bloody regime changes in White London and the court of George III in the dullest of Londons, the one without any magic left to see.
+      
+      Unofficially, Kell is a smuggler, servicing people willing to pay for even the smallest glimpses of a world they'll never see. It's a defiant hobby with dangerous consequences, which Kell is now seeing firsthand.
+      
+      After an exchange goes awry, Kell escapes to Grey London and runs into Delilah Bard, a cut-purse with lofty aspirations. She first robs him, then saves him from a deadly enemy, and finally forces Kell to spirit her to another world for a proper adventure.
+      
+      Now perilous magic is afoot, and treachery lurks at every turn. To save all of the worlds, they'll first need to stay alive.",
+      category_id: 1,
+      format: "Paperback",
+      availability: "Available Online"
+    })
+
     product_7 = Product.create!({
       seller: "J. R. R. Tolkien",
       name: "The Hobbit",
@@ -146,24 +164,6 @@ require "open-uri"
       name: "The Magic Thief (Magic Thief Series #1)",
       price: 7.99,
       description: "In a city that runs on a dwindling supply of magic, a young boy is drawn into a life of wizardry and adventure. Conn should have dropped dead the day he picked Nevery's pocket and touched the wizard's locus magicalicus, a stone used to focus magic and work spells. But for some reason he did not. Nevery finds that interesting, and he takes Conn as his apprentice on the provision that the boy find a locus stone of his own. But Conn has little time to search for his stone between wizard lessons and helping Nevery discover who—or what—is stealing the city of Wellmet's magic.",
-      category_id: 1,
-      format: "Paperback",
-      availability: "Available Online"
-    })
-
-    product_10 = Product.create!({
-      seller: "V. E. Schwab",
-      name: "A Darker Shade of Magic (Shades of Magic Series #1)",
-      price: 17.99,
-      description: "Kell is one of the last Antari—magicians with a rare, coveted ability to travel between parallel Londons; Red, Grey, White, and, once upon a time, Black.
-
-      Kell was raised in Arnes—Red London—and officially serves the Maresh Empire as an ambassador, traveling between the frequent bloody regime changes in White London and the court of George III in the dullest of Londons, the one without any magic left to see.
-      
-      Unofficially, Kell is a smuggler, servicing people willing to pay for even the smallest glimpses of a world they'll never see. It's a defiant hobby with dangerous consequences, which Kell is now seeing firsthand.
-      
-      After an exchange goes awry, Kell escapes to Grey London and runs into Delilah Bard, a cut-purse with lofty aspirations. She first robs him, then saves him from a deadly enemy, and finally forces Kell to spirit her to another world for a proper adventure.
-      
-      Now perilous magic is afoot, and treachery lurks at every turn. To save all of the worlds, they'll first need to stay alive.",
       category_id: 1,
       format: "Paperback",
       availability: "Available Online"

@@ -11,15 +11,20 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
+    width: 90%;
 }
 
 .swiper-holder h1 {
-    margin-top: 50px;
+    margin-top: 20px;
     text-transform: capitalize;
     
     /* text-align: center; */
     font-weight: bold;
     font-style: italic;
+}
+
+.swiper-holder:first-child h1 {
+    margin-top: 55px;
 }
 
 .swiper-holder .carousel-img {
@@ -28,23 +33,64 @@
     margin-bottom: 2vw;
 }
 
+.swiper-holder p {
+    margin-top: -11.5vw;
+    text-align: center;
+    font-size: 30px;
+    color: teal;
+}
+
+.swiper-button-prev {
+    left: var(--swiper-navigation-sides-offset, -8px);
+    right: auto;
+}
+
+.swiper-button-next {
+    right: var(--swiper-navigation-sides-offset, -8px);
+    left: auto;
+}
+
+.swiper-fade .swiper-button-prev {
+    left: var(--swiper-navigation-sides-offset, 10px);
+    right: auto;
+}
+
+.swiper-fade .swiper-button-next {
+    right: var(--swiper-navigation-sides-offset, 10px);
+    left: auto;
+}
+
 .swiper-button-next:after, .swiper-button-prev:after {
-    color: white;
+    color: black;
     font-size: 20px;
     font-weight: bold;
 }
 
+.swiper-fade .swiper-button-next:after, .swiper-fade .swiper-button-prev:after {
+    color: white;
+    font-size: 25px;
+    /* font-weight: bold; */
+}
+
+.swiper-fade .swiper-pagination {
+    margin-top: -20px;
+}
+
 .swiper-pagination-bullet {
-    background: none;
+    background: white;
     opacity: 50%;
-    border: 2px solid gray;
+    border: 1px solid black;
 }
 
 .swiper-pagination-bullet-active {
-    background: teal;
-    border: 2px solid teal;
+    /* background: teal;
+    border: 2px solid teal; */
     opacity: 100%;
+    background: black;
+    border: 1px solid black;
 }
+
+
 
 .carousel {
     /* height: 100%; */

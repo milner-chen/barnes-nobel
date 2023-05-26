@@ -10,6 +10,7 @@ import * as wishlistItemActions from "../../store/wishlistItem";
 import AddToWishlistForm from "../WishlistForms/AddToWishlistForm";
 import { useEffect } from "react";
 import LoginForm from "../LoginFormModal/LoginForm";
+import NotFoundPage from "../NotFoundPage";
 
 const ProductPage = () => {
 
@@ -76,13 +77,15 @@ const ProductPage = () => {
     }, [user?.id]);
 
     // console.log("what is product", product);
-    if (productLength && !product) {
-        history.push('/404')
-    };
-    if (!product) return null;
+    // if (productLength && !product) {
+    //     history.push('/404')
+    // };
+    if (!productLength) return null;
     
     return (
-        <div className="show-page">
+        <>
+        {/* {console.log(productLength)} */}
+        {product ? (<div className="show-page">
         <div className="show-body">
             <div className="show-content">
                 <div className="img-wrapper">
@@ -134,7 +137,10 @@ const ProductPage = () => {
                 </div>
             </div>
         </div>
-    </div>
+    </div>) : (
+        <NotFoundPage />
+    )}
+    </>
     )
 }
 

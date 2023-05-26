@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <div className="home-page">
             <FadeSwiper />
-            <div className="swiper-holder">
+            <div className="">
                 <CarouselSwiper category='fantasy' />
                 <CarouselSwiper category='science Fiction' />
                 <CarouselSwiper category='classics' />
